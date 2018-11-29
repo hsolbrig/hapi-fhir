@@ -29,15 +29,15 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-public enum MedicationRequestIntent {
+public enum MedicationrequestIntent {
 
         /**
-         * The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act.
+         * The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act
          */
         PROPOSAL, 
         /**
@@ -45,13 +45,21 @@ public enum MedicationRequestIntent {
          */
         PLAN, 
         /**
-         * The request represents a request/demand and authorization for action.
+         * The request represents a request/demand and authorization for action
          */
         ORDER, 
         /**
          * The request represents the original authorization for the medication request.
          */
         ORIGINALORDER, 
+        /**
+         * The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization..
+         */
+        REFLEXORDER, 
+        /**
+         * The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order.
+         */
+        FILLERORDER, 
         /**
          * The request represents an instance for the particular order, for example a medication administration record.
          */
@@ -64,7 +72,7 @@ public enum MedicationRequestIntent {
          * added to help the parsers
          */
         NULL;
-        public static MedicationRequestIntent fromCode(String codeString) throws FHIRException {
+        public static MedicationrequestIntent fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("proposal".equals(codeString))
@@ -75,11 +83,15 @@ public enum MedicationRequestIntent {
           return ORDER;
         if ("original-order".equals(codeString))
           return ORIGINALORDER;
+        if ("reflex-order".equals(codeString))
+          return REFLEXORDER;
+        if ("filler-order".equals(codeString))
+          return FILLERORDER;
         if ("instance-order".equals(codeString))
           return INSTANCEORDER;
         if ("option".equals(codeString))
           return OPTION;
-        throw new FHIRException("Unknown MedicationRequestIntent code '"+codeString+"'");
+        throw new FHIRException("Unknown MedicationrequestIntent code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -87,20 +99,24 @@ public enum MedicationRequestIntent {
             case PLAN: return "plan";
             case ORDER: return "order";
             case ORIGINALORDER: return "original-order";
+            case REFLEXORDER: return "reflex-order";
+            case FILLERORDER: return "filler-order";
             case INSTANCEORDER: return "instance-order";
             case OPTION: return "option";
             default: return "?";
           }
         }
         public String getSystem() {
-          return "http://hl7.org/fhir/medication-request-intent";
+          return "http://hl7.org/fhir/ValueSet/medicationrequest-intent";
         }
         public String getDefinition() {
           switch (this) {
-            case PROPOSAL: return "The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act.";
+            case PROPOSAL: return "The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and without providing an authorization to act";
             case PLAN: return "The request represents an intention to ensure something occurs without providing an authorization for others to act.";
-            case ORDER: return "The request represents a request/demand and authorization for action.";
+            case ORDER: return "The request represents a request/demand and authorization for action";
             case ORIGINALORDER: return "The request represents the original authorization for the medication request.";
+            case REFLEXORDER: return "The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization..";
+            case FILLERORDER: return "The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order.";
             case INSTANCEORDER: return "The request represents an instance for the particular order, for example a medication administration record.";
             case OPTION: return "The request represents a component or option for a RequestGroup that establishes timing, conditionality and/or  other constraints among a set of requests.";
             default: return "?";
@@ -112,6 +128,8 @@ public enum MedicationRequestIntent {
             case PLAN: return "Plan";
             case ORDER: return "Order";
             case ORIGINALORDER: return "Original Order";
+            case REFLEXORDER: return "Reflex Order";
+            case FILLERORDER: return "Filler Order";
             case INSTANCEORDER: return "Instance Order";
             case OPTION: return "Option";
             default: return "?";

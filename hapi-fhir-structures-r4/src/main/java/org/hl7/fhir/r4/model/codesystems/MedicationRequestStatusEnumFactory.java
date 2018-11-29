@@ -29,56 +29,56 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
 
-public class MedicationRequestStatusEnumFactory implements EnumFactory<MedicationRequestStatus> {
+public class MedicationrequestStatusEnumFactory implements EnumFactory<MedicationrequestStatus> {
 
-  public MedicationRequestStatus fromCode(String codeString) throws IllegalArgumentException {
+  public MedicationrequestStatus fromCode(String codeString) throws IllegalArgumentException {
     if (codeString == null || "".equals(codeString))
       return null;
     if ("active".equals(codeString))
-      return MedicationRequestStatus.ACTIVE;
+      return MedicationrequestStatus.ACTIVE;
     if ("on-hold".equals(codeString))
-      return MedicationRequestStatus.ONHOLD;
+      return MedicationrequestStatus.ONHOLD;
     if ("cancelled".equals(codeString))
-      return MedicationRequestStatus.CANCELLED;
+      return MedicationrequestStatus.CANCELLED;
     if ("completed".equals(codeString))
-      return MedicationRequestStatus.COMPLETED;
+      return MedicationrequestStatus.COMPLETED;
     if ("entered-in-error".equals(codeString))
-      return MedicationRequestStatus.ENTEREDINERROR;
+      return MedicationrequestStatus.ENTEREDINERROR;
     if ("stopped".equals(codeString))
-      return MedicationRequestStatus.STOPPED;
+      return MedicationrequestStatus.STOPPED;
     if ("draft".equals(codeString))
-      return MedicationRequestStatus.DRAFT;
+      return MedicationrequestStatus.DRAFT;
     if ("unknown".equals(codeString))
-      return MedicationRequestStatus.UNKNOWN;
-    throw new IllegalArgumentException("Unknown MedicationRequestStatus code '"+codeString+"'");
+      return MedicationrequestStatus.UNKNOWN;
+    throw new IllegalArgumentException("Unknown MedicationrequestStatus code '"+codeString+"'");
   }
 
-  public String toCode(MedicationRequestStatus code) {
-    if (code == MedicationRequestStatus.ACTIVE)
+  public String toCode(MedicationrequestStatus code) {
+    if (code == MedicationrequestStatus.ACTIVE)
       return "active";
-    if (code == MedicationRequestStatus.ONHOLD)
+    if (code == MedicationrequestStatus.ONHOLD)
       return "on-hold";
-    if (code == MedicationRequestStatus.CANCELLED)
+    if (code == MedicationrequestStatus.CANCELLED)
       return "cancelled";
-    if (code == MedicationRequestStatus.COMPLETED)
+    if (code == MedicationrequestStatus.COMPLETED)
       return "completed";
-    if (code == MedicationRequestStatus.ENTEREDINERROR)
+    if (code == MedicationrequestStatus.ENTEREDINERROR)
       return "entered-in-error";
-    if (code == MedicationRequestStatus.STOPPED)
+    if (code == MedicationrequestStatus.STOPPED)
       return "stopped";
-    if (code == MedicationRequestStatus.DRAFT)
+    if (code == MedicationrequestStatus.DRAFT)
       return "draft";
-    if (code == MedicationRequestStatus.UNKNOWN)
+    if (code == MedicationrequestStatus.UNKNOWN)
       return "unknown";
     return "?";
   }
 
-    public String toSystem(MedicationRequestStatus code) {
+    public String toSystem(MedicationrequestStatus code) {
       return code.getSystem();
       }
 

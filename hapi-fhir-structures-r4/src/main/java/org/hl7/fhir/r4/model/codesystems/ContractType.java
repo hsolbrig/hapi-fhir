@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
@@ -86,7 +86,7 @@ public enum ContractType {
           }
         }
         public String getSystem() {
-          return "http://terminology.hl7.org/CodeSystem/coverage-copay-type";
+          return "http://terminology.hl7.org/CodeSystem/contract-type";
         }
         public String getDefinition() {
           switch (this) {

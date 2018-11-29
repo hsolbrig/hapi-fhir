@@ -29,36 +29,36 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
 
-public class MedicationKnowledgeStatusEnumFactory implements EnumFactory<MedicationKnowledgeStatus> {
+public class MedicationknowledgeStatusEnumFactory implements EnumFactory<MedicationknowledgeStatus> {
 
-  public MedicationKnowledgeStatus fromCode(String codeString) throws IllegalArgumentException {
+  public MedicationknowledgeStatus fromCode(String codeString) throws IllegalArgumentException {
     if (codeString == null || "".equals(codeString))
       return null;
     if ("active".equals(codeString))
-      return MedicationKnowledgeStatus.ACTIVE;
+      return MedicationknowledgeStatus.ACTIVE;
     if ("inactive".equals(codeString))
-      return MedicationKnowledgeStatus.INACTIVE;
+      return MedicationknowledgeStatus.INACTIVE;
     if ("entered-in-error".equals(codeString))
-      return MedicationKnowledgeStatus.ENTEREDINERROR;
-    throw new IllegalArgumentException("Unknown MedicationKnowledgeStatus code '"+codeString+"'");
+      return MedicationknowledgeStatus.ENTEREDINERROR;
+    throw new IllegalArgumentException("Unknown MedicationknowledgeStatus code '"+codeString+"'");
   }
 
-  public String toCode(MedicationKnowledgeStatus code) {
-    if (code == MedicationKnowledgeStatus.ACTIVE)
+  public String toCode(MedicationknowledgeStatus code) {
+    if (code == MedicationknowledgeStatus.ACTIVE)
       return "active";
-    if (code == MedicationKnowledgeStatus.INACTIVE)
+    if (code == MedicationknowledgeStatus.INACTIVE)
       return "inactive";
-    if (code == MedicationKnowledgeStatus.ENTEREDINERROR)
+    if (code == MedicationknowledgeStatus.ENTEREDINERROR)
       return "entered-in-error";
     return "?";
   }
 
-    public String toSystem(MedicationKnowledgeStatus code) {
+    public String toSystem(MedicationknowledgeStatus code) {
       return code.getSystem();
       }
 

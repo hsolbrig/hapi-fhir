@@ -29,56 +29,60 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
 
-public class MedicationDispenseStatusEnumFactory implements EnumFactory<MedicationDispenseStatus> {
+public class MedicationdispenseStatusEnumFactory implements EnumFactory<MedicationdispenseStatus> {
 
-  public MedicationDispenseStatus fromCode(String codeString) throws IllegalArgumentException {
+  public MedicationdispenseStatus fromCode(String codeString) throws IllegalArgumentException {
     if (codeString == null || "".equals(codeString))
       return null;
     if ("preparation".equals(codeString))
-      return MedicationDispenseStatus.PREPARATION;
+      return MedicationdispenseStatus.PREPARATION;
     if ("in-progress".equals(codeString))
-      return MedicationDispenseStatus.INPROGRESS;
+      return MedicationdispenseStatus.INPROGRESS;
     if ("cancelled".equals(codeString))
-      return MedicationDispenseStatus.CANCELLED;
+      return MedicationdispenseStatus.CANCELLED;
     if ("on-hold".equals(codeString))
-      return MedicationDispenseStatus.ONHOLD;
+      return MedicationdispenseStatus.ONHOLD;
     if ("completed".equals(codeString))
-      return MedicationDispenseStatus.COMPLETED;
+      return MedicationdispenseStatus.COMPLETED;
     if ("entered-in-error".equals(codeString))
-      return MedicationDispenseStatus.ENTEREDINERROR;
+      return MedicationdispenseStatus.ENTEREDINERROR;
     if ("stopped".equals(codeString))
-      return MedicationDispenseStatus.STOPPED;
+      return MedicationdispenseStatus.STOPPED;
+    if ("declined".equals(codeString))
+      return MedicationdispenseStatus.DECLINED;
     if ("unknown".equals(codeString))
-      return MedicationDispenseStatus.UNKNOWN;
-    throw new IllegalArgumentException("Unknown MedicationDispenseStatus code '"+codeString+"'");
+      return MedicationdispenseStatus.UNKNOWN;
+    throw new IllegalArgumentException("Unknown MedicationdispenseStatus code '"+codeString+"'");
   }
 
-  public String toCode(MedicationDispenseStatus code) {
-    if (code == MedicationDispenseStatus.PREPARATION)
+  public String toCode(MedicationdispenseStatus code) {
+    if (code == MedicationdispenseStatus.PREPARATION)
       return "preparation";
-    if (code == MedicationDispenseStatus.INPROGRESS)
+    if (code == MedicationdispenseStatus.INPROGRESS)
       return "in-progress";
-    if (code == MedicationDispenseStatus.CANCELLED)
+    if (code == MedicationdispenseStatus.CANCELLED)
       return "cancelled";
-    if (code == MedicationDispenseStatus.ONHOLD)
+    if (code == MedicationdispenseStatus.ONHOLD)
       return "on-hold";
-    if (code == MedicationDispenseStatus.COMPLETED)
+    if (code == MedicationdispenseStatus.COMPLETED)
       return "completed";
-    if (code == MedicationDispenseStatus.ENTEREDINERROR)
+    if (code == MedicationdispenseStatus.ENTEREDINERROR)
       return "entered-in-error";
-    if (code == MedicationDispenseStatus.STOPPED)
+    if (code == MedicationdispenseStatus.STOPPED)
       return "stopped";
-    if (code == MedicationDispenseStatus.UNKNOWN)
+    if (code == MedicationdispenseStatus.DECLINED)
+      return "declined";
+    if (code == MedicationdispenseStatus.UNKNOWN)
       return "unknown";
     return "?";
   }
 
-    public String toSystem(MedicationDispenseStatus code) {
+    public String toSystem(MedicationdispenseStatus code) {
       return code.getSystem();
       }
 

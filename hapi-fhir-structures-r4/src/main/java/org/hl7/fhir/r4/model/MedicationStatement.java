@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -70,7 +70,7 @@ public class MedicationStatement extends DomainResource {
          */
         STOPPED, 
         /**
-         * Actions implied by the statement have been temporarily halted, but are expected to continue later. May also be called "suspended".
+         * Actions implied by the statement have been temporarily halted, but are expected to continue later. May also be called 'suspended'.
          */
         ONHOLD, 
         /**
@@ -78,7 +78,7 @@ public class MedicationStatement extends DomainResource {
          */
         UNKNOWN, 
         /**
-         * The medication was not consumed by the patient.
+         * The medication was not consumed by the patient
          */
         NOTTAKEN, 
         /**
@@ -124,14 +124,14 @@ public class MedicationStatement extends DomainResource {
         }
         public String getSystem() {
           switch (this) {
-            case ACTIVE: return "http://hl7.org/fhir/medication-statement-status";
-            case COMPLETED: return "http://hl7.org/fhir/medication-statement-status";
-            case ENTEREDINERROR: return "http://hl7.org/fhir/medication-statement-status";
-            case INTENDED: return "http://hl7.org/fhir/medication-statement-status";
-            case STOPPED: return "http://hl7.org/fhir/medication-statement-status";
-            case ONHOLD: return "http://hl7.org/fhir/medication-statement-status";
-            case UNKNOWN: return "http://hl7.org/fhir/medication-statement-status";
-            case NOTTAKEN: return "http://hl7.org/fhir/medication-statement-status";
+            case ACTIVE: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case COMPLETED: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case ENTEREDINERROR: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case INTENDED: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case STOPPED: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case ONHOLD: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case UNKNOWN: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
+            case NOTTAKEN: return "http://hl7.org/fhir/CodeSystem/medication-statement-status";
             default: return "?";
           }
         }
@@ -142,9 +142,9 @@ public class MedicationStatement extends DomainResource {
             case ENTEREDINERROR: return "Some of the actions that are implied by the medication statement may have occurred.  For example, the patient may have taken some of the medication.  Clinical decision support systems should take this status into account.";
             case INTENDED: return "The medication may be taken at some time in the future.";
             case STOPPED: return "Actions implied by the statement have been permanently halted, before all of them occurred. This should not be used if the statement was entered in error.";
-            case ONHOLD: return "Actions implied by the statement have been temporarily halted, but are expected to continue later. May also be called \"suspended\".";
+            case ONHOLD: return "Actions implied by the statement have been temporarily halted, but are expected to continue later. May also be called 'suspended'.";
             case UNKNOWN: return "The state of the medication use is not currently known.";
-            case NOTTAKEN: return "The medication was not consumed by the patient.";
+            case NOTTAKEN: return "The medication was not consumed by the patient";
             default: return "?";
           }
         }
@@ -237,10 +237,10 @@ public class MedicationStatement extends DomainResource {
     }
 
     /**
-     * External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.
+     * Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.
      */
     @Child(name = "identifier", type = {Identifier.class}, order=0, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="External identifier", formalDefinition="External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated." )
+    @Description(shortDefinition="External identifier", formalDefinition="Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server." )
     protected List<Identifier> identifier;
 
     /**
@@ -415,7 +415,7 @@ public class MedicationStatement extends DomainResource {
     }
 
     /**
-     * @return {@link #identifier} (External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.)
+     * @return {@link #identifier} (Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.)
      */
     public List<Identifier> getIdentifier() { 
       if (this.identifier == null)
@@ -727,7 +727,7 @@ public class MedicationStatement extends DomainResource {
      */
     public CodeableConcept getMedicationCodeableConcept() throws FHIRException { 
       if (this.medication == null)
-        return null;
+        this.medication = new CodeableConcept();
       if (!(this.medication instanceof CodeableConcept))
         throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.medication.getClass().getName()+" was encountered");
       return (CodeableConcept) this.medication;
@@ -742,7 +742,7 @@ public class MedicationStatement extends DomainResource {
      */
     public Reference getMedicationReference() throws FHIRException { 
       if (this.medication == null)
-        return null;
+        this.medication = new Reference();
       if (!(this.medication instanceof Reference))
         throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.medication.getClass().getName()+" was encountered");
       return (Reference) this.medication;
@@ -856,7 +856,7 @@ public class MedicationStatement extends DomainResource {
      */
     public DateTimeType getEffectiveDateTimeType() throws FHIRException { 
       if (this.effective == null)
-        return null;
+        this.effective = new DateTimeType();
       if (!(this.effective instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.effective.getClass().getName()+" was encountered");
       return (DateTimeType) this.effective;
@@ -871,7 +871,7 @@ public class MedicationStatement extends DomainResource {
      */
     public Period getEffectivePeriod() throws FHIRException { 
       if (this.effective == null)
-        return null;
+        this.effective = new Period();
       if (!(this.effective instanceof Period))
         throw new FHIRException("Type mismatch: the type Period was expected, but "+this.effective.getClass().getName()+" was encountered");
       return (Period) this.effective;
@@ -1270,7 +1270,7 @@ public class MedicationStatement extends DomainResource {
 
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
-        children.add(new Property("identifier", "Identifier", "External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.", 0, java.lang.Integer.MAX_VALUE, identifier));
+        children.add(new Property("identifier", "Identifier", "Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("basedOn", "Reference(MedicationRequest|CarePlan|ServiceRequest)", "A plan, proposal or order that is fulfilled in whole or in part by this event.", 0, java.lang.Integer.MAX_VALUE, basedOn));
         children.add(new Property("partOf", "Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Observation)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf));
         children.add(new Property("status", "code", "A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.", 0, 1, status));
@@ -1292,7 +1292,7 @@ public class MedicationStatement extends DomainResource {
       @Override
       public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
         switch (_hash) {
-        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "External identifier - FHIR will generate its own internal identifiers (probably URLs) which do not need to be explicitly managed by the resource.  The identifier here is one that would be used by another non-FHIR system - for example an automated medication pump would provide a record each time it operated; an administration while the patient was off the ward might be made with a different system and entered after the event.  Particularly important if these records have to be updated.", 0, java.lang.Integer.MAX_VALUE, identifier);
+        case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "Identifiers associated with this Medication Statement that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate. They are business identifiers assigned to this resource by the performer or other systems and remain constant as the resource is updated and propagates from server to server.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case -332612366: /*basedOn*/  return new Property("basedOn", "Reference(MedicationRequest|CarePlan|ServiceRequest)", "A plan, proposal or order that is fulfilled in whole or in part by this event.", 0, java.lang.Integer.MAX_VALUE, basedOn);
         case -995410646: /*partOf*/  return new Property("partOf", "Reference(MedicationAdministration|MedicationDispense|MedicationStatement|Procedure|Observation)", "A larger event of which this particular event is a component or step.", 0, java.lang.Integer.MAX_VALUE, partOf);
         case -892481550: /*status*/  return new Property("status", "code", "A code representing the patient or other source's judgment about the state of the medication used that this statement is about.  Generally this will be active or completed.", 0, 1, status);

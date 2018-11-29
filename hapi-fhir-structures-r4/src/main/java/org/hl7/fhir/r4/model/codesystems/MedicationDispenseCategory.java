@@ -29,12 +29,12 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-public enum MedicationDispenseCategory {
+public enum MedicationdispenseCategory {
 
         /**
          * Includes dispenses for medications to be administered or consumed in an inpatient or acute care setting.
@@ -56,7 +56,7 @@ public enum MedicationDispenseCategory {
          * added to help the parsers
          */
         NULL;
-        public static MedicationDispenseCategory fromCode(String codeString) throws FHIRException {
+        public static MedicationdispenseCategory fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("inpatient".equals(codeString))
@@ -67,7 +67,7 @@ public enum MedicationDispenseCategory {
           return COMMUNITY;
         if ("discharge".equals(codeString))
           return DISCHARGE;
-        throw new FHIRException("Unknown MedicationDispenseCategory code '"+codeString+"'");
+        throw new FHIRException("Unknown MedicationdispenseCategory code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -79,7 +79,7 @@ public enum MedicationDispenseCategory {
           }
         }
         public String getSystem() {
-          return "http://terminology.hl7.org/CodeSystem/medication-dispense-category";
+          return "http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-category";
         }
         public String getDefinition() {
           switch (this) {

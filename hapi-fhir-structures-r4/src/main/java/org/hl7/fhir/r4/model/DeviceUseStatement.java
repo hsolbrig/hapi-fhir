@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -633,7 +633,7 @@ public class DeviceUseStatement extends DomainResource {
      */
     public Timing getTimingTiming() throws FHIRException { 
       if (this.timing == null)
-        return null;
+        this.timing = new Timing();
       if (!(this.timing instanceof Timing))
         throw new FHIRException("Type mismatch: the type Timing was expected, but "+this.timing.getClass().getName()+" was encountered");
       return (Timing) this.timing;
@@ -648,7 +648,7 @@ public class DeviceUseStatement extends DomainResource {
      */
     public Period getTimingPeriod() throws FHIRException { 
       if (this.timing == null)
-        return null;
+        this.timing = new Period();
       if (!(this.timing instanceof Period))
         throw new FHIRException("Type mismatch: the type Period was expected, but "+this.timing.getClass().getName()+" was encountered");
       return (Period) this.timing;
@@ -663,7 +663,7 @@ public class DeviceUseStatement extends DomainResource {
      */
     public DateTimeType getTimingDateTimeType() throws FHIRException { 
       if (this.timing == null)
-        return null;
+        this.timing = new DateTimeType();
       if (!(this.timing instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.timing.getClass().getName()+" was encountered");
       return (DateTimeType) this.timing;

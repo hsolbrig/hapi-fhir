@@ -33,7 +33,7 @@
       <sch:assert test="not(exists(for $contained in f:contained return $contained[not(parent::*/descendant::f:reference/@value=concat('#', $contained/*/id/@value) or descendant::f:reference[@value='#'])]))">dom-3: If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource or SHALL refer to the containing resource</sch:assert>
       <sch:assert test="exists(f:text/h:div)">dom-6: A resource should have narrative for robust management</sch:assert>
       <sch:assert test="not(exists(f:contained/*/f:meta/f:security))">dom-5: If a resource is contained in another resource, it SHALL NOT have a security label</sch:assert>
-      <sch:assert test="(f:mode/@value = 'working') or not(exists(f:entry/f:date))">lst-3: A date can only be used if the mode of the list is &quot;working&quot;</sch:assert>
+      <sch:assert test="(f:mode/@value = 'working') or not(exists(f:entry/f:date))">lst-3: An entry date can only be used if the mode of the list is &quot;working&quot;</sch:assert>
       <sch:assert test="(f:mode/@value = 'changes') or not(exists(f:entry/f:deleted))">lst-2: The deleted flag can only be used if the mode of the list is &quot;changes&quot;</sch:assert>
       <sch:assert test="not(exists(f:emptyReason) and exists(f:entry))">lst-1: A list can only have an emptyReason if it is empty</sch:assert>
     </sch:rule>

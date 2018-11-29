@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -773,13 +773,13 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     protected StringType name;
 
     /**
-     * Identifies the patient, device, practitioner, location or other object the account is associated with.
+     * Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account.
      */
     @Child(name = "subject", type = {Patient.class, Device.class, Practitioner.class, Location.class, HealthcareService.class, Organization.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="What is account tied to?", formalDefinition="Identifies the patient, device, practitioner, location or other object the account is associated with." )
+    @Description(shortDefinition="The entity that caused the expenses", formalDefinition="Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account." )
     protected List<Reference> subject;
     /**
-     * The actual objects that are the target of the reference (Identifies the patient, device, practitioner, location or other object the account is associated with.)
+     * The actual objects that are the target of the reference (Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account.)
      */
     protected List<Resource> subjectTarget;
 
@@ -799,14 +799,14 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     protected List<CoverageComponent> coverage;
 
     /**
-     * Indicates the organization, department, etc. with responsibility for the account.
+     * Indicates the service area, hospital, department, etc. with responsibility for managing the Account.
      */
     @Child(name = "owner", type = {Organization.class}, order=7, min=0, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Who is responsible?", formalDefinition="Indicates the organization, department, etc. with responsibility for the account." )
+    @Description(shortDefinition="Entity managing the Account", formalDefinition="Indicates the service area, hospital, department, etc. with responsibility for managing the Account." )
     protected Reference owner;
 
     /**
-     * The actual object that is the target of the reference (Indicates the organization, department, etc. with responsibility for the account.)
+     * The actual object that is the target of the reference (Indicates the service area, hospital, department, etc. with responsibility for managing the Account.)
      */
     protected Organization ownerTarget;
 
@@ -818,10 +818,10 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     protected StringType description;
 
     /**
-     * Parties financially responsible for the account.
+     * The parties responsible for balancing the account if other payment options fall short.
      */
     @Child(name = "guarantor", type = {}, order=9, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-    @Description(shortDefinition="Responsible for the account", formalDefinition="Parties financially responsible for the account." )
+    @Description(shortDefinition="The parties ultimately responsible for balancing the Account", formalDefinition="The parties responsible for balancing the account if other payment options fall short." )
     protected List<GuarantorComponent> guarantor;
 
     /**
@@ -1025,7 +1025,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     }
 
     /**
-     * @return {@link #subject} (Identifies the patient, device, practitioner, location or other object the account is associated with.)
+     * @return {@link #subject} (Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account.)
      */
     public List<Reference> getSubject() { 
       if (this.subject == null)
@@ -1165,7 +1165,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     }
 
     /**
-     * @return {@link #owner} (Indicates the organization, department, etc. with responsibility for the account.)
+     * @return {@link #owner} (Indicates the service area, hospital, department, etc. with responsibility for managing the Account.)
      */
     public Reference getOwner() { 
       if (this.owner == null)
@@ -1181,7 +1181,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     }
 
     /**
-     * @param value {@link #owner} (Indicates the organization, department, etc. with responsibility for the account.)
+     * @param value {@link #owner} (Indicates the service area, hospital, department, etc. with responsibility for managing the Account.)
      */
     public Account setOwner(Reference value) { 
       this.owner = value;
@@ -1189,7 +1189,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     }
 
     /**
-     * @return {@link #owner} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Indicates the organization, department, etc. with responsibility for the account.)
+     * @return {@link #owner} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (Indicates the service area, hospital, department, etc. with responsibility for managing the Account.)
      */
     public Organization getOwnerTarget() { 
       if (this.ownerTarget == null)
@@ -1201,7 +1201,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     }
 
     /**
-     * @param value {@link #owner} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Indicates the organization, department, etc. with responsibility for the account.)
+     * @param value {@link #owner} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (Indicates the service area, hospital, department, etc. with responsibility for managing the Account.)
      */
     public Account setOwnerTarget(Organization value) { 
       this.ownerTarget = value;
@@ -1258,7 +1258,7 @@ A coverage may only be resposible for specific types of charges, and the sequenc
     }
 
     /**
-     * @return {@link #guarantor} (Parties financially responsible for the account.)
+     * @return {@link #guarantor} (The parties responsible for balancing the account if other payment options fall short.)
      */
     public List<GuarantorComponent> getGuarantor() { 
       if (this.guarantor == null)
@@ -1360,12 +1360,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
         children.add(new Property("status", "code", "Indicates whether the account is presently used/usable or not.", 0, 1, status));
         children.add(new Property("type", "CodeableConcept", "Categorizes the account for reporting and searching purposes.", 0, 1, type));
         children.add(new Property("name", "string", "Name used for the account when displaying it to humans in reports, etc.", 0, 1, name));
-        children.add(new Property("subject", "Reference(Patient|Device|Practitioner|Location|HealthcareService|Organization)", "Identifies the patient, device, practitioner, location or other object the account is associated with.", 0, java.lang.Integer.MAX_VALUE, subject));
+        children.add(new Property("subject", "Reference(Patient|Device|Practitioner|Location|HealthcareService|Organization)", "Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account.", 0, java.lang.Integer.MAX_VALUE, subject));
         children.add(new Property("servicePeriod", "Period", "The date range of services associated with this account.", 0, 1, servicePeriod));
         children.add(new Property("coverage", "", "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account.", 0, java.lang.Integer.MAX_VALUE, coverage));
-        children.add(new Property("owner", "Reference(Organization)", "Indicates the organization, department, etc. with responsibility for the account.", 0, 1, owner));
+        children.add(new Property("owner", "Reference(Organization)", "Indicates the service area, hospital, department, etc. with responsibility for managing the Account.", 0, 1, owner));
         children.add(new Property("description", "string", "Provides additional information about what the account tracks and how it is used.", 0, 1, description));
-        children.add(new Property("guarantor", "", "Parties financially responsible for the account.", 0, java.lang.Integer.MAX_VALUE, guarantor));
+        children.add(new Property("guarantor", "", "The parties responsible for balancing the account if other payment options fall short.", 0, java.lang.Integer.MAX_VALUE, guarantor));
         children.add(new Property("partOf", "Reference(Account)", "Reference to a parent Account.", 0, 1, partOf));
       }
 
@@ -1376,12 +1376,12 @@ A coverage may only be resposible for specific types of charges, and the sequenc
         case -892481550: /*status*/  return new Property("status", "code", "Indicates whether the account is presently used/usable or not.", 0, 1, status);
         case 3575610: /*type*/  return new Property("type", "CodeableConcept", "Categorizes the account for reporting and searching purposes.", 0, 1, type);
         case 3373707: /*name*/  return new Property("name", "string", "Name used for the account when displaying it to humans in reports, etc.", 0, 1, name);
-        case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Device|Practitioner|Location|HealthcareService|Organization)", "Identifies the patient, device, practitioner, location or other object the account is associated with.", 0, java.lang.Integer.MAX_VALUE, subject);
+        case -1867885268: /*subject*/  return new Property("subject", "Reference(Patient|Device|Practitioner|Location|HealthcareService|Organization)", "Identifies the entity which incurs the expenses. While the immediate recipients of services or goods might be entities related to the subject, the expenses were ultimately incurred by the subject of the Account.", 0, java.lang.Integer.MAX_VALUE, subject);
         case 2129104086: /*servicePeriod*/  return new Property("servicePeriod", "Period", "The date range of services associated with this account.", 0, 1, servicePeriod);
         case -351767064: /*coverage*/  return new Property("coverage", "", "The party(s) that are responsible for covering the payment of this account, and what order should they be applied to the account.", 0, java.lang.Integer.MAX_VALUE, coverage);
-        case 106164915: /*owner*/  return new Property("owner", "Reference(Organization)", "Indicates the organization, department, etc. with responsibility for the account.", 0, 1, owner);
+        case 106164915: /*owner*/  return new Property("owner", "Reference(Organization)", "Indicates the service area, hospital, department, etc. with responsibility for managing the Account.", 0, 1, owner);
         case -1724546052: /*description*/  return new Property("description", "string", "Provides additional information about what the account tracks and how it is used.", 0, 1, description);
-        case -188629045: /*guarantor*/  return new Property("guarantor", "", "Parties financially responsible for the account.", 0, java.lang.Integer.MAX_VALUE, guarantor);
+        case -188629045: /*guarantor*/  return new Property("guarantor", "", "The parties responsible for balancing the account if other payment options fall short.", 0, java.lang.Integer.MAX_VALUE, guarantor);
         case -995410646: /*partOf*/  return new Property("partOf", "Reference(Account)", "Reference to a parent Account.", 0, 1, partOf);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
@@ -1640,17 +1640,17 @@ A coverage may only be resposible for specific types of charges, and the sequenc
  /**
    * Search parameter: <b>owner</b>
    * <p>
-   * Description: <b>Who is responsible?</b><br>
+   * Description: <b>Entity managing the Account</b><br>
    * Type: <b>reference</b><br>
    * Path: <b>Account.owner</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="owner", path="Account.owner.where(resolve() is Organization)", description="Who is responsible?", type="reference", target={Organization.class } )
+  @SearchParamDefinition(name="owner", path="Account.owner.where(resolve() is Organization)", description="Entity managing the Account", type="reference", target={Organization.class } )
   public static final String SP_OWNER = "owner";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>owner</b>
    * <p>
-   * Description: <b>Who is responsible?</b><br>
+   * Description: <b>Entity managing the Account</b><br>
    * Type: <b>reference</b><br>
    * Path: <b>Account.owner</b><br>
    * </p>
@@ -1706,17 +1706,17 @@ A coverage may only be resposible for specific types of charges, and the sequenc
  /**
    * Search parameter: <b>subject</b>
    * <p>
-   * Description: <b>What is account tied to?</b><br>
+   * Description: <b>The entity that caused the expenses</b><br>
    * Type: <b>reference</b><br>
    * Path: <b>Account.subject</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="subject", path="Account.subject", description="What is account tied to?", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Device.class, HealthcareService.class, Location.class, Organization.class, Patient.class, Practitioner.class } )
+  @SearchParamDefinition(name="subject", path="Account.subject", description="The entity that caused the expenses", type="reference", providesMembershipIn={ @ca.uhn.fhir.model.api.annotation.Compartment(name="Device"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Patient"), @ca.uhn.fhir.model.api.annotation.Compartment(name="Practitioner") }, target={Device.class, HealthcareService.class, Location.class, Organization.class, Patient.class, Practitioner.class } )
   public static final String SP_SUBJECT = "subject";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>subject</b>
    * <p>
-   * Description: <b>What is account tied to?</b><br>
+   * Description: <b>The entity that caused the expenses</b><br>
    * Type: <b>reference</b><br>
    * Path: <b>Account.subject</b><br>
    * </p>
@@ -1732,17 +1732,17 @@ A coverage may only be resposible for specific types of charges, and the sequenc
  /**
    * Search parameter: <b>patient</b>
    * <p>
-   * Description: <b>What is account tied to?</b><br>
+   * Description: <b>The entity that caused the expenses</b><br>
    * Type: <b>reference</b><br>
    * Path: <b>Account.subject</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="patient", path="Account.subject.where(resolve() is Patient)", description="What is account tied to?", type="reference", target={Patient.class } )
+  @SearchParamDefinition(name="patient", path="Account.subject.where(resolve() is Patient)", description="The entity that caused the expenses", type="reference", target={Patient.class } )
   public static final String SP_PATIENT = "patient";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>patient</b>
    * <p>
-   * Description: <b>What is account tied to?</b><br>
+   * Description: <b>The entity that caused the expenses</b><br>
    * Type: <b>reference</b><br>
    * Path: <b>Account.subject</b><br>
    * </p>

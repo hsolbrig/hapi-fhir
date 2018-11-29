@@ -1,7 +1,6 @@
 package org.hl7.fhir.r4.utils;
 
 //import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
-import ca.uhn.fhir.model.api.TemporalPrecisionEnum;
 import ca.uhn.fhir.util.ElementUtil;
 
 import org.apache.commons.lang3.NotImplementedException;
@@ -157,9 +156,10 @@ public class FHIRPathEngine {
      *  
      * @param appContext - content passed into the fluent path engine
      * @param name - name reference to resolve
+     * @param beforeContext - whether this is being called before the name is resolved locally, or not
      * @return the value of the reference (or null, if it's not valid, though can throw an exception if desired)
      */
-    public Base resolveConstant(Object appContext, String name)  throws PathEngineException;
+    public Base resolveConstant(Object appContext, String name, boolean beforeContext)  throws PathEngineException;
     public TypeDetails resolveConstantType(Object appContext, String name) throws PathEngineException;
     
     /**
@@ -334,7 +334,7 @@ public class FHIRPathEngine {
 	  }
 	}
 
-    return executeType(new ExecutionTypeContext(appContext, resourceType, context, types), types, expr, true);
+    return executeType(new ExecutionTypeContext(appContext, resourceType, types, types), types, expr, true);
   }
 
   public TypeDetails check(Object appContext, StructureDefinition sd, String context, ExpressionNode expr) throws FHIRLexerException, PathEngineException, DefinitionException {
@@ -357,7 +357,7 @@ public class FHIRPathEngine {
       }
     }
 
-    return executeType(new ExecutionTypeContext(appContext, sd.getUrl(), context, types), types, expr, true);
+    return executeType(new ExecutionTypeContext(appContext, sd.getUrl(), types, types), types, expr, true);
   }
 
   public TypeDetails check(Object appContext, StructureDefinition sd, ExpressionNode expr) throws FHIRLexerException, PathEngineException, DefinitionException {
@@ -685,12 +685,12 @@ public class FHIRPathEngine {
   private class ExecutionTypeContext {
     private Object appInfo; 
     private String resource;
-    private String context;
+    private TypeDetails context;
     private TypeDetails thisItem;
     private TypeDetails total;
 
 
-    public ExecutionTypeContext(Object appInfo, String resource, String context, TypeDetails thisItem) {
+    public ExecutionTypeContext(Object appInfo, String resource, TypeDetails context, TypeDetails thisItem) {
       super();
       this.appInfo = appInfo;
       this.resource = resource;
@@ -1019,13 +1019,13 @@ public class FHIRPathEngine {
     case ToBoolean: return checkParamCount(lexer, location, exp, 0);
     case ToDateTime: return checkParamCount(lexer, location, exp, 0);
     case ToTime: return checkParamCount(lexer, location, exp, 0);
-    case IsInteger: return checkParamCount(lexer, location, exp, 0);
-    case IsDecimal: return checkParamCount(lexer, location, exp, 0);
-    case IsString: return checkParamCount(lexer, location, exp, 0);
-    case IsQuantity: return checkParamCount(lexer, location, exp, 0);
-    case IsBoolean: return checkParamCount(lexer, location, exp, 0);
-    case IsDateTime: return checkParamCount(lexer, location, exp, 0);
-    case IsTime: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToInteger: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToDecimal: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToString: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToQuantity: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToBoolean: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToDateTime: return checkParamCount(lexer, location, exp, 0);
+    case ConvertsToTime: return checkParamCount(lexer, location, exp, 0);
     case ConformsTo: return checkParamCount(lexer, location, exp, 1);
     case Custom: return checkParamCount(lexer, location, exp, details.getMinParameters(), details.getMaxParameters());
     }
@@ -1054,7 +1054,7 @@ public class FHIRPathEngine {
       work.addAll(work2);
       break;
     case Constant:
-      Base b = resolveConstant(context, exp.getConstant());
+      Base b = resolveConstant(context, exp.getConstant(), false);
       if (b != null)
         work.add(b);
       break;
@@ -1170,12 +1170,12 @@ public class FHIRPathEngine {
     return result;
   }
 
-  private Base resolveConstant(ExecutionContext context, Base constant) throws PathEngineException {
+  private Base resolveConstant(ExecutionContext context, Base constant, boolean beforeContext) throws PathEngineException {
     if (!(constant instanceof FHIRConstant))
       return constant;
     FHIRConstant c = (FHIRConstant) constant;
     if (c.getValue().startsWith("%")) {
-      return resolveConstant(context, c.getValue());
+      return resolveConstant(context, c.getValue(), beforeContext);
     } else if (c.getValue().startsWith("@")) {
       return processDateConstant(context.appInfo, c.getValue().substring(1));
     } else 
@@ -1201,7 +1201,7 @@ public class FHIRPathEngine {
   }
 
 
-  private Base resolveConstant(ExecutionContext context, String s) throws PathEngineException {
+  private Base resolveConstant(ExecutionContext context, String s, boolean beforeContext) throws PathEngineException {
     if (s.equals("%sct"))
       return new StringType("http://snomed.info/sct").noExtensions();
     else if (s.equals("%loinc"))
@@ -1225,7 +1225,7 @@ public class FHIRPathEngine {
     else if (hostServices == null)
       throw new PathEngineException("Unknown fixed constant '"+s+"'");
     else
-      return hostServices.resolveConstant(context.appInfo, s.substring(1));
+      return hostServices.resolveConstant(context.appInfo, s.substring(1), beforeContext);
   }
 
 
@@ -1314,14 +1314,12 @@ public class FHIRPathEngine {
 
   private List<Base> opAs(List<Base> left, List<Base> right) {
     List<Base> result = new ArrayList<Base>();
-    if (right.size() != 1)
+    if (left.size() != 1 || right.size() != 1)
       return result;
     else {
       String tn = convertToString(right);
-      for (Base nextLeft : left) {
-        if (tn.equals(nextLeft.fhirType()))
-          result.add(nextLeft);
-      }
+      if (tn.equals(left.get(0).fhirType()))
+        result.add(left.get(0));
     }
     return result;
   }
@@ -2052,7 +2050,7 @@ public class FHIRPathEngine {
         throw new PathEngineException("%resource cannot be used in this context");
       return new TypeDetails(CollectionStatus.SINGLETON, context.resource);
     } else if (s.equals("%context")) {
-      return new TypeDetails(CollectionStatus.SINGLETON, context.context);
+      return context.context;
     } else if (s.equals("%map-codes"))
       return new TypeDetails(CollectionStatus.SINGLETON, TypeDetails.FP_String);
     else if (s.equals("%us-zip"))
@@ -2071,15 +2069,23 @@ public class FHIRPathEngine {
 
 	private List<Base> execute(ExecutionContext context, Base item, ExpressionNode exp, boolean atEntry) throws FHIRException {
     List<Base> result = new ArrayList<Base>(); 
+    if (atEntry && context.appInfo != null && hostServices != null) {
+      // we'll see if the name matches a constant known by the context.
+      Base temp = hostServices.resolveConstant(context.appInfo, exp.getName(), true);
+      if (temp != null) {
+        result.add(temp);
+        return result;
+      }
+    }
     if (atEntry && Character.isUpperCase(exp.getName().charAt(0))) {// special case for start up
       if (item.isResource() && item.fhirType().equals(exp.getName()))  
         result.add(item);
     } else 
       getChildrenByName(item, exp.getName(), result);
-    if (result.size() == 0 && atEntry && context.appInfo != null) {
+    if (atEntry && context.appInfo != null && hostServices != null && result.isEmpty()) {
       // well, we didn't get a match on the name - we'll see if the name matches a constant known by the context.
       // (if the name does match, and the user wants to get the constant value, they'll have to try harder...
-      Base temp = hostServices.resolveConstant(context.appInfo, exp.getName());
+      Base temp = hostServices.resolveConstant(context.appInfo, exp.getName(), false);
       if (temp != null) {
         result.add(temp);
       }
@@ -2114,7 +2120,7 @@ public class FHIRPathEngine {
       paramTypes.add(new TypeDetails(CollectionStatus.SINGLETON, TypeDetails.FP_String));
     else
       for (ExpressionNode expr : exp.getParameters()) {
-        if (exp.getFunction() == Function.Where || exp.getFunction() == Function.Select || exp.getFunction() == Function.Repeat || exp.getFunction() == Function.Aggregate)
+        if (exp.getFunction() == Function.Where || exp.getFunction() == Function.All || exp.getFunction() == Function.Select || exp.getFunction() == Function.Repeat || exp.getFunction() == Function.Aggregate)
           paramTypes.add(executeType(changeThis(context, focus), focus, expr, true));
         else
           paramTypes.add(executeType(context, focus, expr, true));
@@ -2338,16 +2344,16 @@ public class FHIRPathEngine {
       checkContextPrimitive(focus, "toBoolean", false);
       return new TypeDetails(CollectionStatus.SINGLETON, TypeDetails.FP_Time);
     }
-    case IsString : 
-    case IsQuantity :{
+    case ConvertsToString : 
+    case ConvertsToQuantity :{
       checkContextPrimitive(focus, exp.getFunction().toCode(), true);
       return new TypeDetails(CollectionStatus.SINGLETON, TypeDetails.FP_Boolean);
     } 
-    case IsInteger : 
-    case IsDecimal : 
-    case IsDateTime : 
-    case IsTime : 
-    case IsBoolean : {
+    case ConvertsToInteger : 
+    case ConvertsToDecimal : 
+    case ConvertsToDateTime : 
+    case ConvertsToTime : 
+    case ConvertsToBoolean : {
       checkContextPrimitive(focus, exp.getFunction().toCode(), false);
       return new TypeDetails(CollectionStatus.SINGLETON, TypeDetails.FP_Boolean);
     }
@@ -2487,13 +2493,13 @@ public class FHIRPathEngine {
     case ToQuantity : return funcToQuantity(context, focus, exp);
     case ToDateTime : return funcToDateTime(context, focus, exp);
     case ToTime : return funcToTime(context, focus, exp);
-    case IsInteger : return funcIsInteger(context, focus, exp);
-    case IsDecimal : return funcIsDecimal(context, focus, exp);
-    case IsString : return funcIsString(context, focus, exp);
-    case IsBoolean : return funcIsBoolean(context, focus, exp);
-    case IsQuantity : return funcIsQuantity(context, focus, exp);
-    case IsDateTime : return funcIsDateTime(context, focus, exp);
-    case IsTime : return funcIsTime(context, focus, exp);
+    case ConvertsToInteger : return funcIsInteger(context, focus, exp);
+    case ConvertsToDecimal : return funcIsDecimal(context, focus, exp);
+    case ConvertsToString : return funcIsString(context, focus, exp);
+    case ConvertsToBoolean : return funcIsBoolean(context, focus, exp);
+    case ConvertsToQuantity : return funcIsQuantity(context, focus, exp);
+    case ConvertsToDateTime : return funcIsDateTime(context, focus, exp);
+    case ConvertsToTime : return funcIsTime(context, focus, exp);
     case ConformsTo : return funcConformsTo(context, focus, exp); 
     case Custom: { 
       List<List<Base>> params = new ArrayList<List<Base>>();
@@ -2977,7 +2983,11 @@ public class FHIRPathEngine {
 
   private List<Base> funcExists(ExecutionContext context, List<Base> focus, ExpressionNode exp) {
     List<Base> result = new ArrayList<Base>();
-    result.add(new BooleanType(!ElementUtil.isEmpty(focus)).noExtensions());
+    boolean empty = true;
+    for (Base f : focus)
+      if (!f.isEmpty())
+        empty = false;
+    result.add(new BooleanType(!empty).noExtensions());
     return result;
   }
 
@@ -3001,7 +3011,7 @@ public class FHIRPathEngine {
         if (s.startsWith("#")) {
           Property p = context.resource.getChildByName("contained");
           for (Base c : p.getValues()) {
-            if (s.equals(c.getIdBase())) {
+            if (s.substring(1).equals(c.getIdBase())) {
               res = c;
               break;
             }
@@ -3752,7 +3762,7 @@ public class FHIRPathEngine {
       return tail.startsWith(d.substring(0, d.indexOf('[')));
     else if (tail.equals(d))
       return true;
-    else if (t.getType().size()==1 && t.getPath().toUpperCase().endsWith(t.getType().get(0).getCode().toUpperCase()))
+    else if (t.getType().size() == 1 && t.getType().get(0).getCode() != null && t.getPath() != null && t.getPath().toUpperCase().endsWith(t.getType().get(0).getCode().toUpperCase()))
       return tail.startsWith(d);
     
     return false;

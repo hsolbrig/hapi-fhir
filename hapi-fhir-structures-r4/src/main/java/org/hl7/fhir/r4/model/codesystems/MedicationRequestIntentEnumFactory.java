@@ -29,48 +29,56 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
 
-public class MedicationRequestIntentEnumFactory implements EnumFactory<MedicationRequestIntent> {
+public class MedicationrequestIntentEnumFactory implements EnumFactory<MedicationrequestIntent> {
 
-  public MedicationRequestIntent fromCode(String codeString) throws IllegalArgumentException {
+  public MedicationrequestIntent fromCode(String codeString) throws IllegalArgumentException {
     if (codeString == null || "".equals(codeString))
       return null;
     if ("proposal".equals(codeString))
-      return MedicationRequestIntent.PROPOSAL;
+      return MedicationrequestIntent.PROPOSAL;
     if ("plan".equals(codeString))
-      return MedicationRequestIntent.PLAN;
+      return MedicationrequestIntent.PLAN;
     if ("order".equals(codeString))
-      return MedicationRequestIntent.ORDER;
+      return MedicationrequestIntent.ORDER;
     if ("original-order".equals(codeString))
-      return MedicationRequestIntent.ORIGINALORDER;
+      return MedicationrequestIntent.ORIGINALORDER;
+    if ("reflex-order".equals(codeString))
+      return MedicationrequestIntent.REFLEXORDER;
+    if ("filler-order".equals(codeString))
+      return MedicationrequestIntent.FILLERORDER;
     if ("instance-order".equals(codeString))
-      return MedicationRequestIntent.INSTANCEORDER;
+      return MedicationrequestIntent.INSTANCEORDER;
     if ("option".equals(codeString))
-      return MedicationRequestIntent.OPTION;
-    throw new IllegalArgumentException("Unknown MedicationRequestIntent code '"+codeString+"'");
+      return MedicationrequestIntent.OPTION;
+    throw new IllegalArgumentException("Unknown MedicationrequestIntent code '"+codeString+"'");
   }
 
-  public String toCode(MedicationRequestIntent code) {
-    if (code == MedicationRequestIntent.PROPOSAL)
+  public String toCode(MedicationrequestIntent code) {
+    if (code == MedicationrequestIntent.PROPOSAL)
       return "proposal";
-    if (code == MedicationRequestIntent.PLAN)
+    if (code == MedicationrequestIntent.PLAN)
       return "plan";
-    if (code == MedicationRequestIntent.ORDER)
+    if (code == MedicationrequestIntent.ORDER)
       return "order";
-    if (code == MedicationRequestIntent.ORIGINALORDER)
+    if (code == MedicationrequestIntent.ORIGINALORDER)
       return "original-order";
-    if (code == MedicationRequestIntent.INSTANCEORDER)
+    if (code == MedicationrequestIntent.REFLEXORDER)
+      return "reflex-order";
+    if (code == MedicationrequestIntent.FILLERORDER)
+      return "filler-order";
+    if (code == MedicationrequestIntent.INSTANCEORDER)
       return "instance-order";
-    if (code == MedicationRequestIntent.OPTION)
+    if (code == MedicationrequestIntent.OPTION)
       return "option";
     return "?";
   }
 
-    public String toSystem(MedicationRequestIntent code) {
+    public String toSystem(MedicationrequestIntent code) {
       return code.getSystem();
       }
 

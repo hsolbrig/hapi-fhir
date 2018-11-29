@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -1439,7 +1439,7 @@ public class MessageHeader extends DomainResource {
      */
     public Coding getEventCoding() throws FHIRException { 
       if (this.event == null)
-        return null;
+        this.event = new Coding();
       if (!(this.event instanceof Coding))
         throw new FHIRException("Type mismatch: the type Coding was expected, but "+this.event.getClass().getName()+" was encountered");
       return (Coding) this.event;
@@ -1454,7 +1454,7 @@ public class MessageHeader extends DomainResource {
      */
     public UriType getEventUriType() throws FHIRException { 
       if (this.event == null)
-        return null;
+        this.event = new UriType();
       if (!(this.event instanceof UriType))
         throw new FHIRException("Type mismatch: the type UriType was expected, but "+this.event.getClass().getName()+" was encountered");
       return (UriType) this.event;

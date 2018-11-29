@@ -29,12 +29,12 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-public enum MedicationDispenseStatus {
+public enum MedicationdispenseStatus {
 
         /**
          * The core event has not started yet, but some staging activities have begun (e.g. initial compounding or packaging of medication). Preparation stages may be tracked for billing purposes.
@@ -65,14 +65,18 @@ public enum MedicationDispenseStatus {
          */
         STOPPED, 
         /**
-         * The authoring system does not know which of the status values applies for this medication dispense.  Note: this concept is not to be used for "other" - one of the listed statuses is presumed to apply, it's just now known which one.
+         * The dispense was declined and not performed.
+         */
+        DECLINED, 
+        /**
+         * The authoring system does not know which of the status values applies for this medication dispense.  Note: this concept is not to be used for other - one of the listed statuses is presumed to apply, it's just now known which one.
          */
         UNKNOWN, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MedicationDispenseStatus fromCode(String codeString) throws FHIRException {
+        public static MedicationdispenseStatus fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("preparation".equals(codeString))
@@ -89,9 +93,11 @@ public enum MedicationDispenseStatus {
           return ENTEREDINERROR;
         if ("stopped".equals(codeString))
           return STOPPED;
+        if ("declined".equals(codeString))
+          return DECLINED;
         if ("unknown".equals(codeString))
           return UNKNOWN;
-        throw new FHIRException("Unknown MedicationDispenseStatus code '"+codeString+"'");
+        throw new FHIRException("Unknown MedicationdispenseStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -102,12 +108,13 @@ public enum MedicationDispenseStatus {
             case COMPLETED: return "completed";
             case ENTEREDINERROR: return "entered-in-error";
             case STOPPED: return "stopped";
+            case DECLINED: return "declined";
             case UNKNOWN: return "unknown";
             default: return "?";
           }
         }
         public String getSystem() {
-          return "http://hl7.org/fhir/medication-dispense-status";
+          return "http://terminology.hl7.org/CodeSystem/medicationdispense-status";
         }
         public String getDefinition() {
           switch (this) {
@@ -118,7 +125,8 @@ public enum MedicationDispenseStatus {
             case COMPLETED: return "The dispensed product has been picked up.";
             case ENTEREDINERROR: return "The dispense was entered in error and therefore nullified.";
             case STOPPED: return "Actions implied by the dispense have been permanently halted, before all of them occurred.";
-            case UNKNOWN: return "The authoring system does not know which of the status values applies for this medication dispense.  Note: this concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, it's just now known which one.";
+            case DECLINED: return "The dispense was declined and not performed.";
+            case UNKNOWN: return "The authoring system does not know which of the status values applies for this medication dispense.  Note: this concept is not to be used for other - one of the listed statuses is presumed to apply, it's just now known which one.";
             default: return "?";
           }
         }
@@ -129,8 +137,9 @@ public enum MedicationDispenseStatus {
             case CANCELLED: return "Cancelled";
             case ONHOLD: return "On Hold";
             case COMPLETED: return "Completed";
-            case ENTEREDINERROR: return "Entered in-Error";
+            case ENTEREDINERROR: return "Entered in Error";
             case STOPPED: return "Stopped";
+            case DECLINED: return "Declined";
             case UNKNOWN: return "Unknown";
             default: return "?";
           }

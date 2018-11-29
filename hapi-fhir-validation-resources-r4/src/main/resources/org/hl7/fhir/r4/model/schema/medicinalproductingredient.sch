@@ -98,5 +98,14 @@
     <sch:rule context="f:MedicinalProductIngredient/f:specifiedSubstance/f:strength/f:referenceStrength/f:strength/f:denominator">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
+    <sch:rule context="f:MedicinalProductIngredient/f:specifiedSubstance/f:strength/f:referenceStrength/f:strengthLowLimit">
+      <sch:assert test="(count(f:numerator) = count(f:denominator)) and ((count(f:numerator) &gt; 0) or (count(f:extension) &gt; 0))">rat-1: Numerator and denominator SHALL both be present, or both are absent. If both are absent, there SHALL be some extension present</sch:assert>
+    </sch:rule>
+    <sch:rule context="f:MedicinalProductIngredient/f:specifiedSubstance/f:strength/f:referenceStrength/f:strengthLowLimit/f:numerator">
+      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
+    </sch:rule>
+    <sch:rule context="f:MedicinalProductIngredient/f:specifiedSubstance/f:strength/f:referenceStrength/f:strengthLowLimit/f:denominator">
+      <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
+    </sch:rule>
   </sch:pattern>
 </sch:schema>

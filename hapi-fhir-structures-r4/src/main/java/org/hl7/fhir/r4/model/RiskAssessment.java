@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -79,7 +79,7 @@ public class RiskAssessment extends DomainResource {
          */
         ENTEREDINERROR, 
         /**
-         * The authoring system does not know which of the status values currently applies for this request. Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring system does not know which.
+         * The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.
          */
         UNKNOWN, 
         /**
@@ -145,7 +145,7 @@ public class RiskAssessment extends DomainResource {
             case CORRECTED: return "Subsequent to being Final, the observation has been modified to correct an error in the test result.";
             case CANCELLED: return "The observation is unavailable because the measurement was not started or not completed (also sometimes called \"aborted\").";
             case ENTEREDINERROR: return "The observation has been withdrawn following previous final release.  This electronic record should never have existed, though it is possible that real-world decisions were based on it. (If real-world activity has occurred, the status should be \"cancelled\" rather than \"entered-in-error\".).";
-            case UNKNOWN: return "The authoring system does not know which of the status values currently applies for this request. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring system does not know which.";
+            case UNKNOWN: return "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.";
             default: return "?";
           }
         }
@@ -327,7 +327,7 @@ public class RiskAssessment extends DomainResource {
          */
         public DecimalType getProbabilityDecimalType() throws FHIRException { 
           if (this.probability == null)
-            return null;
+            this.probability = new DecimalType();
           if (!(this.probability instanceof DecimalType))
             throw new FHIRException("Type mismatch: the type DecimalType was expected, but "+this.probability.getClass().getName()+" was encountered");
           return (DecimalType) this.probability;
@@ -342,7 +342,7 @@ public class RiskAssessment extends DomainResource {
          */
         public Range getProbabilityRange() throws FHIRException { 
           if (this.probability == null)
-            return null;
+            this.probability = new Range();
           if (!(this.probability instanceof Range))
             throw new FHIRException("Type mismatch: the type Range was expected, but "+this.probability.getClass().getName()+" was encountered");
           return (Range) this.probability;
@@ -469,7 +469,7 @@ public class RiskAssessment extends DomainResource {
          */
         public Period getWhenPeriod() throws FHIRException { 
           if (this.when == null)
-            return null;
+            this.when = new Period();
           if (!(this.when instanceof Period))
             throw new FHIRException("Type mismatch: the type Period was expected, but "+this.when.getClass().getName()+" was encountered");
           return (Period) this.when;
@@ -484,7 +484,7 @@ public class RiskAssessment extends DomainResource {
          */
         public Range getWhenRange() throws FHIRException { 
           if (this.when == null)
-            return null;
+            this.when = new Range();
           if (!(this.when instanceof Range))
             throw new FHIRException("Type mismatch: the type Range was expected, but "+this.when.getClass().getName()+" was encountered");
           return (Range) this.when;
@@ -1251,7 +1251,7 @@ public class RiskAssessment extends DomainResource {
      */
     public DateTimeType getOccurrenceDateTimeType() throws FHIRException { 
       if (this.occurrence == null)
-        return null;
+        this.occurrence = new DateTimeType();
       if (!(this.occurrence instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.occurrence.getClass().getName()+" was encountered");
       return (DateTimeType) this.occurrence;
@@ -1266,7 +1266,7 @@ public class RiskAssessment extends DomainResource {
      */
     public Period getOccurrencePeriod() throws FHIRException { 
       if (this.occurrence == null)
-        return null;
+        this.occurrence = new Period();
       if (!(this.occurrence instanceof Period))
         throw new FHIRException("Type mismatch: the type Period was expected, but "+this.occurrence.getClass().getName()+" was encountered");
       return (Period) this.occurrence;

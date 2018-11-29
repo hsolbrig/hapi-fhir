@@ -29,34 +29,34 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-public enum MedicationRequestCategory {
+public enum MedicationrequestCategory {
 
         /**
-         * Includes requests for medications to be administered or consumed in an inpatient or acute care setting.
+         * Includes requests for medications to be administered or consumed in an inpatient or acute care setting
          */
         INPATIENT, 
         /**
-         * Includes requests for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office).
+         * Includes requests for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office)
          */
         OUTPATIENT, 
         /**
-         * Includes requests for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc.).
+         * Includes requests for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc.)
          */
         COMMUNITY, 
         /**
-         * Includes requests for medications created when the patient is being released from a facility.
+         * Includes requests for medications created when the patient is being released from a facility
          */
         DISCHARGE, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MedicationRequestCategory fromCode(String codeString) throws FHIRException {
+        public static MedicationrequestCategory fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("inpatient".equals(codeString))
@@ -67,7 +67,7 @@ public enum MedicationRequestCategory {
           return COMMUNITY;
         if ("discharge".equals(codeString))
           return DISCHARGE;
-        throw new FHIRException("Unknown MedicationRequestCategory code '"+codeString+"'");
+        throw new FHIRException("Unknown MedicationrequestCategory code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -79,14 +79,14 @@ public enum MedicationRequestCategory {
           }
         }
         public String getSystem() {
-          return "http://terminology.hl7.org/CodeSystem/medication-request-category";
+          return "http://terminology.hl7.org/CodeSystem/medicationrequest-category";
         }
         public String getDefinition() {
           switch (this) {
-            case INPATIENT: return "Includes requests for medications to be administered or consumed in an inpatient or acute care setting.";
-            case OUTPATIENT: return "Includes requests for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office).";
-            case COMMUNITY: return "Includes requests for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc.).";
-            case DISCHARGE: return "Includes requests for medications created when the patient is being released from a facility.";
+            case INPATIENT: return "Includes requests for medications to be administered or consumed in an inpatient or acute care setting";
+            case OUTPATIENT: return "Includes requests for medications to be administered or consumed in an outpatient setting (for example, Emergency Department, Outpatient Clinic, Outpatient Surgery, Doctor's office)";
+            case COMMUNITY: return "Includes requests for medications to be administered or consumed by the patient in their home (this would include long term care or nursing homes, hospices, etc.)";
+            case DISCHARGE: return "Includes requests for medications created when the patient is being released from a facility";
             default: return "?";
           }
         }

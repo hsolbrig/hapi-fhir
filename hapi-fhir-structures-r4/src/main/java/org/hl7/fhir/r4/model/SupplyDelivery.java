@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -234,7 +234,7 @@ public class SupplyDelivery extends DomainResource {
          */
         public CodeableConcept getItemCodeableConcept() throws FHIRException { 
           if (this.item == null)
-            return null;
+            this.item = new CodeableConcept();
           if (!(this.item instanceof CodeableConcept))
             throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.item.getClass().getName()+" was encountered");
           return (CodeableConcept) this.item;
@@ -249,7 +249,7 @@ public class SupplyDelivery extends DomainResource {
          */
         public Reference getItemReference() throws FHIRException { 
           if (this.item == null)
-            return null;
+            this.item = new Reference();
           if (!(this.item instanceof Reference))
             throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.item.getClass().getName()+" was encountered");
           return (Reference) this.item;
@@ -867,7 +867,7 @@ public class SupplyDelivery extends DomainResource {
      */
     public DateTimeType getOccurrenceDateTimeType() throws FHIRException { 
       if (this.occurrence == null)
-        return null;
+        this.occurrence = new DateTimeType();
       if (!(this.occurrence instanceof DateTimeType))
         throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.occurrence.getClass().getName()+" was encountered");
       return (DateTimeType) this.occurrence;
@@ -882,7 +882,7 @@ public class SupplyDelivery extends DomainResource {
      */
     public Period getOccurrencePeriod() throws FHIRException { 
       if (this.occurrence == null)
-        return null;
+        this.occurrence = new Period();
       if (!(this.occurrence instanceof Period))
         throw new FHIRException("Type mismatch: the type Period was expected, but "+this.occurrence.getClass().getName()+" was encountered");
       return (Period) this.occurrence;
@@ -897,7 +897,7 @@ public class SupplyDelivery extends DomainResource {
      */
     public Timing getOccurrenceTiming() throws FHIRException { 
       if (this.occurrence == null)
-        return null;
+        this.occurrence = new Timing();
       if (!(this.occurrence instanceof Timing))
         throw new FHIRException("Type mismatch: the type Timing was expected, but "+this.occurrence.getClass().getName()+" was encountered");
       return (Timing) this.occurrence;

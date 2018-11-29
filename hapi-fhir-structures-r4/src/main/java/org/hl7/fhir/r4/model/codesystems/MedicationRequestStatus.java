@@ -29,23 +29,23 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-public enum MedicationRequestStatus {
+public enum MedicationrequestStatus {
 
         /**
          * The prescription is 'actionable', but not all actions that are implied by it have occurred yet.
          */
         ACTIVE, 
         /**
-         * Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called "suspended".
+         * Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called 'suspended'.
          */
         ONHOLD, 
         /**
-         * The prescription has been withdrawn before any administrations have occurred.
+         * The prescription has been withdrawn before any administrations have occurred
          */
         CANCELLED, 
         /**
@@ -53,26 +53,26 @@ public enum MedicationRequestStatus {
          */
         COMPLETED, 
         /**
-         * Some of the actions that are implied by the medication request may have occurred.  For example, the medication may have been dispensed and the patient may have taken some of the medication.  Clinical decision support systems should take this status into account.
+         * Some of the actions that are implied by the medication request may have occurred.  For example, the medication may have been dispensed and the patient may have taken some of the medication.  Clinical decision support systems should take this status into account
          */
         ENTEREDINERROR, 
         /**
-         * Actions implied by the prescription are to be permanently halted, before all of the administrations occurred. This should not be used if the original order was entered in error.
+         * Actions implied by the prescription are to be permanently halted, before all of the administrations occurred. This should not be used if the original order was entered in error
          */
         STOPPED, 
         /**
-         * The prescription is not yet 'actionable', e.g. it is a work in progress, requires sign-off, verification or needs to be run through decision support process.
+         * The prescription is not yet 'actionable', e.g. it is a work in progress, requires sign-off, verification or needs to be run through decision support process.
          */
         DRAFT, 
         /**
-         * The authoring system does not know which of the status values currently applies for this request.
+         * The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for 'other' - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.
          */
         UNKNOWN, 
         /**
          * added to help the parsers
          */
         NULL;
-        public static MedicationRequestStatus fromCode(String codeString) throws FHIRException {
+        public static MedicationrequestStatus fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("active".equals(codeString))
@@ -91,7 +91,7 @@ public enum MedicationRequestStatus {
           return DRAFT;
         if ("unknown".equals(codeString))
           return UNKNOWN;
-        throw new FHIRException("Unknown MedicationRequestStatus code '"+codeString+"'");
+        throw new FHIRException("Unknown MedicationrequestStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -107,18 +107,18 @@ public enum MedicationRequestStatus {
           }
         }
         public String getSystem() {
-          return "http://hl7.org/fhir/medication-request-status";
+          return "http://hl7.org/fhir/ValueSet/medicationrequest-status";
         }
         public String getDefinition() {
           switch (this) {
             case ACTIVE: return "The prescription is 'actionable', but not all actions that are implied by it have occurred yet.";
-            case ONHOLD: return "Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called \"suspended\".";
-            case CANCELLED: return "The prescription has been withdrawn before any administrations have occurred.";
+            case ONHOLD: return "Actions implied by the prescription are to be temporarily halted, but are expected to continue later.  May also be called 'suspended'.";
+            case CANCELLED: return "The prescription has been withdrawn before any administrations have occurred";
             case COMPLETED: return "All actions that are implied by the prescription have occurred.";
-            case ENTEREDINERROR: return "Some of the actions that are implied by the medication request may have occurred.  For example, the medication may have been dispensed and the patient may have taken some of the medication.  Clinical decision support systems should take this status into account.";
-            case STOPPED: return "Actions implied by the prescription are to be permanently halted, before all of the administrations occurred. This should not be used if the original order was entered in error.";
-            case DRAFT: return "The prescription is not yet 'actionable', e.g. it is a work in progress, requires sign-off, verification or needs to be run through decision support process.";
-            case UNKNOWN: return "The authoring system does not know which of the status values currently applies for this request.";
+            case ENTEREDINERROR: return "Some of the actions that are implied by the medication request may have occurred.  For example, the medication may have been dispensed and the patient may have taken some of the medication.  Clinical decision support systems should take this status into account";
+            case STOPPED: return "Actions implied by the prescription are to be permanently halted, before all of the administrations occurred. This should not be used if the original order was entered in error";
+            case DRAFT: return "The prescription is not yet 'actionable', e.g. it is a work in progress, requires sign-off, verification or needs to be run through decision support process.";
+            case UNKNOWN: return "The authoring/source system does not know which of the status values currently applies for this observation. Note: This concept is not to be used for 'other' - one of the listed statuses is presumed to apply, but the authoring/source system does not know which.";
             default: return "?";
           }
         }
@@ -128,7 +128,7 @@ public enum MedicationRequestStatus {
             case ONHOLD: return "On Hold";
             case CANCELLED: return "Cancelled";
             case COMPLETED: return "Completed";
-            case ENTEREDINERROR: return "Entered In Error";
+            case ENTEREDINERROR: return "Entered in Error";
             case STOPPED: return "Stopped";
             case DRAFT: return "Draft";
             case UNKNOWN: return "Unknown";

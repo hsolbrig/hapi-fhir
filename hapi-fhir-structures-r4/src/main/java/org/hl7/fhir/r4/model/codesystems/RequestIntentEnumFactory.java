@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
@@ -43,6 +43,8 @@ public class RequestIntentEnumFactory implements EnumFactory<RequestIntent> {
       return RequestIntent.PROPOSAL;
     if ("plan".equals(codeString))
       return RequestIntent.PLAN;
+    if ("directive".equals(codeString))
+      return RequestIntent.DIRECTIVE;
     if ("order".equals(codeString))
       return RequestIntent.ORDER;
     if ("original-order".equals(codeString))
@@ -63,6 +65,8 @@ public class RequestIntentEnumFactory implements EnumFactory<RequestIntent> {
       return "proposal";
     if (code == RequestIntent.PLAN)
       return "plan";
+    if (code == RequestIntent.DIRECTIVE)
+      return "directive";
     if (code == RequestIntent.ORDER)
       return "order";
     if (code == RequestIntent.ORIGINALORDER)

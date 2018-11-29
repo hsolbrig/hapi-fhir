@@ -29,40 +29,40 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
 
-public class MedicationDispenseCategoryEnumFactory implements EnumFactory<MedicationDispenseCategory> {
+public class MedicationdispenseCategoryEnumFactory implements EnumFactory<MedicationdispenseCategory> {
 
-  public MedicationDispenseCategory fromCode(String codeString) throws IllegalArgumentException {
+  public MedicationdispenseCategory fromCode(String codeString) throws IllegalArgumentException {
     if (codeString == null || "".equals(codeString))
       return null;
     if ("inpatient".equals(codeString))
-      return MedicationDispenseCategory.INPATIENT;
+      return MedicationdispenseCategory.INPATIENT;
     if ("outpatient".equals(codeString))
-      return MedicationDispenseCategory.OUTPATIENT;
+      return MedicationdispenseCategory.OUTPATIENT;
     if ("community".equals(codeString))
-      return MedicationDispenseCategory.COMMUNITY;
+      return MedicationdispenseCategory.COMMUNITY;
     if ("discharge".equals(codeString))
-      return MedicationDispenseCategory.DISCHARGE;
-    throw new IllegalArgumentException("Unknown MedicationDispenseCategory code '"+codeString+"'");
+      return MedicationdispenseCategory.DISCHARGE;
+    throw new IllegalArgumentException("Unknown MedicationdispenseCategory code '"+codeString+"'");
   }
 
-  public String toCode(MedicationDispenseCategory code) {
-    if (code == MedicationDispenseCategory.INPATIENT)
+  public String toCode(MedicationdispenseCategory code) {
+    if (code == MedicationdispenseCategory.INPATIENT)
       return "inpatient";
-    if (code == MedicationDispenseCategory.OUTPATIENT)
+    if (code == MedicationdispenseCategory.OUTPATIENT)
       return "outpatient";
-    if (code == MedicationDispenseCategory.COMMUNITY)
+    if (code == MedicationdispenseCategory.COMMUNITY)
       return "community";
-    if (code == MedicationDispenseCategory.DISCHARGE)
+    if (code == MedicationdispenseCategory.DISCHARGE)
       return "discharge";
     return "?";
   }
 
-    public String toSystem(MedicationDispenseCategory code) {
+    public String toSystem(MedicationdispenseCategory code) {
       return code.getSystem();
       }
 

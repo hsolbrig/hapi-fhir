@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -58,23 +58,23 @@ public class RequestGroup extends DomainResource {
          */
         ACTIVE, 
         /**
-         * The authorization/request to act has been temporarily withdrawn but is expected to resume in the future.
+         * The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.
          */
         ONHOLD, 
         /**
-         * The authorization/request to act has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
+         * The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.
          */
         REVOKED, 
         /**
-         * Activity against the request has been sufficiently completed to the satisfaction of the requester.
+         * The activity described by the request has been fully performed.  No further activity will occur.
          */
         COMPLETED, 
         /**
-         * This electronic record should never have existed, though it is possible that real-world decisions were based on it.  (If real-world activity has occurred, the status should be "cancelled" rather than "entered-in-error".).
+         * This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be "cancelled" rather than "entered-in-error".).
          */
         ENTEREDINERROR, 
         /**
-         * The authoring system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" . One of the listed statuses is presumed to apply,  but the system creating the request does not know.
+         * The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for "other" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.
          */
         UNKNOWN, 
         /**
@@ -131,11 +131,11 @@ public class RequestGroup extends DomainResource {
           switch (this) {
             case DRAFT: return "The request has been created but is not yet complete or ready for action.";
             case ACTIVE: return "The request is in force and ready to be acted upon.";
-            case ONHOLD: return "The authorization/request to act has been temporarily withdrawn but is expected to resume in the future.";
-            case REVOKED: return "The authorization/request to act has been terminated prior to the known full completion of the intended actions.  No further activity should occur.";
-            case COMPLETED: return "Activity against the request has been sufficiently completed to the satisfaction of the requester.";
-            case ENTEREDINERROR: return "This electronic record should never have existed, though it is possible that real-world decisions were based on it.  (If real-world activity has occurred, the status should be \"cancelled\" rather than \"entered-in-error\".).";
-            case UNKNOWN: return "The authoring system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" . One of the listed statuses is presumed to apply,  but the system creating the request does not know.";
+            case ONHOLD: return "The request (and any implicit authorization to act) has been temporarily withdrawn but is expected to resume in the future.";
+            case REVOKED: return "The request (and any implicit authorization to act) has been terminated prior to the known full completion of the intended actions.  No further activity should occur.";
+            case COMPLETED: return "The activity described by the request has been fully performed.  No further activity will occur.";
+            case ENTEREDINERROR: return "This request should never have existed and should be considered 'void'.  (It is possible that real-world decisions were based on it.  If real-world activity has occurred, the status should be \"cancelled\" rather than \"entered-in-error\".).";
+            case UNKNOWN: return "The authoring/source system does not know which of the status values currently applies for this request.  Note: This concept is not to be used for \"other\" - one of the listed statuses is presumed to apply,  but the authoring/source system does not know which.";
             default: return "?";
           }
         }
@@ -230,7 +230,11 @@ public class RequestGroup extends DomainResource {
          */
         PLAN, 
         /**
-         * The request represents a request/demand and authorization for action.
+         * The request represents a legally binding instruction authored by a Patient or RelatedPerson.
+         */
+        DIRECTIVE, 
+        /**
+         * The request represents a request/demand and authorization for action by a Practitioner.
          */
         ORDER, 
         /**
@@ -264,6 +268,8 @@ public class RequestGroup extends DomainResource {
           return PROPOSAL;
         if ("plan".equals(codeString))
           return PLAN;
+        if ("directive".equals(codeString))
+          return DIRECTIVE;
         if ("order".equals(codeString))
           return ORDER;
         if ("original-order".equals(codeString))
@@ -285,6 +291,7 @@ public class RequestGroup extends DomainResource {
           switch (this) {
             case PROPOSAL: return "proposal";
             case PLAN: return "plan";
+            case DIRECTIVE: return "directive";
             case ORDER: return "order";
             case ORIGINALORDER: return "original-order";
             case REFLEXORDER: return "reflex-order";
@@ -298,6 +305,7 @@ public class RequestGroup extends DomainResource {
           switch (this) {
             case PROPOSAL: return "http://hl7.org/fhir/request-intent";
             case PLAN: return "http://hl7.org/fhir/request-intent";
+            case DIRECTIVE: return "http://hl7.org/fhir/request-intent";
             case ORDER: return "http://hl7.org/fhir/request-intent";
             case ORIGINALORDER: return "http://hl7.org/fhir/request-intent";
             case REFLEXORDER: return "http://hl7.org/fhir/request-intent";
@@ -311,7 +319,8 @@ public class RequestGroup extends DomainResource {
           switch (this) {
             case PROPOSAL: return "The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and without providing an authorization to act.";
             case PLAN: return "The request represents an intention to ensure something occurs without providing an authorization for others to act.";
-            case ORDER: return "The request represents a request/demand and authorization for action.";
+            case DIRECTIVE: return "The request represents a legally binding instruction authored by a Patient or RelatedPerson.";
+            case ORDER: return "The request represents a request/demand and authorization for action by a Practitioner.";
             case ORIGINALORDER: return "The request represents an original authorization for action.";
             case REFLEXORDER: return "The request represents an automatically generated supplemental authorization for action based on a parent authorization together with initial results of the action taken against that parent authorization.";
             case FILLERORDER: return "The request represents the view of an authorization instantiated by a fulfilling system representing the details of the fulfiller's intention to act upon a submitted order.";
@@ -324,6 +333,7 @@ public class RequestGroup extends DomainResource {
           switch (this) {
             case PROPOSAL: return "Proposal";
             case PLAN: return "Plan";
+            case DIRECTIVE: return "Directive";
             case ORDER: return "Order";
             case ORIGINALORDER: return "Original Order";
             case REFLEXORDER: return "Reflex Order";
@@ -344,6 +354,8 @@ public class RequestGroup extends DomainResource {
           return RequestIntent.PROPOSAL;
         if ("plan".equals(codeString))
           return RequestIntent.PLAN;
+        if ("directive".equals(codeString))
+          return RequestIntent.DIRECTIVE;
         if ("order".equals(codeString))
           return RequestIntent.ORDER;
         if ("original-order".equals(codeString))
@@ -370,6 +382,8 @@ public class RequestGroup extends DomainResource {
           return new Enumeration<RequestIntent>(this, RequestIntent.PROPOSAL);
         if ("plan".equals(codeString))
           return new Enumeration<RequestIntent>(this, RequestIntent.PLAN);
+        if ("directive".equals(codeString))
+          return new Enumeration<RequestIntent>(this, RequestIntent.DIRECTIVE);
         if ("order".equals(codeString))
           return new Enumeration<RequestIntent>(this, RequestIntent.ORDER);
         if ("original-order".equals(codeString))
@@ -389,6 +403,8 @@ public class RequestGroup extends DomainResource {
         return "proposal";
       if (code == RequestIntent.PLAN)
         return "plan";
+      if (code == RequestIntent.DIRECTIVE)
+        return "directive";
       if (code == RequestIntent.ORDER)
         return "order";
       if (code == RequestIntent.ORIGINALORDER)
@@ -1439,10 +1455,10 @@ public class RequestGroup extends DomainResource {
         protected Enumeration<RequestPriority> priority;
 
         /**
-         * A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a the section of a documentation template.
+         * A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a section of a documentation template.
          */
         @Child(name = "code", type = {CodeableConcept.class}, order=6, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-        @Description(shortDefinition="Code representing the meaning of the action or sub-actions", formalDefinition="A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a the section of a documentation template." )
+        @Description(shortDefinition="Code representing the meaning of the action or sub-actions", formalDefinition="A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a section of a documentation template." )
         protected List<CodeableConcept> code;
 
         /**
@@ -1510,10 +1526,10 @@ public class RequestGroup extends DomainResource {
         protected Enumeration<ActionSelectionBehavior> selectionBehavior;
 
         /**
-         * Defines the requiredness behavior for the action.
+         * Defines expectations around whether an action is required.
          */
         @Child(name = "requiredBehavior", type = {CodeType.class}, order=15, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="must | could | must-unless-documented", formalDefinition="Defines the requiredness behavior for the action." )
+        @Description(shortDefinition="must | could | must-unless-documented", formalDefinition="Defines expectations around whether an action is required." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/action-required-behavior")
         protected Enumeration<ActionRequiredBehavior> requiredBehavior;
 
@@ -1807,7 +1823,7 @@ public class RequestGroup extends DomainResource {
         }
 
         /**
-         * @return {@link #code} (A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a the section of a documentation template.)
+         * @return {@link #code} (A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a section of a documentation template.)
          */
         public List<CodeableConcept> getCode() { 
           if (this.code == null)
@@ -2030,7 +2046,7 @@ public class RequestGroup extends DomainResource {
          */
         public DateTimeType getTimingDateTimeType() throws FHIRException { 
           if (this.timing == null)
-            return null;
+            this.timing = new DateTimeType();
           if (!(this.timing instanceof DateTimeType))
             throw new FHIRException("Type mismatch: the type DateTimeType was expected, but "+this.timing.getClass().getName()+" was encountered");
           return (DateTimeType) this.timing;
@@ -2045,7 +2061,7 @@ public class RequestGroup extends DomainResource {
          */
         public Age getTimingAge() throws FHIRException { 
           if (this.timing == null)
-            return null;
+            this.timing = new Age();
           if (!(this.timing instanceof Age))
             throw new FHIRException("Type mismatch: the type Age was expected, but "+this.timing.getClass().getName()+" was encountered");
           return (Age) this.timing;
@@ -2060,7 +2076,7 @@ public class RequestGroup extends DomainResource {
          */
         public Period getTimingPeriod() throws FHIRException { 
           if (this.timing == null)
-            return null;
+            this.timing = new Period();
           if (!(this.timing instanceof Period))
             throw new FHIRException("Type mismatch: the type Period was expected, but "+this.timing.getClass().getName()+" was encountered");
           return (Period) this.timing;
@@ -2075,7 +2091,7 @@ public class RequestGroup extends DomainResource {
          */
         public Duration getTimingDuration() throws FHIRException { 
           if (this.timing == null)
-            return null;
+            this.timing = new Duration();
           if (!(this.timing instanceof Duration))
             throw new FHIRException("Type mismatch: the type Duration was expected, but "+this.timing.getClass().getName()+" was encountered");
           return (Duration) this.timing;
@@ -2090,7 +2106,7 @@ public class RequestGroup extends DomainResource {
          */
         public Range getTimingRange() throws FHIRException { 
           if (this.timing == null)
-            return null;
+            this.timing = new Range();
           if (!(this.timing instanceof Range))
             throw new FHIRException("Type mismatch: the type Range was expected, but "+this.timing.getClass().getName()+" was encountered");
           return (Range) this.timing;
@@ -2105,7 +2121,7 @@ public class RequestGroup extends DomainResource {
          */
         public Timing getTimingTiming() throws FHIRException { 
           if (this.timing == null)
-            return null;
+            this.timing = new Timing();
           if (!(this.timing instanceof Timing))
             throw new FHIRException("Type mismatch: the type Timing was expected, but "+this.timing.getClass().getName()+" was encountered");
           return (Timing) this.timing;
@@ -2315,7 +2331,7 @@ public class RequestGroup extends DomainResource {
         }
 
         /**
-         * @return {@link #requiredBehavior} (Defines the requiredness behavior for the action.). This is the underlying object with id, value and extensions. The accessor "getRequiredBehavior" gives direct access to the value
+         * @return {@link #requiredBehavior} (Defines expectations around whether an action is required.). This is the underlying object with id, value and extensions. The accessor "getRequiredBehavior" gives direct access to the value
          */
         public Enumeration<ActionRequiredBehavior> getRequiredBehaviorElement() { 
           if (this.requiredBehavior == null)
@@ -2335,7 +2351,7 @@ public class RequestGroup extends DomainResource {
         }
 
         /**
-         * @param value {@link #requiredBehavior} (Defines the requiredness behavior for the action.). This is the underlying object with id, value and extensions. The accessor "getRequiredBehavior" gives direct access to the value
+         * @param value {@link #requiredBehavior} (Defines expectations around whether an action is required.). This is the underlying object with id, value and extensions. The accessor "getRequiredBehavior" gives direct access to the value
          */
         public RequestGroupActionComponent setRequiredBehaviorElement(Enumeration<ActionRequiredBehavior> value) { 
           this.requiredBehavior = value;
@@ -2343,14 +2359,14 @@ public class RequestGroup extends DomainResource {
         }
 
         /**
-         * @return Defines the requiredness behavior for the action.
+         * @return Defines expectations around whether an action is required.
          */
         public ActionRequiredBehavior getRequiredBehavior() { 
           return this.requiredBehavior == null ? null : this.requiredBehavior.getValue();
         }
 
         /**
-         * @param value Defines the requiredness behavior for the action.
+         * @param value Defines expectations around whether an action is required.
          */
         public RequestGroupActionComponent setRequiredBehavior(ActionRequiredBehavior value) { 
           if (value == null)
@@ -2560,7 +2576,7 @@ public class RequestGroup extends DomainResource {
           children.add(new Property("description", "string", "A short description of the action used to provide a summary to display to the user.", 0, 1, description));
           children.add(new Property("textEquivalent", "string", "A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that might not be capable of interpreting it dynamically.", 0, 1, textEquivalent));
           children.add(new Property("priority", "code", "Indicates how quickly the action should be addressed with respect to other actions.", 0, 1, priority));
-          children.add(new Property("code", "CodeableConcept", "A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a the section of a documentation template.", 0, java.lang.Integer.MAX_VALUE, code));
+          children.add(new Property("code", "CodeableConcept", "A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a section of a documentation template.", 0, java.lang.Integer.MAX_VALUE, code));
           children.add(new Property("documentation", "RelatedArtifact", "Didactic or other informational resources associated with the action that can be provided to the CDS recipient. Information resources can include inline text commentary and links to web resources.", 0, java.lang.Integer.MAX_VALUE, documentation));
           children.add(new Property("condition", "", "An expression that describes applicability criteria, or start/stop conditions for the action.", 0, java.lang.Integer.MAX_VALUE, condition));
           children.add(new Property("relatedAction", "", "A relationship to another action such as \"before\" or \"30-60 minutes after start of\".", 0, java.lang.Integer.MAX_VALUE, relatedAction));
@@ -2569,7 +2585,7 @@ public class RequestGroup extends DomainResource {
           children.add(new Property("type", "CodeableConcept", "The type of action to perform (create, update, remove).", 0, 1, type));
           children.add(new Property("groupingBehavior", "code", "Defines the grouping behavior for the action and its children.", 0, 1, groupingBehavior));
           children.add(new Property("selectionBehavior", "code", "Defines the selection behavior for the action and its children.", 0, 1, selectionBehavior));
-          children.add(new Property("requiredBehavior", "code", "Defines the requiredness behavior for the action.", 0, 1, requiredBehavior));
+          children.add(new Property("requiredBehavior", "code", "Defines expectations around whether an action is required.", 0, 1, requiredBehavior));
           children.add(new Property("precheckBehavior", "code", "Defines whether the action should usually be preselected.", 0, 1, precheckBehavior));
           children.add(new Property("cardinalityBehavior", "code", "Defines whether the action can be selected multiple times.", 0, 1, cardinalityBehavior));
           children.add(new Property("resource", "Reference(Any)", "The resource that is the target of the action (e.g. CommunicationRequest).", 0, 1, resource));
@@ -2584,7 +2600,7 @@ public class RequestGroup extends DomainResource {
           case -1724546052: /*description*/  return new Property("description", "string", "A short description of the action used to provide a summary to display to the user.", 0, 1, description);
           case -900391049: /*textEquivalent*/  return new Property("textEquivalent", "string", "A text equivalent of the action to be performed. This provides a human-interpretable description of the action when the definition is consumed by a system that might not be capable of interpreting it dynamically.", 0, 1, textEquivalent);
           case -1165461084: /*priority*/  return new Property("priority", "code", "Indicates how quickly the action should be addressed with respect to other actions.", 0, 1, priority);
-          case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a the section of a documentation template.", 0, java.lang.Integer.MAX_VALUE, code);
+          case 3059181: /*code*/  return new Property("code", "CodeableConcept", "A code that provides meaning for the action or action group. For example, a section may have a LOINC code for a section of a documentation template.", 0, java.lang.Integer.MAX_VALUE, code);
           case 1587405498: /*documentation*/  return new Property("documentation", "RelatedArtifact", "Didactic or other informational resources associated with the action that can be provided to the CDS recipient. Information resources can include inline text commentary and links to web resources.", 0, java.lang.Integer.MAX_VALUE, documentation);
           case -861311717: /*condition*/  return new Property("condition", "", "An expression that describes applicability criteria, or start/stop conditions for the action.", 0, java.lang.Integer.MAX_VALUE, condition);
           case -384107967: /*relatedAction*/  return new Property("relatedAction", "", "A relationship to another action such as \"before\" or \"30-60 minutes after start of\".", 0, java.lang.Integer.MAX_VALUE, relatedAction);
@@ -2600,7 +2616,7 @@ public class RequestGroup extends DomainResource {
           case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The type of action to perform (create, update, remove).", 0, 1, type);
           case 586678389: /*groupingBehavior*/  return new Property("groupingBehavior", "code", "Defines the grouping behavior for the action and its children.", 0, 1, groupingBehavior);
           case 168639486: /*selectionBehavior*/  return new Property("selectionBehavior", "code", "Defines the selection behavior for the action and its children.", 0, 1, selectionBehavior);
-          case -1163906287: /*requiredBehavior*/  return new Property("requiredBehavior", "code", "Defines the requiredness behavior for the action.", 0, 1, requiredBehavior);
+          case -1163906287: /*requiredBehavior*/  return new Property("requiredBehavior", "code", "Defines expectations around whether an action is required.", 0, 1, requiredBehavior);
           case -1174249033: /*precheckBehavior*/  return new Property("precheckBehavior", "code", "Defines whether the action should usually be preselected.", 0, 1, precheckBehavior);
           case -922577408: /*cardinalityBehavior*/  return new Property("cardinalityBehavior", "code", "Defines whether the action can be selected multiple times.", 0, 1, cardinalityBehavior);
           case -341064690: /*resource*/  return new Property("resource", "Reference(Any)", "The resource that is the target of the action (e.g. CommunicationRequest).", 0, 1, resource);
@@ -3533,7 +3549,7 @@ public class RequestGroup extends DomainResource {
          */
         public Duration getOffsetDuration() throws FHIRException { 
           if (this.offset == null)
-            return null;
+            this.offset = new Duration();
           if (!(this.offset instanceof Duration))
             throw new FHIRException("Type mismatch: the type Duration was expected, but "+this.offset.getClass().getName()+" was encountered");
           return (Duration) this.offset;
@@ -3548,7 +3564,7 @@ public class RequestGroup extends DomainResource {
          */
         public Range getOffsetRange() throws FHIRException { 
           if (this.offset == null)
-            return null;
+            this.offset = new Range();
           if (!(this.offset instanceof Range))
             throw new FHIRException("Type mismatch: the type Range was expected, but "+this.offset.getClass().getName()+" was encountered");
           return (Range) this.offset;

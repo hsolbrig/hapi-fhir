@@ -47,7 +47,7 @@
     <sch:rule context="f:SpecimenDefinition/f:typeTested/f:container/f:capacity">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
-    <sch:rule context="f:SpecimenDefinition/f:typeTested/f:container/f:minimumVolume">
+    <sch:rule context="f:SpecimenDefinition/f:typeTested/f:container/f:minimumVolumeQuantity">
       <sch:assert test="not(exists(f:code)) or exists(f:system)">qty-3: If a code for the unit is present, the system SHALL also be present</sch:assert>
     </sch:rule>
     <sch:rule context="f:SpecimenDefinition/f:typeTested/f:container/f:additive/f:additiveReference">

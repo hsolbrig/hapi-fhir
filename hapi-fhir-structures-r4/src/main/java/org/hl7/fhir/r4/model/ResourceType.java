@@ -2,7 +2,7 @@ package org.hl7.fhir.r4.model;
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 public enum ResourceType {
     Account,
@@ -26,6 +26,7 @@ public enum ResourceType {
     Claim,
     ClaimResponse,
     ClinicalImpression,
+    ClinicalProfile,
     CodeSystem,
     Communication,
     CommunicationRequest,
@@ -47,12 +48,15 @@ public enum ResourceType {
     DiagnosticReport,
     DocumentManifest,
     DocumentReference,
+    EffectEvidenceSynthesis,
     Encounter,
     Endpoint,
     EnrollmentRequest,
     EnrollmentResponse,
     EpisodeOfCare,
     EventDefinition,
+    Evidence,
+    EvidenceVariable,
     ExampleScenario,
     ExplanationOfBenefit,
     FamilyMemberHistory,
@@ -85,9 +89,7 @@ public enum ResourceType {
     MedicationStatement,
     MedicinalProduct,
     MedicinalProductAuthorization,
-    MedicinalProductClinicals,
     MedicinalProductContraindication,
-    MedicinalProductDeviceSpec,
     MedicinalProductIndication,
     MedicinalProductIngredient,
     MedicinalProductInteraction,
@@ -97,6 +99,7 @@ public enum ResourceType {
     MedicinalProductUndesirableEffect,
     MessageDefinition,
     MessageHeader,
+    MolecularSequence,
     NamingSystem,
     NutritionOrder,
     Observation,
@@ -114,19 +117,19 @@ public enum ResourceType {
     Practitioner,
     PractitionerRole,
     Procedure,
-    ProcessRequest,
-    ProcessResponse,
     Provenance,
     Questionnaire,
     QuestionnaireResponse,
     RelatedPerson,
     RequestGroup,
+    ResearchDefinition,
+    ResearchElementDefinition,
     ResearchStudy,
     ResearchSubject,
     RiskAssessment,
+    RiskEvidenceSynthesis,
     Schedule,
     SearchParameter,
-    Sequence,
     ServiceRequest,
     Slot,
     Specimen,
@@ -135,8 +138,11 @@ public enum ResourceType {
     StructureMap,
     Subscription,
     Substance,
+    SubstanceNucleicAcid,
     SubstancePolymer,
+    SubstanceProtein,
     SubstanceReferenceInformation,
+    SubstanceSourceMaterial,
     SubstanceSpecification,
     SupplyDelivery,
     SupplyRequest,
@@ -144,7 +150,6 @@ public enum ResourceType {
     TerminologyCapabilities,
     TestReport,
     TestScript,
-    UserSession,
     ValueSet,
     VerificationResult,
     VisionPrescription;
@@ -194,6 +199,8 @@ public enum ResourceType {
       return "claimresponse";
     case ClinicalImpression:
       return "clinicalimpression";
+    case ClinicalProfile:
+      return "clinicalprofile";
     case CodeSystem:
       return "codesystem";
     case Communication:
@@ -236,6 +243,8 @@ public enum ResourceType {
       return "documentmanifest";
     case DocumentReference:
       return "documentreference";
+    case EffectEvidenceSynthesis:
+      return "effectevidencesynthesis";
     case Encounter:
       return "encounter";
     case Endpoint:
@@ -248,6 +257,10 @@ public enum ResourceType {
       return "episodeofcare";
     case EventDefinition:
       return "eventdefinition";
+    case Evidence:
+      return "evidence";
+    case EvidenceVariable:
+      return "evidencevariable";
     case ExampleScenario:
       return "examplescenario";
     case ExplanationOfBenefit:
@@ -312,12 +325,8 @@ public enum ResourceType {
       return "medicinalproduct";
     case MedicinalProductAuthorization:
       return "medicinalproductauthorization";
-    case MedicinalProductClinicals:
-      return "medicinalproductclinicals";
     case MedicinalProductContraindication:
       return "medicinalproductcontraindication";
-    case MedicinalProductDeviceSpec:
-      return "medicinalproductdevicespec";
     case MedicinalProductIndication:
       return "medicinalproductindication";
     case MedicinalProductIngredient:
@@ -336,6 +345,8 @@ public enum ResourceType {
       return "messagedefinition";
     case MessageHeader:
       return "messageheader";
+    case MolecularSequence:
+      return "molecularsequence";
     case NamingSystem:
       return "namingsystem";
     case NutritionOrder:
@@ -370,10 +381,6 @@ public enum ResourceType {
       return "practitionerrole";
     case Procedure:
       return "procedure";
-    case ProcessRequest:
-      return "processrequest";
-    case ProcessResponse:
-      return "processresponse";
     case Provenance:
       return "provenance";
     case Questionnaire:
@@ -384,18 +391,22 @@ public enum ResourceType {
       return "relatedperson";
     case RequestGroup:
       return "requestgroup";
+    case ResearchDefinition:
+      return "researchdefinition";
+    case ResearchElementDefinition:
+      return "researchelementdefinition";
     case ResearchStudy:
       return "researchstudy";
     case ResearchSubject:
       return "researchsubject";
     case RiskAssessment:
       return "riskassessment";
+    case RiskEvidenceSynthesis:
+      return "riskevidencesynthesis";
     case Schedule:
       return "schedule";
     case SearchParameter:
       return "searchparameter";
-    case Sequence:
-      return "sequence";
     case ServiceRequest:
       return "servicerequest";
     case Slot:
@@ -412,10 +423,16 @@ public enum ResourceType {
       return "subscription";
     case Substance:
       return "substance";
+    case SubstanceNucleicAcid:
+      return "substancenucleicacid";
     case SubstancePolymer:
       return "substancepolymer";
+    case SubstanceProtein:
+      return "substanceprotein";
     case SubstanceReferenceInformation:
       return "substancereferenceinformation";
+    case SubstanceSourceMaterial:
+      return "substancesourcematerial";
     case SubstanceSpecification:
       return "substancespecification";
     case SupplyDelivery:
@@ -430,8 +447,6 @@ public enum ResourceType {
       return "testreport";
     case TestScript:
       return "testscript";
-    case UserSession:
-      return "usersession";
     case ValueSet:
       return "valueset";
     case VerificationResult:
@@ -486,6 +501,8 @@ public enum ResourceType {
       return ClaimResponse;
     if ("ClinicalImpression".equals(code))
       return ClinicalImpression;
+    if ("ClinicalProfile".equals(code))
+      return ClinicalProfile;
     if ("CodeSystem".equals(code))
       return CodeSystem;
     if ("Communication".equals(code))
@@ -528,6 +545,8 @@ public enum ResourceType {
       return DocumentManifest;
     if ("DocumentReference".equals(code))
       return DocumentReference;
+    if ("EffectEvidenceSynthesis".equals(code))
+      return EffectEvidenceSynthesis;
     if ("Encounter".equals(code))
       return Encounter;
     if ("Endpoint".equals(code))
@@ -540,6 +559,10 @@ public enum ResourceType {
       return EpisodeOfCare;
     if ("EventDefinition".equals(code))
       return EventDefinition;
+    if ("Evidence".equals(code))
+      return Evidence;
+    if ("EvidenceVariable".equals(code))
+      return EvidenceVariable;
     if ("ExampleScenario".equals(code))
       return ExampleScenario;
     if ("ExplanationOfBenefit".equals(code))
@@ -604,12 +627,8 @@ public enum ResourceType {
       return MedicinalProduct;
     if ("MedicinalProductAuthorization".equals(code))
       return MedicinalProductAuthorization;
-    if ("MedicinalProductClinicals".equals(code))
-      return MedicinalProductClinicals;
     if ("MedicinalProductContraindication".equals(code))
       return MedicinalProductContraindication;
-    if ("MedicinalProductDeviceSpec".equals(code))
-      return MedicinalProductDeviceSpec;
     if ("MedicinalProductIndication".equals(code))
       return MedicinalProductIndication;
     if ("MedicinalProductIngredient".equals(code))
@@ -628,6 +647,8 @@ public enum ResourceType {
       return MessageDefinition;
     if ("MessageHeader".equals(code))
       return MessageHeader;
+    if ("MolecularSequence".equals(code))
+      return MolecularSequence;
     if ("NamingSystem".equals(code))
       return NamingSystem;
     if ("NutritionOrder".equals(code))
@@ -662,10 +683,6 @@ public enum ResourceType {
       return PractitionerRole;
     if ("Procedure".equals(code))
       return Procedure;
-    if ("ProcessRequest".equals(code))
-      return ProcessRequest;
-    if ("ProcessResponse".equals(code))
-      return ProcessResponse;
     if ("Provenance".equals(code))
       return Provenance;
     if ("Questionnaire".equals(code))
@@ -676,18 +693,22 @@ public enum ResourceType {
       return RelatedPerson;
     if ("RequestGroup".equals(code))
       return RequestGroup;
+    if ("ResearchDefinition".equals(code))
+      return ResearchDefinition;
+    if ("ResearchElementDefinition".equals(code))
+      return ResearchElementDefinition;
     if ("ResearchStudy".equals(code))
       return ResearchStudy;
     if ("ResearchSubject".equals(code))
       return ResearchSubject;
     if ("RiskAssessment".equals(code))
       return RiskAssessment;
+    if ("RiskEvidenceSynthesis".equals(code))
+      return RiskEvidenceSynthesis;
     if ("Schedule".equals(code))
       return Schedule;
     if ("SearchParameter".equals(code))
       return SearchParameter;
-    if ("Sequence".equals(code))
-      return Sequence;
     if ("ServiceRequest".equals(code))
       return ServiceRequest;
     if ("Slot".equals(code))
@@ -704,10 +725,16 @@ public enum ResourceType {
       return Subscription;
     if ("Substance".equals(code))
       return Substance;
+    if ("SubstanceNucleicAcid".equals(code))
+      return SubstanceNucleicAcid;
     if ("SubstancePolymer".equals(code))
       return SubstancePolymer;
+    if ("SubstanceProtein".equals(code))
+      return SubstanceProtein;
     if ("SubstanceReferenceInformation".equals(code))
       return SubstanceReferenceInformation;
+    if ("SubstanceSourceMaterial".equals(code))
+      return SubstanceSourceMaterial;
     if ("SubstanceSpecification".equals(code))
       return SubstanceSpecification;
     if ("SupplyDelivery".equals(code))
@@ -722,8 +749,6 @@ public enum ResourceType {
       return TestReport;
     if ("TestScript".equals(code))
       return TestScript;
-    if ("UserSession".equals(code))
-      return UserSession;
     if ("ValueSet".equals(code))
       return ValueSet;
     if ("VerificationResult".equals(code))

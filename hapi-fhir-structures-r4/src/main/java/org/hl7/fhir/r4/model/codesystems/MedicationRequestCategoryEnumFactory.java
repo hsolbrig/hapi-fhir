@@ -29,40 +29,40 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
 
-public class MedicationRequestCategoryEnumFactory implements EnumFactory<MedicationRequestCategory> {
+public class MedicationrequestCategoryEnumFactory implements EnumFactory<MedicationrequestCategory> {
 
-  public MedicationRequestCategory fromCode(String codeString) throws IllegalArgumentException {
+  public MedicationrequestCategory fromCode(String codeString) throws IllegalArgumentException {
     if (codeString == null || "".equals(codeString))
       return null;
     if ("inpatient".equals(codeString))
-      return MedicationRequestCategory.INPATIENT;
+      return MedicationrequestCategory.INPATIENT;
     if ("outpatient".equals(codeString))
-      return MedicationRequestCategory.OUTPATIENT;
+      return MedicationrequestCategory.OUTPATIENT;
     if ("community".equals(codeString))
-      return MedicationRequestCategory.COMMUNITY;
+      return MedicationrequestCategory.COMMUNITY;
     if ("discharge".equals(codeString))
-      return MedicationRequestCategory.DISCHARGE;
-    throw new IllegalArgumentException("Unknown MedicationRequestCategory code '"+codeString+"'");
+      return MedicationrequestCategory.DISCHARGE;
+    throw new IllegalArgumentException("Unknown MedicationrequestCategory code '"+codeString+"'");
   }
 
-  public String toCode(MedicationRequestCategory code) {
-    if (code == MedicationRequestCategory.INPATIENT)
+  public String toCode(MedicationrequestCategory code) {
+    if (code == MedicationrequestCategory.INPATIENT)
       return "inpatient";
-    if (code == MedicationRequestCategory.OUTPATIENT)
+    if (code == MedicationrequestCategory.OUTPATIENT)
       return "outpatient";
-    if (code == MedicationRequestCategory.COMMUNITY)
+    if (code == MedicationrequestCategory.COMMUNITY)
       return "community";
-    if (code == MedicationRequestCategory.DISCHARGE)
+    if (code == MedicationrequestCategory.DISCHARGE)
       return "discharge";
     return "?";
   }
 
-    public String toSystem(MedicationRequestCategory code) {
+    public String toSystem(MedicationrequestCategory code) {
       return code.getSystem();
       }
 

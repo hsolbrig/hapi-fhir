@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 import java.util.*;
 
@@ -667,7 +667,7 @@ public class Invoice extends DomainResource {
          */
         public Reference getChargeItemReference() throws FHIRException { 
           if (this.chargeItem == null)
-            return null;
+            this.chargeItem = new Reference();
           if (!(this.chargeItem instanceof Reference))
             throw new FHIRException("Type mismatch: the type Reference was expected, but "+this.chargeItem.getClass().getName()+" was encountered");
           return (Reference) this.chargeItem;
@@ -682,7 +682,7 @@ public class Invoice extends DomainResource {
          */
         public CodeableConcept getChargeItemCodeableConcept() throws FHIRException { 
           if (this.chargeItem == null)
-            return null;
+            this.chargeItem = new CodeableConcept();
           if (!(this.chargeItem instanceof CodeableConcept))
             throw new FHIRException("Type mismatch: the type CodeableConcept was expected, but "+this.chargeItem.getClass().getName()+" was encountered");
           return (CodeableConcept) this.chargeItem;

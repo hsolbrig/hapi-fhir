@@ -29,12 +29,12 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Thu, Sep 13, 2018 09:04-0400 for FHIR v3.5.0
+// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
 
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-public enum MedicationKnowledgeStatus {
+public enum MedicationknowledgeStatus {
 
         /**
          * The medication is available for use.
@@ -52,7 +52,7 @@ public enum MedicationKnowledgeStatus {
          * added to help the parsers
          */
         NULL;
-        public static MedicationKnowledgeStatus fromCode(String codeString) throws FHIRException {
+        public static MedicationknowledgeStatus fromCode(String codeString) throws FHIRException {
             if (codeString == null || "".equals(codeString))
                 return null;
         if ("active".equals(codeString))
@@ -61,7 +61,7 @@ public enum MedicationKnowledgeStatus {
           return INACTIVE;
         if ("entered-in-error".equals(codeString))
           return ENTEREDINERROR;
-        throw new FHIRException("Unknown MedicationKnowledgeStatus code '"+codeString+"'");
+        throw new FHIRException("Unknown MedicationknowledgeStatus code '"+codeString+"'");
         }
         public String toCode() {
           switch (this) {
@@ -72,7 +72,7 @@ public enum MedicationKnowledgeStatus {
           }
         }
         public String getSystem() {
-          return "http://hl7.org/fhir/medicationKnowledge-status";
+          return "http://terminology.hl7.org/CodeSystem/medicationknowledge-status";
         }
         public String getDefinition() {
           switch (this) {
