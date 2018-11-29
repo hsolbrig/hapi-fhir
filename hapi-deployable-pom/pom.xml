@@ -78,9 +78,9 @@
 				</executions>
 				<configuration>
 					<printEqualFiles>false</printEqualFiles>
-					<failBuildInCaseOfDifferentContentConflict>true</failBuildInCaseOfDifferentContentConflict>
+					<!--failBuildInCaseOfDifferentContentConflict>true</failBuildInCaseOfDifferentContentConflict>
 					<failBuildInCaseOfEqualContentConflict>true</failBuildInCaseOfEqualContentConflict>
-					<failBuildInCaseOfConflict>true</failBuildInCaseOfConflict>
+					<failBuildInCaseOfConflict>true</failBuildInCaseOfConflict-->
 					<checkCompileClasspath>true</checkCompileClasspath>
 					<checkRuntimeClasspath>false</checkRuntimeClasspath>
 					<checkTestClasspath>false</checkTestClasspath>
