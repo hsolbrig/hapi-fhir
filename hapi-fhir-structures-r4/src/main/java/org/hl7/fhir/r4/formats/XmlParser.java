@@ -38437,8 +38437,8 @@ public class XmlParser extends XmlParserBase {
       if (element.hasLicenseElement())
         composeEnumeration("license", element.getLicenseElement(), new ImplementationGuide.SPDXLicenseEnumFactory());
         if (element.hasFhirVersion()) 
-          for (Enumeration<ImplementationGuide.FHIRVersion> e : element.getFhirVersion()) 
-            composeEnumeration("fhirVersion", e, new ImplementationGuide.FHIRVersionEnumFactory());
+          for (Enumeration<Enumerations.FHIRVersion> e : element.getFhirVersion()) 
+            composeEnumeration("fhirVersion", e, new Enumerations.FHIRVersionEnumFactory());
       if (element.hasDependsOn()) { 
         for (ImplementationGuide.ImplementationGuideDependsOnComponent e : element.getDependsOn()) 
           composeImplementationGuideImplementationGuideDependsOnComponent("dependsOn", e);
@@ -38567,8 +38567,8 @@ public class XmlParser extends XmlParserBase {
         composeReference("reference", element.getReference());
       }
         if (element.hasFhirVersion()) 
-          for (Enumeration<ImplementationGuide.FHIRVersion> e : element.getFhirVersion()) 
-            composeEnumeration("fhirVersion", e, new ImplementationGuide.FHIRVersionEnumFactory());
+          for (Enumeration<iEnumerations.FHIRVersion> e : element.getFhirVersion()) 
+            composeEnumeration("fhirVersion", e, new Enumerations.FHIRVersionEnumFactory());
       if (element.hasNameElement()) {
         composeString("name", element.getNameElement());
       }
