@@ -2,7 +2,7 @@ package org.hl7.fhir.r4.model;
 
 import org.hl7.fhir.exceptions.FHIRException;
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Wed, Nov 7, 2018 18:13+1100 for FHIR v3.6.0
 
 public enum ResourceType {
     Account,
@@ -90,12 +90,14 @@ public enum ResourceType {
     MedicinalProduct,
     MedicinalProductAuthorization,
     MedicinalProductContraindication,
+    MedicinalProductDeviceSpec,
     MedicinalProductIndication,
     MedicinalProductIngredient,
     MedicinalProductInteraction,
     MedicinalProductManufactured,
     MedicinalProductPackaged,
     MedicinalProductPharmaceutical,
+    MedicinalProductClinicals,
     MedicinalProductUndesirableEffect,
     MessageDefinition,
     MessageHeader,
@@ -117,6 +119,8 @@ public enum ResourceType {
     Practitioner,
     PractitionerRole,
     Procedure,
+    ProcessRequest,
+    ProcessResponse,
     Provenance,
     Questionnaire,
     QuestionnaireResponse,
@@ -130,6 +134,7 @@ public enum ResourceType {
     RiskEvidenceSynthesis,
     Schedule,
     SearchParameter,
+    Sequence,
     ServiceRequest,
     Slot,
     Specimen,
@@ -150,6 +155,7 @@ public enum ResourceType {
     TerminologyCapabilities,
     TestReport,
     TestScript,
+    UserSession,
     ValueSet,
     VerificationResult,
     VisionPrescription;
@@ -325,8 +331,12 @@ public enum ResourceType {
       return "medicinalproduct";
     case MedicinalProductAuthorization:
       return "medicinalproductauthorization";
+    case MedicinalProductClinicals:
+      return "medicinalproductclinicals";
     case MedicinalProductContraindication:
       return "medicinalproductcontraindication";
+    case MedicinalProductDeviceSpec:
+      return "medicinalproductdevicespec";
     case MedicinalProductIndication:
       return "medicinalproductindication";
     case MedicinalProductIngredient:
@@ -381,6 +391,10 @@ public enum ResourceType {
       return "practitionerrole";
     case Procedure:
       return "procedure";
+    case ProcessRequest:
+      return "processrequest";
+    case ProcessResponse:
+      return "processresponse";
     case Provenance:
       return "provenance";
     case Questionnaire:
@@ -407,6 +421,8 @@ public enum ResourceType {
       return "schedule";
     case SearchParameter:
       return "searchparameter";
+    case Sequence:
+      return "sequence";
     case ServiceRequest:
       return "servicerequest";
     case Slot:
@@ -447,6 +463,8 @@ public enum ResourceType {
       return "testreport";
     case TestScript:
       return "testscript";
+    case UserSession:
+      return "usersession";
     case ValueSet:
       return "valueset";
     case VerificationResult:
@@ -627,8 +645,12 @@ public enum ResourceType {
       return MedicinalProduct;
     if ("MedicinalProductAuthorization".equals(code))
       return MedicinalProductAuthorization;
+    if ("MedicinalProductClinicals".equals(code))
+      return MedicinalProductClinicals;;
     if ("MedicinalProductContraindication".equals(code))
       return MedicinalProductContraindication;
+    if ("MedicinalProductDeviceSpec".equals(code))
+      return MedicinalProductDeviceSpec;
     if ("MedicinalProductIndication".equals(code))
       return MedicinalProductIndication;
     if ("MedicinalProductIngredient".equals(code))
@@ -641,7 +663,7 @@ public enum ResourceType {
       return MedicinalProductPackaged;
     if ("MedicinalProductPharmaceutical".equals(code))
       return MedicinalProductPharmaceutical;
-    if ("MedicinalProductUndesirableEffect".equals(code))
+    if ("MedicinalProductUndesirableEffect".equals(code)) 
       return MedicinalProductUndesirableEffect;
     if ("MessageDefinition".equals(code))
       return MessageDefinition;
@@ -683,6 +705,10 @@ public enum ResourceType {
       return PractitionerRole;
     if ("Procedure".equals(code))
       return Procedure;
+    if ("ProcessResponse".equals(code))
+      return ProcessResponse;
+    if ("ProcessRequest".equals(code))
+      return ProcessRequest;
     if ("Provenance".equals(code))
       return Provenance;
     if ("Questionnaire".equals(code))
@@ -711,6 +737,8 @@ public enum ResourceType {
       return SearchParameter;
     if ("ServiceRequest".equals(code))
       return ServiceRequest;
+    if ("Sequence".equals(code))
+      return Sequence;
     if ("Slot".equals(code))
       return Slot;
     if ("Specimen".equals(code))
@@ -749,6 +777,8 @@ public enum ResourceType {
       return TestReport;
     if ("TestScript".equals(code))
       return TestScript;
+    if ("UserSession".equals(code))
+      return UserSession;
     if ("ValueSet".equals(code))
       return ValueSet;
     if ("VerificationResult".equals(code))

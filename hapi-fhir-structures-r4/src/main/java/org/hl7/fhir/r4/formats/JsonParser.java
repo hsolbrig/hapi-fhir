@@ -44576,13 +44576,13 @@ public class JsonParser extends JsonParserBase {
       }
       if (element.hasFhirVersion()) {
         openArray("fhirVersion");
-        for (Enumeration<ImplementationGuide.FHIRVersion> e : element.getFhirVersion()) 
-          composeEnumerationCore(null, e, new ImplementationGuide.FHIRVersionEnumFactory(), true);
+        for (Enumeration<Enumerations.FHIRVersion> e : element.getFhirVersion()) 
+          composeEnumerationCore(null, e, new Enumerations.FHIRVersionEnumFactory(), true);
         closeArray();
         if (anyHasExtras(element.getFhirVersion())) {
           openArray("_fhirVersion");
-          for (Enumeration<ImplementationGuide.FHIRVersion> e : element.getFhirVersion()) 
-            composeEnumerationExtras(null, e, new ImplementationGuide.FHIRVersionEnumFactory(), true);
+          for (Enumeration<Enumerations.FHIRVersion> e : element.getFhirVersion()) 
+            composeEnumerationExtras(null, e, new Enumerations.FHIRVersionEnumFactory(), true);
           closeArray();
         }
       };
