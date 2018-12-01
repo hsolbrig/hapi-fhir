@@ -15951,8 +15951,8 @@ public class RdfParser extends RdfParserBase {
       composeString(t, "SubstanceReferenceInformation", "comment", element.getCommentElement(), -1);
     for (int i = 0; i < element.getGene().size(); i++)
       composeSubstanceReferenceInformationSubstanceReferenceInformationGeneComponent(t, "SubstanceReferenceInformation", "gene", element.getGene().get(i), i);
-    for (int i = 0; i < element.getGene().size(); i++)
-      composeSubstanceReferenceInformationSubstanceReferenceInformationGeneElementComponent(t, "SubstanceReferenceInformation", "geneElement", element.getGene().get(i), i);
+//    for (int i = 0; i < element.getGene().size(); i++)
+//      composeSubstanceReferenceInformationSubstanceReferenceInformationGeneElementComponent(t, "SubstanceReferenceInformation", "geneElement", element.getGene().get(i), i);
     for (int i = 0; i < element.getClassification().size(); i++)
       composeSubstanceReferenceInformationSubstanceReferenceInformationClassificationComponent(t, "SubstanceReferenceInformation", "classification", element.getClassification().get(i), i);
     for (int i = 0; i < element.getTarget().size(); i++)
