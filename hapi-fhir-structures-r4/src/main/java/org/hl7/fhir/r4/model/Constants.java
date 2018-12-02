@@ -34,7 +34,7 @@ package org.hl7.fhir.r4.model;
 
 public class Constants {
 
-  public final static String VERSION = "3.6.0";
+  public final static String VERSION = "4.0.0";
   public final static String BUILD_ID = "b4c96c2474";
   public final static String REVISION = "19000";
   public final static String DATE = "Wed Nov 21 11:18:48 EST 2018";
