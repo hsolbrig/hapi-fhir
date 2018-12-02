@@ -38567,7 +38567,7 @@ public class XmlParser extends XmlParserBase {
         composeReference("reference", element.getReference());
       }
         if (element.hasFhirVersion()) 
-          for (Enumeration<iEnumerations.FHIRVersion> e : element.getFhirVersion()) 
+          for (Enumeration<Enumerations.FHIRVersion> e : element.getFhirVersion()) 
             composeEnumeration("fhirVersion", e, new Enumerations.FHIRVersionEnumFactory());
       if (element.hasNameElement()) {
         composeString("name", element.getNameElement());
