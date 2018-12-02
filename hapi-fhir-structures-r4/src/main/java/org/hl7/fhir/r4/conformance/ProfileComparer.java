@@ -1249,7 +1249,7 @@ public class ProfileComparer {
   }
 
   private String summaryTemplate() throws IOException {
-    return cachedFetch("04a9d69a-47f2-4250-8645-bf5d880a8eaa-1.fhir-template", "http://build.fhir.org/template-comparison-set.html.template");
+    return cachedFetch("04a9d69a-47f2-4250-8645-bf5d880a8eaa-1.fhir-template", "http://hl7.org/fhir/template-comparison-set.html.template");
   }
 
   private String cachedFetch(String id, String source) throws IOException {

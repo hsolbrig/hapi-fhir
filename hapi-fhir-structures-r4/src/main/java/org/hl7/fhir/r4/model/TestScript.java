@@ -3774,10 +3774,10 @@ public class TestScript extends MetadataResource {
         protected Coding type;
 
         /**
-         * The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * The type of the resource.  See http://hl7.org/fhir/resourcelist.html.
          */
         @Child(name = "resource", type = {CodeType.class}, order=2, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Resource type", formalDefinition="The type of the resource.  See http://build.fhir.org/resourcelist.html." )
+        @Description(shortDefinition="Resource type", formalDefinition="The type of the resource.  See http://hl7.org/fhir/resourcelist.html." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/defined-types")
         protected CodeType resource;
 
@@ -3931,7 +3931,7 @@ public class TestScript extends MetadataResource {
         }
 
         /**
-         * @return {@link #resource} (The type of the resource.  See http://build.fhir.org/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
+         * @return {@link #resource} (The type of the resource.  See http://hl7.org/fhir/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
          */
         public CodeType getResourceElement() { 
           if (this.resource == null)
@@ -3951,7 +3951,7 @@ public class TestScript extends MetadataResource {
         }
 
         /**
-         * @param value {@link #resource} (The type of the resource.  See http://build.fhir.org/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
+         * @param value {@link #resource} (The type of the resource.  See http://hl7.org/fhir/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
          */
         public SetupActionOperationComponent setResourceElement(CodeType value) { 
           this.resource = value;
@@ -3959,14 +3959,14 @@ public class TestScript extends MetadataResource {
         }
 
         /**
-         * @return The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * @return The type of the resource.  See http://hl7.org/fhir/resourcelist.html.
          */
         public String getResource() { 
           return this.resource == null ? null : this.resource.getValue();
         }
 
         /**
-         * @param value The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * @param value The type of the resource.  See http://hl7.org/fhir/resourcelist.html.
          */
         public SetupActionOperationComponent setResource(String value) { 
           if (Utilities.noString(value))
@@ -4709,7 +4709,7 @@ public class TestScript extends MetadataResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("type", "Coding", "Server interaction or operation type.", 0, 1, type));
-          children.add(new Property("resource", "code", "The type of the resource.  See http://build.fhir.org/resourcelist.html.", 0, 1, resource));
+          children.add(new Property("resource", "code", "The type of the resource.  See http://hl7.org/fhir/resourcelist.html.", 0, 1, resource));
           children.add(new Property("label", "string", "The label would be used for tracking/logging purposes by test engines.", 0, 1, label));
           children.add(new Property("description", "string", "The description would be used by test engines for tracking and reporting purposes.", 0, 1, description));
           children.add(new Property("accept", "code", "The mime-type to use for RESTful operation in the 'Accept' header.", 0, 1, accept));
@@ -4731,7 +4731,7 @@ public class TestScript extends MetadataResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 3575610: /*type*/  return new Property("type", "Coding", "Server interaction or operation type.", 0, 1, type);
-          case -341064690: /*resource*/  return new Property("resource", "code", "The type of the resource.  See http://build.fhir.org/resourcelist.html.", 0, 1, resource);
+          case -341064690: /*resource*/  return new Property("resource", "code", "The type of the resource.  See http://hl7.org/fhir/resourcelist.html.", 0, 1, resource);
           case 102727412: /*label*/  return new Property("label", "string", "The label would be used for tracking/logging purposes by test engines.", 0, 1, label);
           case -1724546052: /*description*/  return new Property("description", "string", "The description would be used by test engines for tracking and reporting purposes.", 0, 1, description);
           case -1423461112: /*accept*/  return new Property("accept", "code", "The mime-type to use for RESTful operation in the 'Accept' header.", 0, 1, accept);
@@ -5416,10 +5416,10 @@ public class TestScript extends MetadataResource {
         protected StringType requestURL;
 
         /**
-         * The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * The type of the resource.  See http://hl7.org/fhir/resourcelist.html.
          */
         @Child(name = "resource", type = {CodeType.class}, order=16, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Resource type", formalDefinition="The type of the resource.  See http://build.fhir.org/resourcelist.html." )
+        @Description(shortDefinition="Resource type", formalDefinition="The type of the resource.  See http://hl7.org/fhir/resourcelist.html." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/defined-types")
         protected CodeType resource;
 
@@ -6215,7 +6215,7 @@ public class TestScript extends MetadataResource {
         }
 
         /**
-         * @return {@link #resource} (The type of the resource.  See http://build.fhir.org/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
+         * @return {@link #resource} (The type of the resource.  See http://hl7.org/fhir/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
          */
         public CodeType getResourceElement() { 
           if (this.resource == null)
@@ -6235,7 +6235,7 @@ public class TestScript extends MetadataResource {
         }
 
         /**
-         * @param value {@link #resource} (The type of the resource.  See http://build.fhir.org/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
+         * @param value {@link #resource} (The type of the resource.  See http://hl7.org/fhir/resourcelist.html.). This is the underlying object with id, value and extensions. The accessor "getResource" gives direct access to the value
          */
         public SetupActionAssertComponent setResourceElement(CodeType value) { 
           this.resource = value;
@@ -6243,14 +6243,14 @@ public class TestScript extends MetadataResource {
         }
 
         /**
-         * @return The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * @return The type of the resource.  See http://hl7.org/fhir/resourcelist.html.
          */
         public String getResource() { 
           return this.resource == null ? null : this.resource.getValue();
         }
 
         /**
-         * @param value The type of the resource.  See http://build.fhir.org/resourcelist.html.
+         * @param value The type of the resource.  See http://hl7.org/fhir/resourcelist.html.
          */
         public SetupActionAssertComponent setResource(String value) { 
           if (Utilities.noString(value))
@@ -6570,7 +6570,7 @@ public class TestScript extends MetadataResource {
           children.add(new Property("path", "string", "The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.", 0, 1, path));
           children.add(new Property("requestMethod", "code", "The request method or HTTP operation code to compare against that used by the client system under test.", 0, 1, requestMethod));
           children.add(new Property("requestURL", "string", "The value to use in a comparison against the request URL path string.", 0, 1, requestURL));
-          children.add(new Property("resource", "code", "The type of the resource.  See http://build.fhir.org/resourcelist.html.", 0, 1, resource));
+          children.add(new Property("resource", "code", "The type of the resource.  See http://hl7.org/fhir/resourcelist.html.", 0, 1, resource));
           children.add(new Property("response", "code", "okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.", 0, 1, response));
           children.add(new Property("responseCode", "string", "The value of the HTTP response code to be tested.", 0, 1, responseCode));
           children.add(new Property("sourceId", "id", "Fixture to evaluate the XPath/JSONPath expression or the headerField  against.", 0, 1, sourceId));
@@ -6597,7 +6597,7 @@ public class TestScript extends MetadataResource {
           case 3433509: /*path*/  return new Property("path", "string", "The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.", 0, 1, path);
           case 1217874000: /*requestMethod*/  return new Property("requestMethod", "code", "The request method or HTTP operation code to compare against that used by the client system under test.", 0, 1, requestMethod);
           case 37099616: /*requestURL*/  return new Property("requestURL", "string", "The value to use in a comparison against the request URL path string.", 0, 1, requestURL);
-          case -341064690: /*resource*/  return new Property("resource", "code", "The type of the resource.  See http://build.fhir.org/resourcelist.html.", 0, 1, resource);
+          case -341064690: /*resource*/  return new Property("resource", "code", "The type of the resource.  See http://hl7.org/fhir/resourcelist.html.", 0, 1, resource);
           case -340323263: /*response*/  return new Property("response", "code", "okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable.", 0, 1, response);
           case 1438723534: /*responseCode*/  return new Property("responseCode", "string", "The value of the HTTP response code to be tested.", 0, 1, responseCode);
           case 1746327190: /*sourceId*/  return new Property("sourceId", "id", "Fixture to evaluate the XPath/JSONPath expression or the headerField  against.", 0, 1, sourceId);

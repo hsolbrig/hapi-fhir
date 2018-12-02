@@ -25,6 +25,7 @@ import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicStatusLine;
 import org.hl7.fhir.r4.model.CapabilityStatement;
 import org.hl7.fhir.r4.model.Patient;
+import org.hl7.fhir.r4.model.Enumerations;
 import org.junit.*;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Matchers;
@@ -59,10 +60,10 @@ public class ClientServerValidationR4Test {
 
 	@Test
 	public void testServerReturnsAppropriateVersionR4() throws Exception {
-		String appropriateFhirVersion = "3.5.0";
+		String appropriateFhirVersion = "4.0.0";
 		assertThat(appropriateFhirVersion, is(FhirVersionEnum.R4.getFhirVersionString()));
 		CapabilityStatement conf = new CapabilityStatement();
-		conf.setFhirVersion(appropriateFhirVersion);
+		conf.setFhirVersion(Enumerations.FHIRVersion.fromCode(appropriateFhirVersion));
 		final String confResource = myCtx.newXmlParser().encodeResourceToString(conf);
 
 		ArgumentCaptor<HttpUriRequest> capt = ArgumentCaptor.forClass(HttpUriRequest.class);
@@ -101,7 +102,7 @@ public class ClientServerValidationR4Test {
 		String wrongFhirVersion = "3.0.1";
 		assertThat(wrongFhirVersion, is(FhirVersionEnum.DSTU3.getFhirVersionString())); // asserting that what we assume to be the DSTU3 FHIR version is still correct
 		CapabilityStatement conf = new CapabilityStatement();
-		conf.setFhirVersion(wrongFhirVersion);
+		conf.setFhirVersion(Enumerations.FHIRVersion.fromCode(wrongFhirVersion));
 		String msg = myCtx.newXmlParser().encodeResourceToString(conf);
 
 		ArgumentCaptor<HttpUriRequest> capt = ArgumentCaptor.forClass(HttpUriRequest.class);
@@ -123,10 +124,10 @@ public class ClientServerValidationR4Test {
 
    @Test
    public void testServerReturnsRightVersionR4() throws Exception {
-      String appropriateFhirVersion = "3.5.0";
+      String appropriateFhirVersion = "4.0.0";
       assertThat(appropriateFhirVersion, is(FhirVersionEnum.R4.getFhirVersionString()));
       CapabilityStatement conf = new CapabilityStatement();
-      conf.setFhirVersion(appropriateFhirVersion);
+      conf.setFhirVersion(Enumerations.FHIRVersion.fromCode(appropriateFhirVersion));
       String msg = myCtx.newXmlParser().encodeResourceToString(conf);
 
       ArgumentCaptor<HttpUriRequest> capt = ArgumentCaptor.forClass(HttpUriRequest.class);

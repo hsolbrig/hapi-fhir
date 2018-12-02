@@ -9,9 +9,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.core.IsNot.not;
@@ -134,7 +132,7 @@ public class XmlParserR4Test {
 		String input = "<Patient xmlns=\"http://hl7.org/fhir\">\n" +
 			"    <extension url=\"https://purl.org/elab/fhir/network/StructureDefinition/1/BirthWeight\">\n" +
 			"       <valueDecimal>\n" +
-			"          <extension url=\"http://www.hl7.org/fhir/extension-data-absent-reason.html\">\n" +
+			"          <extension url=\"http://www.build.fhir.org/extension-data-absent-reason.html\">\n" +
 			"            <valueCoding>\n" +
 			"                <system value=\"http://hl7.org/fhir/ValueSet/birthweight\"/>\n" +
 			"                <code value=\"Underweight\"/>\n" +
@@ -191,7 +189,12 @@ public class XmlParserR4Test {
 	@Test
 	public void testEncodeNewLineInString() {
 		Observation o = new Observation();
-		o.setComment("123\n456");
+		Annotation n = new Annotation();
+		n.setText("123\n456");
+		List<Annotation> notes = new ArrayList<>();
+		notes.add(n);
+		o.setNote(notes);
+
 		String encoded = ourCtx.newXmlParser().setPrettyPrint(true).encodeResourceToString(o);
 		ourLog.info(encoded);
 
@@ -202,10 +205,10 @@ public class XmlParserR4Test {
 			.resource(o)
 			.execute();
 
-		assertThat(encoded, containsString("<comment value=\"123&#xa;456\"/>"));
+		assertThat(encoded, containsString("<text value=\"123&#xa;456\"/>"));
 
 		o = ourCtx.newXmlParser().parseResource(Observation.class, encoded);
-		assertEquals("123\n456", o.getComment());
+		assertEquals("123\n456", o.getNote().get(0).getText());
 	}
 
 	/**
@@ -215,10 +218,15 @@ public class XmlParserR4Test {
 	public void testDuplicateContainedResources() {
 
 		Observation resA = new Observation();
-		resA.setComment("A");
+		Annotation n = new Annotation();
+		n.setText("A");
+		List<Annotation> notes = new ArrayList<>();
+		notes.add(n);
+		resA.setNote(notes);
 
 		Observation resB = new Observation();
-		resB.setComment("B");
+		n.setText("B");
+		resB.setNote(notes);
 		resB.addHasMember(new Reference(resA));
 		resB.addHasMember(new Reference(resA));
 

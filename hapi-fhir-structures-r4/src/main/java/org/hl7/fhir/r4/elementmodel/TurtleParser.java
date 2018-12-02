@@ -37,7 +37,7 @@ public class TurtleParser extends ParserBase {
   private String base;
 
   public static String FHIR_URI_BASE = "http://hl7.org/fhir/";
-  public static String FHIR_VERSION_BASE = "http://build.fhir.org/";
+  public static String FHIR_VERSION_BASE = "http://hl7.org/fhir/";
 
   public TurtleParser(IWorkerContext context) {
     super(context);
