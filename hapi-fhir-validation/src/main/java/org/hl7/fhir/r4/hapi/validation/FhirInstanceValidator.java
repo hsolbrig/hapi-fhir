@@ -326,8 +326,13 @@ public class FhirInstanceValidator extends BaseValidatorBridge implements IValid
 			return false;
 		}
 
+//		@Override
+//		public Base resolveConstant(Object theAppContext, String theName) throws PathEngineException {
+//			return null;
+//		}
+
 		@Override
-		public Base resolveConstant(Object theAppContext, String theName) throws PathEngineException {
+		public Base resolveConstant(Object o, String s, boolean b) throws PathEngineException {
 			return null;
 		}
 

@@ -58,6 +58,7 @@ import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.model.ValueSet.ConceptSetComponent;
 import org.hl7.fhir.dstu3.model.ValueSet.ValueSetExpansionComponent;
 import org.hl7.fhir.dstu3.utils.FHIRPathEngine;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.junit.AfterClass;
@@ -289,7 +290,11 @@ public class FhirInstanceValidatorDstu3Test {
 		period.setStartElement(new DateTimeType("2000-01-01T00:00:01+05:00"));
 		period.setEndElement(new DateTimeType("2000-01-01T00:00:00+04:00"));
 		assertThat(period.getStart().getTime(), lessThan(period.getEnd().getTime()));
-		procedure.setPerformed(period);
+		try {
+			procedure.setPerformed(period);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		FhirValidator val = ourCtx.newValidator();
 		val.registerValidatorModule(new FhirInstanceValidator(myDefaultValidationSupport));
@@ -916,7 +921,11 @@ public class FhirInstanceValidatorDstu3Test {
 
 		// Has a value, but not a status (which is required)
 		input.getCode().addCoding().setSystem("http://loinc.org").setCode("12345");
-		input.setValue(new StringType("AAA"));
+		try {
+			input.setValue(new StringType("AAA"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		ValidationResult output = myVal.validateWithResult(input);
 		assertThat(output.getMessages().size(), greaterThan(0));

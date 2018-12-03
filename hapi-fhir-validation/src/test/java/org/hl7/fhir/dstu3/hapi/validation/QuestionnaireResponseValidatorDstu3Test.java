@@ -21,6 +21,7 @@ import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemOptionComponent;
 import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemType;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse.QuestionnaireResponseItemComponent;
 import org.hl7.fhir.dstu3.model.QuestionnaireResponse.QuestionnaireResponseStatus;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
@@ -156,7 +157,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 			QuestionnaireResponse qa = new QuestionnaireResponse();
 			qa.setStatus(QuestionnaireResponseStatus.INPROGRESS);
 			qa.getQuestionnaire().setReference("http://example.com/Questionnaire/q1");
-			qa.addItem().setLinkId(linkId).addAnswer().setValue(answerValues[i]);
+			try {
+				qa.addItem().setLinkId(linkId).addAnswer().setValue(answerValues[i]);
+			} catch (FHIRFormatError fhirFormatError) {
+				fhirFormatError.printStackTrace();
+			}
 
 			ValidationResult errors = myVal.validateWithResult(qa);
 
@@ -172,7 +177,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		QuestionnaireResponse qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference("http://example.com/Questionnaire/q1");
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new StringType("FOO"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new StringType("FOO"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(Questionnaire.class), eq(qa.getQuestionnaire().getReference()))).thenReturn(q);
 
@@ -215,7 +224,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code0"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code0"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		assertEquals(errors.toString(), 0, errors.getMessages().size());
@@ -225,7 +238,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code1"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code1"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		ourLog.info(errors.toString());
@@ -235,7 +252,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system2").setCode("code3"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system2").setCode("code3"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		ourLog.info(errors.toString());
@@ -254,7 +275,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference("http://example.com/Questionnaire/q1");
 		QuestionnaireResponseItemComponent qaGroup = qa.addItem();
-		qaGroup.addItem().setLinkId("link0").addAnswer().setValue(new StringType("FOO"));
+		try {
+			qaGroup.addItem().setLinkId("link0").addAnswer().setValue(new StringType("FOO"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(Questionnaire.class), eq(qa.getQuestionnaire().getReference()))).thenReturn(q);
 		ValidationResult errors = myVal.validateWithResult(qa);
@@ -274,7 +299,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference("http://example.com/Questionnaire/q1");
 		QuestionnaireResponseItemComponent qaGroup = qa.addItem().setLinkId("link0");
-		qaGroup.addItem().setLinkId("link1").addAnswer().setValue(new StringType("FOO"));
+		try {
+			qaGroup.addItem().setLinkId("link1").addAnswer().setValue(new StringType("FOO"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(Questionnaire.class), eq(qa.getQuestionnaire().getReference()))).thenReturn(q);
 		ValidationResult errors = myVal.validateWithResult(qa);
@@ -294,7 +323,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		QuestionnaireResponse qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference("http://example.com/Questionnaire/q1");
-		qa.addItem().setLinkId("link1").addAnswer().setValue(new StringType("FOO"));
+		try {
+			qa.addItem().setLinkId("link1").addAnswer().setValue(new StringType("FOO"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		String reference = qa.getQuestionnaire().getReference();
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(Questionnaire.class), eq(reference))).thenReturn(q);
@@ -498,11 +531,15 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		QuestionnaireResponse.QuestionnaireResponseItemComponent basicGroup = questionnaireResponse
 			.addItem();
 		basicGroup.setLinkId("basic");
-		basicGroup
-			.addItem()
-			.setLinkId("schoolType")
-			.addAnswer()
-			.setValue(new Coding(SYSTEMURI_ICC_SCHOOLTYPE, CODE_ICC_SCHOOLTYPE_PT, ""));
+		try {
+			basicGroup
+				.addItem()
+				.setLinkId("schoolType")
+				.addAnswer()
+				.setValue(new Coding(SYSTEMURI_ICC_SCHOOLTYPE, CODE_ICC_SCHOOLTYPE_PT, ""));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(Questionnaire.class), eq(questionnaireResponse.getQuestionnaire().getReference()))).thenReturn(questionnaire);
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(ValueSet.class), eq(ID_VS_SCHOOLTYPE.getValue()))).thenReturn(iccSchoolTypeVs);
@@ -577,7 +614,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code0"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code0"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		assertEquals(errors.toString(), 0, errors.getMessages().size());
@@ -587,7 +628,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code1"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://codesystems.com/system").setCode("code1"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		ourLog.info(errors.toString());
@@ -599,7 +644,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem(null).setCode("code1"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem(null).setCode("code1"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		ourLog.info(errors.toString());
@@ -609,7 +658,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("").setCode("code1"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("").setCode("code1"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		errors = stripBindingHasNoSourceMessage(errors);
 		ourLog.info(errors.toString());
@@ -619,7 +672,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://system").setCode(null));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setSystem("http://system").setCode(null));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		ourLog.info(errors.toString());
 		assertThat(errors.toString(), containsString("INFORMATION - Code http://system/null was not validated because the code system is not present"));
@@ -630,7 +687,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new IntegerType(123));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new IntegerType(123));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		ourLog.info(errors.toString());
 		assertThat(errors.toString(), containsString("Cannot validate integer answer option because no option list is provided"));
@@ -641,7 +702,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setDisplay("Hello"));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setDisplay("Hello"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		ourLog.info(errors.toString());
 		assertThat(errors.getMessages(), empty());
@@ -651,7 +716,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference(questionnaireRef);
-		qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setDisplay(""));
+		try {
+			qa.addItem().setLinkId("link0").addAnswer().setValue(new Coding().setDisplay(""));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		errors = myVal.validateWithResult(qa);
 		ourLog.info(errors.toString());
 		assertThat(errors.toString(), containsString("No response answer found for required item link0"));
@@ -667,7 +736,11 @@ public class QuestionnaireResponseValidatorDstu3Test {
 		QuestionnaireResponse qa = new QuestionnaireResponse();
 		qa.setStatus(QuestionnaireResponseStatus.COMPLETED);
 		qa.getQuestionnaire().setReference("http://example.com/Questionnaire/q1");
-		qa.addItem().setLinkId("link1").addAnswer().setValue(new StringType("FOO"));
+		try {
+			qa.addItem().setLinkId("link1").addAnswer().setValue(new StringType("FOO"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		when(myValSupport.fetchResource(any(FhirContext.class), eq(Questionnaire.class), eq(qa.getQuestionnaire().getReference()))).thenReturn(q);
 		ValidationResult errors = myVal.validateWithResult(qa);

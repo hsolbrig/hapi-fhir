@@ -17,6 +17,7 @@ import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemEnableWhenCompone
 import org.hl7.fhir.dstu3.model.Questionnaire.QuestionnaireItemType;
 import org.hl7.fhir.dstu3.model.StringType;
 
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.junit.AfterClass;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -39,7 +40,11 @@ public class SchematronValidationDstu3QuestionnaireTest {
 
 		QuestionnaireItemEnableWhenComponent enableWhen = new QuestionnaireItemEnableWhenComponent();
 		enableWhen.setQuestion("q1");
-		enableWhen.setAnswer(new StringType("a value"));
+		try {
+			enableWhen.setAnswer(new StringType("a value"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		child1.addEnableWhen(enableWhen);
 
 		QuestionnaireItemComponent child21 = createItem(QuestionnaireItemType.STRING);
@@ -85,7 +90,11 @@ public class SchematronValidationDstu3QuestionnaireTest {
 
 		QuestionnaireItemEnableWhenComponent enableWhen = new QuestionnaireItemEnableWhenComponent();
 		enableWhen.setQuestion("q1");
-		enableWhen.setAnswer(new StringType("a value"));
+		try {
+			enableWhen.setAnswer(new StringType("a value"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		enableWhen.setHasAnswer(true);
 		child1.addEnableWhen(enableWhen);
 
