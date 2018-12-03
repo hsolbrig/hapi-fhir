@@ -29,6 +29,7 @@ import org.hl7.fhir.dstu3.model.Enumeration;
 import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.dstu3.model.Identifier.IdentifierUse;
 import org.hl7.fhir.dstu3.model.Observation.ObservationStatus;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.hl7.fhir.utilities.xhtml.XhtmlNode;
 import org.junit.*;
@@ -1300,7 +1301,11 @@ public class JsonParserDstu3Test {
 	@Test
 	public void testExponentDoesntGetEncodedAsSuch() {
 		Observation obs = new Observation();
-		obs.setValue(new Quantity().setValue(new BigDecimal("0.000000000000000100")));
+		try {
+			obs.setValue(new Quantity().setValue(new BigDecimal("0.000000000000000100")));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		String str = ourCtx.newJsonParser().encodeResourceToString(obs);
 		ourLog.info(str);
@@ -2251,7 +2256,11 @@ public class JsonParserDstu3Test {
 		data.setData("1 2 3");
 		data.setOrigin((SimpleQuantity) new SimpleQuantity().setValue(0L));
 		data.setPeriod(1000L);
-		obs.setValue(data);
+		try {
+			obs.setValue(data);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		IParser p = ourCtx.newJsonParser().setPrettyPrint(true).setParserErrorHandler(new StrictErrorHandler());
 		String encoded = p.encodeResourceToString(obs);
@@ -2282,7 +2291,11 @@ public class JsonParserDstu3Test {
 
 		ReportObservationDstu3 obsv = new ReportObservationDstu3();
 		obsv.getCode().addCoding().setCode("name");
-		obsv.setValue(new StringType("value test"));
+		try {
+			obsv.setValue(new StringType("value test"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		obsv.setStatus(ObservationStatus.FINAL);
 		obsv.addIdentifier().setSystem("System").setValue("id value");
 
@@ -2304,7 +2317,11 @@ public class JsonParserDstu3Test {
 
 		ReportObservationDstu3 obsv = new ReportObservationDstu3();
 		obsv.getCode().addCoding().setCode("name");
-		obsv.setValue(new StringType("value test"));
+		try {
+			obsv.setValue(new StringType("value test"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		obsv.setStatus(ObservationStatus.FINAL);
 		obsv.addIdentifier().setSystem("System").setValue("id value");
 

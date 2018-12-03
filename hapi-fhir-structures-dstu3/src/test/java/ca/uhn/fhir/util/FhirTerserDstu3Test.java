@@ -6,6 +6,7 @@ import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.parser.DataFormatException;
 import org.hl7.fhir.dstu3.model.*;
 import org.hl7.fhir.dstu3.model.Patient.LinkType;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.instance.model.api.IBase;
 import org.hl7.fhir.instance.model.api.IBaseExtension;
 import org.hl7.fhir.instance.model.api.IBaseReference;
@@ -138,8 +139,12 @@ public class FhirTerserDstu3Test {
    @Test
    public void testCloneIntoValues() {
        Observation obs = new Observation();
-       obs.setValue(new StringType("AAA"));
-       obs.setComment("COMMENTS");
+		try {
+			obs.setValue(new StringType("AAA"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
+		obs.setComment("COMMENTS");
 
        Observation target = new Observation();
 		ourCtx.newTerser().cloneInto(obs, target, false);

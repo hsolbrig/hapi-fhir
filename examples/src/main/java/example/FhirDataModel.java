@@ -88,7 +88,7 @@ public class FhirDataModel {
 
       // Coded types can naturally be set using plain strings
       CodingDt statusCoding = patient.getMaritalStatus().addCoding();
-      statusCoding.setSystem("http://hl7.org/fhir/v3/MaritalStatus");
+      statusCoding.setSystem("http://build.fhir.org/v3/MaritalStatus");
       statusCoding.setCode("M");
       statusCoding.setDisplay("Married");
 
@@ -131,7 +131,7 @@ public class FhirDataModel {
       // Returns "M"
       String code = patient.getMaritalStatus().getCodingFirstRep().getCode();
 
-      // Returns "http://hl7.org/fhir/v3/MaritalStatus". This value was also
+      // Returns "http://build.fhir.org/v3/MaritalStatus". This value was also
       // populated via the enum above.
       String codeSystem = patient.getMaritalStatus().getCodingFirstRep().getCode();
       

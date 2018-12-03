@@ -25,7 +25,7 @@ public static void main(String[] args) throws DataFormatException, IOException {
    GroupQuestion item = q.getGroup().addQuestion();
    item.setText("Hello");
    
-   ExtensionDt extension = new ExtensionDt(false, "http://hl7.org/fhir/StructureDefinition/translation");
+   ExtensionDt extension = new ExtensionDt(false, "http://build.fhir.org/StructureDefinition/translation");
    item.getTextElement().addUndeclaredExtension(extension);
    
    extension.addUndeclaredExtension(new ExtensionDt(false, "lang", new CodeDt("es")));

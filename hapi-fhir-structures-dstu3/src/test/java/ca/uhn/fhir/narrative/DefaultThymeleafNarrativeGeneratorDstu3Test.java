@@ -29,6 +29,7 @@ import org.hl7.fhir.dstu3.model.Quantity;
 import org.hl7.fhir.dstu3.model.Reference;
 import org.hl7.fhir.dstu3.model.SimpleQuantity;
 import org.hl7.fhir.dstu3.model.StringType;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -190,7 +191,11 @@ public class DefaultThymeleafNarrativeGeneratorDstu3Test {
 		{
 			Observation obs = new Observation();
 			obs.getCode().addCoding().setCode("1938HB").setDisplay("Hemoglobin");
-			obs.setValue(new Quantity(null, 2.223, null, null, "mg/L"));
+			try {
+				obs.setValue(new Quantity(null, 2.223, null, null, "mg/L"));
+			} catch (FHIRFormatError fhirFormatError) {
+				fhirFormatError.printStackTrace();
+			}
 			obs.addReferenceRange().setLow((SimpleQuantity) new SimpleQuantity().setValue(2.20)).setHigh((SimpleQuantity) new SimpleQuantity().setValue(2.99));
 			obs.setStatus(ObservationStatus.FINAL);
 			obs.setComment("This is a result comment");
@@ -200,7 +205,11 @@ public class DefaultThymeleafNarrativeGeneratorDstu3Test {
 		}
 		{
 			Observation obs = new Observation();
-			obs.setValue(new StringType("HELLO!"));
+			try {
+				obs.setValue(new StringType("HELLO!"));
+			} catch (FHIRFormatError fhirFormatError) {
+				fhirFormatError.printStackTrace();
+			}
 			value.addResult().setResource(obs);
 		}
 		{
@@ -226,7 +235,11 @@ public class DefaultThymeleafNarrativeGeneratorDstu3Test {
 		Medication med = new Medication();
 		med.getCode().setText("ciproflaxin");
 		Reference medRef = new Reference(med);
-		mp.setMedication(medRef);
+		try {
+			mp.setMedication(medRef);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		mp.setStatus(MedicationRequestStatus.ACTIVE);
 		mp.setAuthoredOnElement(new DateTimeType("2014-09-01"));
 

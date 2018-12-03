@@ -31,6 +31,7 @@ import org.hl7.fhir.dstu3.model.HumanName.NameUse;
 import org.hl7.fhir.dstu3.model.Identifier.IdentifierUse;
 import org.hl7.fhir.dstu3.model.Observation.ObservationRelationshipType;
 import org.hl7.fhir.dstu3.model.Observation.ObservationStatus;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.instance.model.api.IBaseResource;
 import org.hl7.fhir.instance.model.api.IIdType;
 import org.junit.*;
@@ -831,7 +832,11 @@ public class XmlParserDstu3Test {
 	@Test
 	public void testEncodeAndParseProfiledDatatype() {
 		MedicationRequest mo = new MedicationRequest();
-		mo.addDosageInstruction().getTiming().getRepeat().setBounds(new Duration().setCode("code"));
+		try {
+			mo.addDosageInstruction().getTiming().getRepeat().setBounds(new Duration().setCode("code"));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		String out = ourCtx.newXmlParser().encodeResourceToString(mo);
 		ourLog.info(out);
 		assertThat(out, containsString("</boundsDuration>"));
@@ -1079,7 +1084,11 @@ public class XmlParserDstu3Test {
 		// Medication reference. This should point to the contained resource.
 		Reference medRefDt = new Reference("#" + medId);
 		medRefDt.setDisplay("MedRef");
-		medicationPrescript.setMedication(medRefDt);
+		try {
+			medicationPrescript.setMedication(medRefDt);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		IParser p = ourCtx.newXmlParser().setPrettyPrint(true);
 		String encoded = p.encodeResourceToString(medicationPrescript);
@@ -1113,7 +1122,11 @@ public class XmlParserDstu3Test {
 		medRefDt.setDisplay(nameDisp);
 		// Resource reference set, but no ID
 		medRefDt.setResource(medResource);
-		medicationPrescript.setMedication(medRefDt);
+		try {
+			medicationPrescript.setMedication(medRefDt);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		IParser p = ourCtx.newXmlParser().setPrettyPrint(true);
 		String encoded = p.encodeResourceToString(medicationPrescript);
@@ -1146,7 +1159,11 @@ public class XmlParserDstu3Test {
 		// Medication reference. This should point to the contained resource.
 		Reference medRefDt = new Reference("#" + medId);
 		medRefDt.setDisplay("MedRef");
-		medicationPrescript.setMedication(medRefDt);
+		try {
+			medicationPrescript.setMedication(medRefDt);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		IParser p = ourCtx.newXmlParser().setPrettyPrint(true);
 		String encoded = p.encodeResourceToString(medicationPrescript);
@@ -1616,18 +1633,30 @@ public class XmlParserDstu3Test {
 		obsParent.setId("phitcc_obs_bp_parent");
 		obsParent.getSubject().setResource(patient);
 		obsParent.setStatus(ObservationStatus.FINAL);
-		obsParent.setEffective(obsEffectiveTime);
+		try {
+			obsParent.setEffective(obsEffectiveTime);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		Observation obsSystolic = new Observation();
 		obsSystolic.setId("phitcc_obs_bp_dia");
 		obsSystolic.getSubject().setResource(patient);
-		obsSystolic.setEffective(obsEffectiveTime);
+		try {
+			obsSystolic.setEffective(obsEffectiveTime);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		obsParent.addRelated().setType(ObservationRelationshipType.HASMEMBER).setTarget(new Reference(obsSystolic));
 
 		Observation obsDiastolic = new Observation();
 		obsDiastolic.setId("phitcc_obs_bp_dia");
 		obsDiastolic.getSubject().setResource(patient);
-		obsDiastolic.setEffective(obsEffectiveTime);
+		try {
+			obsDiastolic.setEffective(obsEffectiveTime);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		obsParent.addRelated().setType(ObservationRelationshipType.HASMEMBER).setTarget(new Reference(obsDiastolic));
 
 		String str = ourCtx.newXmlParser().setPrettyPrint(true).encodeResourceToString(obsParent);
@@ -2819,7 +2848,11 @@ public class XmlParserDstu3Test {
 		cc.addCoding().setSystem("mySystem").setCode("PatientDocument");
 		manifest.setType(cc);
 		manifest.setMasterIdentifier(new Identifier().setSystem("mySystem").setValue(UUID.randomUUID().toString()));
-		manifest.addContent().setP(new Reference(binary));
+		try {
+			manifest.addContent().setP(new Reference(binary));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		manifest.setStatus(DocumentReferenceStatus.CURRENT);
 
 		String encoded = ourCtx.newXmlParser().setPrettyPrint(true).encodeResourceToString(manifest);
@@ -2928,7 +2961,11 @@ public class XmlParserDstu3Test {
 	@Test
 	public void testParseInvalidTextualNumber() {
 		Observation obs = new Observation();
-		obs.setValue(new Quantity().setValue(1234));
+		try {
+			obs.setValue(new Quantity().setValue(1234));
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 		String encoded = ourCtx.newJsonParser().setPrettyPrint(true).encodeResourceToString(obs);
 		encoded = encoded.replace("1234", "\"1234\"");
 		ourLog.info(encoded);
@@ -3220,7 +3257,11 @@ public class XmlParserDstu3Test {
 		data.setData("1 2 3");
 		data.setOrigin((SimpleQuantity) new SimpleQuantity().setValue(0L));
 		data.setPeriod(1000L);
-		obs.setValue(data);
+		try {
+			obs.setValue(data);
+		} catch (FHIRFormatError fhirFormatError) {
+			fhirFormatError.printStackTrace();
+		}
 
 		IParser p = ourCtx.newXmlParser().setPrettyPrint(true).setParserErrorHandler(new StrictErrorHandler());
 		String encoded = p.encodeResourceToString(obs);

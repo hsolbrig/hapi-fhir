@@ -21,7 +21,7 @@ import ca.uhn.fhir.util.ElementUtil;
  * Note that we are extensing DomainResource for an STU3
  * resource. For DSTU2 it would be BaseResource. 
  */
-@ResourceDef(name = "CustomResource", profile = "http://hl7.org/fhir/profiles/custom-resource")
+@ResourceDef(name = "CustomResource", profile = "http://build.fhir.org/profiles/custom-resource")
 public class CustomResource extends DomainResource {
 
 	private static final long serialVersionUID = 1L;

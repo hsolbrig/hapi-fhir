@@ -35,10 +35,10 @@ public class TagsExamples {
          }
 
          // You may also get a list of tags matching a given scheme
-         List<Tag> someTags = tags.getTagsWithScheme("http://hl7.org/fhir/tag");
+         List<Tag> someTags = tags.getTagsWithScheme("http://build.fhir.org/tag");
          
          // Or a specific tag (by scheme and term)
-         Tag specificTag = tags.getTag("http://hl7.org/fhir/tag", "http://foo");
+         Tag specificTag = tags.getTag("http://build.fhir.org/tag", "http://foo");
          
       }
       // END SNIPPET: getResourceTags

@@ -42,6 +42,7 @@ import org.hl7.fhir.dstu3.model.Enumerations.PublicationStatus;
 import org.hl7.fhir.dstu3.model.Identifier;
 import org.hl7.fhir.dstu3.model.ValueSet;
 import org.hl7.fhir.dstu3.terminologies.CodeSystemUtilities;
+import org.hl7.fhir.exceptions.FHIRFormatError;
 import org.hl7.fhir.utilities.xml.XMLUtil;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -184,8 +185,13 @@ public class ICPC2Importer {
     concepts.put(concept.getCode(), concept);
     List<Element> children = new ArrayList<Element>(); 
     XMLUtil.getNamedChildren(cls, "SubClass", children);
-    if (children.size() > 0)
-      CodeSystemUtilities.setNotSelectable(define, concept);
+    if (children.size() > 0) {
+      try {
+        CodeSystemUtilities.setNotSelectable(define, concept);
+      } catch (FHIRFormatError fhirFormatError) {
+        fhirFormatError.printStackTrace();
+      }
+    }
     
     Element parent = XMLUtil.getNamedChild(cls, "SuperClass");
     if (parent == null) {
