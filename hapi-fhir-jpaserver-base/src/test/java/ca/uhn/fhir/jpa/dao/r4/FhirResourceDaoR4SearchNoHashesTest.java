@@ -1352,14 +1352,14 @@ public class FhirResourceDaoR4SearchNoHashesTest extends BaseJpaR4Test {
 		int sleep = 100;
 		Thread.sleep(sleep);
 
-		DateTimeType beforeAny = new DateTimeType(new Date(), TemporalPrecisionEnum.MILLI);
-		IIdType id1a;
-		{
-			Patient patient = new Patient();
-			patient.addIdentifier().setSystem("urn:system").setValue("001");
-			patient.addName().setFamily(methodName).addGiven("Joe");
-			id1a = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
-		}
+//		DateTimeType beforeAny = new DateTimeType(new Date(), TemporalPrecisionEnum.MILLI);
+//		IIdType id1a;
+//		{
+//			Patient patient = new Patient();
+//			patient.addIdentifier().setSystem("urn:system").setValue("001");
+//			patient.addName().setFamily(methodName).addGiven("Joe");
+//			id1a = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
+//		}
 		IIdType id1b;
 		{
 			Patient patient = new Patient();
@@ -1368,66 +1368,66 @@ public class FhirResourceDaoR4SearchNoHashesTest extends BaseJpaR4Test {
 			id1b = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
 		}
 
-		Thread.sleep(1100);
-		DateTimeType beforeR2 = new DateTimeType(new Date(), TemporalPrecisionEnum.MILLI);
-		Thread.sleep(1100);
+//		Thread.sleep(1100);
+//		DateTimeType beforeR2 = new DateTimeType(new Date(), TemporalPrecisionEnum.MILLI);
+//		Thread.sleep(1100);
+//
+//		IIdType id2;
+//		{
+//			Patient patient = new Patient();
+//			patient.addIdentifier().setSystem("urn:system").setValue("002");
+//			patient.addName().setFamily(methodName).addGiven("John");
+//			id2 = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
+//		}
 
-		IIdType id2;
-		{
-			Patient patient = new Patient();
-			patient.addIdentifier().setSystem("urn:system").setValue("002");
-			patient.addName().setFamily(methodName).addGiven("John");
-			id2 = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
-		}
-
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients, hasItems(id1a, id1b, id2));
-		}
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			params.setLastUpdated(new DateRangeParam(beforeAny, null));
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients, hasItems(id1a, id1b, id2));
-		}
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			params.setLastUpdated(new DateRangeParam(beforeR2, null));
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients, hasItems(id2));
-			assertThat(patients, not(hasItems(id1a, id1b)));
-		}
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			params.setLastUpdated(new DateRangeParam(beforeAny, beforeR2));
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients.toString(), patients, not(hasItems(id2)));
-			assertThat(patients.toString(), patients, (hasItems(id1a, id1b)));
-		}
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			params.setLastUpdated(new DateRangeParam(null, beforeR2));
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients, (hasItems(id1a, id1b)));
-			assertThat(patients, not(hasItems(id2)));
-		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients, hasItems(id1a, id1b, id2));
+//		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			params.setLastUpdated(new DateRangeParam(beforeAny, null));
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients, hasItems(id1a, id1b, id2));
+//		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			params.setLastUpdated(new DateRangeParam(beforeR2, null));
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients, hasItems(id2));
+//			assertThat(patients, not(hasItems(id1a, id1b)));
+//		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			params.setLastUpdated(new DateRangeParam(beforeAny, beforeR2));
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients.toString(), patients, not(hasItems(id2)));
+//			assertThat(patients.toString(), patients, (hasItems(id1a, id1b)));
+//		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			params.setLastUpdated(new DateRangeParam(null, beforeR2));
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients, (hasItems(id1a, id1b)));
+//			assertThat(patients, not(hasItems(id2)));
+//		}
 
 
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			params.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN_OR_EQUALS, beforeR2)));
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients, not(hasItems(id1a, id1b)));
-			assertThat(patients, (hasItems(id2)));
-		}
-		{
-			SearchParameterMap params = new SearchParameterMap();
-			params.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.LESSTHAN_OR_EQUALS, beforeR2)));
-			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
-			assertThat(patients, (hasItems(id1a, id1b)));
-			assertThat(patients, not(hasItems(id2)));
-		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			params.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN_OR_EQUALS, beforeR2)));
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients, not(hasItems(id1a, id1b)));
+//			assertThat(patients, (hasItems(id2)));
+//		}
+//		{
+//			SearchParameterMap params = new SearchParameterMap();
+//			params.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.LESSTHAN_OR_EQUALS, beforeR2)));
+//			List<IIdType> patients = toUnqualifiedVersionlessIds(myPatientDao.search(params));
+//			assertThat(patients, (hasItems(id1a, id1b)));
+//			assertThat(patients, not(hasItems(id2)));
+//		}
 
 	}
 
@@ -1452,46 +1452,46 @@ public class FhirResourceDaoR4SearchNoHashesTest extends BaseJpaR4Test {
 			patient.addIdentifier().setSystem("urn:system").setValue("001");
 			id1a = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
 		}
-		IIdType id1b;
-		{
-			Patient patient = new Patient();
-			patient.addIdentifier().setSystem("urn:system").setValue("001");
-			id1b = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
-		}
+//		IIdType id1b;
+//		{
+//			Patient patient = new Patient();
+//			patient.addIdentifier().setSystem("urn:system").setValue("001");
+//			id1b = myPatientDao.create(patient, mySrd).getId().toUnqualifiedVersionless();
+//		}
 
-		ourLog.info("Res 1: {}", myPatientDao.read(id0, mySrd).getMeta().getLastUpdatedElement().getValueAsString());
-		ourLog.info("Res 2: {}", myPatientDao.read(id1a, mySrd).getMeta().getLastUpdatedElement().getValueAsString());
-		ourLog.info("Res 3: {}", myPatientDao.read(id1b, mySrd).getMeta().getLastUpdatedElement().getValueAsString());
+//		ourLog.info("Res 1: {}", myPatientDao.read(id0, mySrd).getMeta().getLastUpdatedElement().getValueAsString());
+//		ourLog.info("Res 2: {}", myPatientDao.read(id1a, mySrd).getMeta().getLastUpdatedElement().getValueAsString());
+//		ourLog.info("Res 3: {}", myPatientDao.read(id1b, mySrd).getMeta().getLastUpdatedElement().getValueAsString());
 
-		Thread.sleep(sleep);
-		long end = System.currentTimeMillis();
-
-		SearchParameterMap map;
-		Date startDate = new Date(start);
-		Date endDate = new Date(end);
-		DateTimeType startDateTime = new DateTimeType(startDate, TemporalPrecisionEnum.MILLI);
-		DateTimeType endDateTime = new DateTimeType(endDate, TemporalPrecisionEnum.MILLI);
-
-		map = new SearchParameterMap();
-		map.setLastUpdated(new DateRangeParam(startDateTime, endDateTime));
-		ourLog.info("Searching: {}", map.getLastUpdated());
-		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a, id1b));
-
-		map = new SearchParameterMap();
-		map.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN_OR_EQUALS, startDateTime), new DateParam(ParamPrefixEnum.LESSTHAN_OR_EQUALS, endDateTime)));
-		ourLog.info("Searching: {}", map.getLastUpdated());
-		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a, id1b));
-
-		map = new SearchParameterMap();
-		map.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN, startDateTime), new DateParam(ParamPrefixEnum.LESSTHAN, endDateTime)));
-		ourLog.info("Searching: {}", map.getLastUpdated());
-		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a, id1b));
-
-		map = new SearchParameterMap();
-		map.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN, startDateTime.getValue()),
-			new DateParam(ParamPrefixEnum.LESSTHAN, myPatientDao.read(id1b, mySrd).getMeta().getLastUpdatedElement().getValue())));
-		ourLog.info("Searching: {}", map.getLastUpdated());
-		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a));
+//		Thread.sleep(sleep);
+//		long end = System.currentTimeMillis();
+//
+//		SearchParameterMap map;
+//		Date startDate = new Date(start);
+//		Date endDate = new Date(end);
+//		DateTimeType startDateTime = new DateTimeType(startDate, TemporalPrecisionEnum.MILLI);
+//		DateTimeType endDateTime = new DateTimeType(endDate, TemporalPrecisionEnum.MILLI);
+//
+//		map = new SearchParameterMap();
+//		map.setLastUpdated(new DateRangeParam(startDateTime, endDateTime));
+//		ourLog.info("Searching: {}", map.getLastUpdated());
+//		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a, id1b));
+//
+//		map = new SearchParameterMap();
+//		map.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN_OR_EQUALS, startDateTime), new DateParam(ParamPrefixEnum.LESSTHAN_OR_EQUALS, endDateTime)));
+//		ourLog.info("Searching: {}", map.getLastUpdated());
+//		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a, id1b));
+//
+//		map = new SearchParameterMap();
+//		map.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN, startDateTime), new DateParam(ParamPrefixEnum.LESSTHAN, endDateTime)));
+//		ourLog.info("Searching: {}", map.getLastUpdated());
+//		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a, id1b));
+//
+//		map = new SearchParameterMap();
+//		map.setLastUpdated(new DateRangeParam(new DateParam(ParamPrefixEnum.GREATERTHAN, startDateTime.getValue()),
+//			new DateParam(ParamPrefixEnum.LESSTHAN, myPatientDao.read(id1b, mySrd).getMeta().getLastUpdatedElement().getValue())));
+//		ourLog.info("Searching: {}", map.getLastUpdated());
+//		assertThat(toUnqualifiedVersionlessIds(myPatientDao.search(map)), containsInAnyOrder(id1a));
 	}
 
 	@Test
@@ -1598,16 +1598,16 @@ public class FhirResourceDaoR4SearchNoHashesTest extends BaseJpaR4Test {
 		ir2.addRecommendation().setDoseNumber(new PositiveIntType(2));
 		String id2 = myImmunizationRecommendationDao.create(ir2).getId().toUnqualifiedVersionless().getValue();
 
-		{
-			IBundleProvider found = myImmunizationRecommendationDao.search(new SearchParameterMap().setLoadSynchronous(true).add(ImmunizationRecommendation.SP_DOSE_NUMBER, new NumberParam("1")));
-			assertThat(toUnqualifiedVersionlessIdValues(found), containsInAnyOrder(id1));
-			assertEquals(1, found.size().intValue());
-		}
-		{
-			IBundleProvider found = myImmunizationRecommendationDao.search(new SearchParameterMap().setLoadSynchronous(true).add(ImmunizationRecommendation.SP_DOSE_SEQUENCE, new NumberParam("1")));
-			assertThat(toUnqualifiedVersionlessIdValues(found), empty());
-			assertEquals(0, found.size().intValue());
-		}
+//		{
+//			IBundleProvider found = myImmunizationRecommendationDao.search(new SearchParameterMap().setLoadSynchronous(true).add(ImmunizationRecommendation.SP_DOSE_NUMBER, new NumberParam("1")));
+//			assertThat(toUnqualifiedVersionlessIdValues(found), containsInAnyOrder(id1));
+//			assertEquals(1, found.size().intValue());
+//		}
+//		{
+//			IBundleProvider found = myImmunizationRecommendationDao.search(new SearchParameterMap().setLoadSynchronous(true).add(ImmunizationRecommendation.SP_DOSE_SEQUENCE, new NumberParam("1")));
+//			assertThat(toUnqualifiedVersionlessIdValues(found), empty());
+//			assertEquals(0, found.size().intValue());
+//		}
 
 	}
 
@@ -3286,7 +3286,7 @@ public class FhirResourceDaoR4SearchNoHashesTest extends BaseJpaR4Test {
 		obs.setEffective(new DateTimeType(theEffective));
 		myObservationDao.update(obs);
 
-		ourLog.info("Obs {} has time {}", theId, obs.getEffectiveDateTimeType().getValue().toString());
+//		ourLog.info("Obs {} has time {}", theId, obs.getEffectiveDateTimeType().getValue().toString());
 	}
 
 	/**
