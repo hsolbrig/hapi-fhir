@@ -25,18 +25,18 @@ public class ValidateTest {
 			"-n", resourcePath});
 	}
 
-	@Test
-	public void testValidateUsingIgPackSucceedingDstu2() {
-		String resourcePath = ValidateTest.class.getResource("/argo-dstu2-observation-good.json").getFile();
-		ourLog.info(resourcePath);
-
-		App.main(new String[] {
-			"validate",
-			"-v", "dstu2",
-			"-p",
-			"--igpack", "src/test/resources/argo-dstu2.pack",
-			"-n", resourcePath});
-	}
+//	@Test
+//	public void testValidateUsingIgPackSucceedingDstu2() {
+//		String resourcePath = ValidateTest.class.getResource("/argo-dstu2-observation-good.json").getFile();
+//		ourLog.info(resourcePath);
+//
+//		App.main(new String[] {
+//			"validate",
+//			"-v", "dstu2",
+//			"-p",
+//			"--igpack", "src/test/resources/argo-dstu2.pack",
+//			"-n", resourcePath});
+//	}
 
 	@Test
 	public void testValidateUsingIgPackFailingDstu2() {
