@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Tue, Jan 8, 2019 15:26-0600 for FHIR v4.0.0
 
 import java.util.*;
 
@@ -594,6 +594,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileLabComponent copy() {
         ClinicalProfileLabComponent dst = new ClinicalProfileLabComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileLabComponent dst) {
+        super.copyValues(dst);
         if (code != null) {
           dst.code = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : code)
@@ -603,7 +608,6 @@ public class ClinicalProfile extends DomainResource {
         dst.frequencyPerYear = frequencyPerYear == null ? null : frequencyPerYear.copy();
         dst.fractionOfSubjects = fractionOfSubjects == null ? null : fractionOfSubjects.copy();
         dst.scalarDistribution = scalarDistribution == null ? null : scalarDistribution.copy();
-        return dst;
       }
 
       @Override
@@ -1651,6 +1655,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileLabScalarDistributionComponent copy() {
         ClinicalProfileLabScalarDistributionComponent dst = new ClinicalProfileLabScalarDistributionComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileLabScalarDistributionComponent dst) {
+        super.copyValues(dst);
         dst.units = units == null ? null : units.copy();
         dst.min = min == null ? null : min.copy();
         dst.max = max == null ? null : max.copy();
@@ -1667,7 +1676,6 @@ public class ClinicalProfile extends DomainResource {
         dst.fractionAboveNormal = fractionAboveNormal == null ? null : fractionAboveNormal.copy();
         dst.fractionBelowNormal = fractionBelowNormal == null ? null : fractionBelowNormal.copy();
         dst.correlatedLabs = correlatedLabs == null ? null : correlatedLabs.copy();
-        return dst;
       }
 
       @Override
@@ -1938,9 +1946,13 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileLabScalarDistributionDecileComponent copy() {
         ClinicalProfileLabScalarDistributionDecileComponent dst = new ClinicalProfileLabScalarDistributionDecileComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileLabScalarDistributionDecileComponent dst) {
+        super.copyValues(dst);
         dst.nth = nth == null ? null : nth.copy();
         dst.value = value == null ? null : value.copy();
-        return dst;
       }
 
       @Override
@@ -2270,6 +2282,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileLabScalarDistributionCorrelatedLabsComponent copy() {
         ClinicalProfileLabScalarDistributionCorrelatedLabsComponent dst = new ClinicalProfileLabScalarDistributionCorrelatedLabsComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileLabScalarDistributionCorrelatedLabsComponent dst) {
+        super.copyValues(dst);
         dst.topn = topn == null ? null : topn.copy();
         dst.abscorrelation = abscorrelation == null ? null : abscorrelation.copy();
         if (entry != null) {
@@ -2277,7 +2294,6 @@ public class ClinicalProfile extends DomainResource {
           for (ClinicalProfileLabScalarDistributionCorrelatedLabsEntryComponent i : entry)
             dst.entry.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -2549,13 +2565,17 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileLabScalarDistributionCorrelatedLabsEntryComponent copy() {
         ClinicalProfileLabScalarDistributionCorrelatedLabsEntryComponent dst = new ClinicalProfileLabScalarDistributionCorrelatedLabsEntryComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileLabScalarDistributionCorrelatedLabsEntryComponent dst) {
+        super.copyValues(dst);
         if (labcode != null) {
           dst.labcode = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : labcode)
             dst.labcode.add(i.copy());
         };
         dst.coefficient = coefficient == null ? null : coefficient.copy();
-        return dst;
       }
 
       @Override
@@ -3009,12 +3029,16 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileMedicationComponent copy() {
         ClinicalProfileMedicationComponent dst = new ClinicalProfileMedicationComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileMedicationComponent dst) {
+        super.copyValues(dst);
         dst.medication = medication == null ? null : medication.copy();
         dst.dosage = dosage == null ? null : dosage.copy();
         dst.treatementDuration = treatementDuration == null ? null : treatementDuration.copy();
         dst.fractionOfSubjects = fractionOfSubjects == null ? null : fractionOfSubjects.copy();
         dst.correlatedLabs = correlatedLabs == null ? null : correlatedLabs.copy();
-        return dst;
       }
 
       @Override
@@ -3567,6 +3591,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileMedicationDosageComponent copy() {
         ClinicalProfileMedicationDosageComponent dst = new ClinicalProfileMedicationDosageComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileMedicationDosageComponent dst) {
+        super.copyValues(dst);
         dst.text = text == null ? null : text.copy();
         if (site != null) {
           dst.site = new ArrayList<CodeableConcept>();
@@ -3589,7 +3618,6 @@ public class ClinicalProfile extends DomainResource {
             dst.dose.add(i.copy());
         };
         dst.rate = rate == null ? null : rate.copy();
-        return dst;
       }
 
       @Override
@@ -3922,6 +3950,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileMedicationCorrelatedLabsComponent copy() {
         ClinicalProfileMedicationCorrelatedLabsComponent dst = new ClinicalProfileMedicationCorrelatedLabsComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileMedicationCorrelatedLabsComponent dst) {
+        super.copyValues(dst);
         dst.topn = topn == null ? null : topn.copy();
         dst.deviation = deviation == null ? null : deviation.copy();
         if (entry != null) {
@@ -3929,7 +3962,6 @@ public class ClinicalProfile extends DomainResource {
           for (ClinicalProfileMedicationCorrelatedLabsEntryComponent i : entry)
             dst.entry.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -4284,6 +4316,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileMedicationCorrelatedLabsEntryComponent copy() {
         ClinicalProfileMedicationCorrelatedLabsEntryComponent dst = new ClinicalProfileMedicationCorrelatedLabsEntryComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileMedicationCorrelatedLabsEntryComponent dst) {
+        super.copyValues(dst);
         if (code != null) {
           dst.code = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : code)
@@ -4291,7 +4328,6 @@ public class ClinicalProfile extends DomainResource {
         };
         dst.fractionOfSubjects = fractionOfSubjects == null ? null : fractionOfSubjects.copy();
         dst.deviationRelativeValue = deviationRelativeValue == null ? null : deviationRelativeValue.copy();
-        return dst;
       }
 
       @Override
@@ -4545,13 +4581,17 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileDiagnosisComponent copy() {
         ClinicalProfileDiagnosisComponent dst = new ClinicalProfileDiagnosisComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileDiagnosisComponent dst) {
+        super.copyValues(dst);
         if (code != null) {
           dst.code = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : code)
             dst.code.add(i.copy());
         };
         dst.count = count == null ? null : count.copy();
-        return dst;
       }
 
       @Override
@@ -4865,6 +4905,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileProcedureComponent copy() {
         ClinicalProfileProcedureComponent dst = new ClinicalProfileProcedureComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileProcedureComponent dst) {
+        super.copyValues(dst);
         if (code != null) {
           dst.code = new ArrayList<CodeableConcept>();
           for (CodeableConcept i : code)
@@ -4872,7 +4917,6 @@ public class ClinicalProfile extends DomainResource {
         };
         dst.fractionOfSubjects = fractionOfSubjects == null ? null : fractionOfSubjects.copy();
         dst.correlatedDiagnoses = correlatedDiagnoses == null ? null : correlatedDiagnoses.copy();
-        return dst;
       }
 
       @Override
@@ -5176,10 +5220,14 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileProcedureCorrelatedDiagnosesComponent copy() {
         ClinicalProfileProcedureCorrelatedDiagnosesComponent dst = new ClinicalProfileProcedureCorrelatedDiagnosesComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileProcedureCorrelatedDiagnosesComponent dst) {
+        super.copyValues(dst);
         dst.topn = topn == null ? null : topn.copy();
         dst.abscorrelation = abscorrelation == null ? null : abscorrelation.copy();
         dst.entry = entry == null ? null : entry.copy();
-        return dst;
       }
 
       @Override
@@ -5424,9 +5472,13 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfileProcedureCorrelatedDiagnosesEntryComponent copy() {
         ClinicalProfileProcedureCorrelatedDiagnosesEntryComponent dst = new ClinicalProfileProcedureCorrelatedDiagnosesEntryComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileProcedureCorrelatedDiagnosesEntryComponent dst) {
+        super.copyValues(dst);
         dst.code = code == null ? null : code.copy();
         dst.coefficient = coefficient == null ? null : coefficient.copy();
-        return dst;
       }
 
       @Override
@@ -5455,6 +5507,892 @@ public class ClinicalProfile extends DomainResource {
 
   public String fhirType() {
     return "ClinicalProfile.procedure.correlatedDiagnoses.entry";
+
+  }
+
+  }
+
+    @Block()
+    public static class ClinicalProfileHpoComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * HPO code.
+         */
+        @Child(name = "code", type = {CodeableConcept.class}, order=1, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
+        @Description(shortDefinition="HPO code", formalDefinition="HPO code." )
+        protected List<CodeableConcept> code;
+
+        /**
+         * Fraction of patients with this procedure per year.
+         */
+        @Child(name = "fractionOfSubjects", type = {DecimalType.class}, order=2, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Fraction of patients with this procedure per year", formalDefinition="Fraction of patients with this procedure per year." )
+        protected DecimalType fractionOfSubjects;
+
+        /**
+         * The to N most closely correlated HPO codes.
+         */
+        @Child(name = "correlatedPhenotypes", type = {}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="The to N most closely correlated HPO codes", formalDefinition="The to N most closely correlated HPO codes." )
+        protected ClinicalProfileHpoCorrelatedPhenotypesComponent correlatedPhenotypes;
+
+        private static final long serialVersionUID = 1331308789L;
+
+    /**
+     * Constructor
+     */
+      public ClinicalProfileHpoComponent() {
+        super();
+      }
+
+    /**
+     * Constructor
+     */
+      public ClinicalProfileHpoComponent(DecimalType fractionOfSubjects) {
+        super();
+        this.fractionOfSubjects = fractionOfSubjects;
+      }
+
+        /**
+         * @return {@link #code} (HPO code.)
+         */
+        public List<CodeableConcept> getCode() { 
+          if (this.code == null)
+            this.code = new ArrayList<CodeableConcept>();
+          return this.code;
+        }
+
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public ClinicalProfileHpoComponent setCode(List<CodeableConcept> theCode) { 
+          this.code = theCode;
+          return this;
+        }
+
+        public boolean hasCode() { 
+          if (this.code == null)
+            return false;
+          for (CodeableConcept item : this.code)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        public CodeableConcept addCode() { //3
+          CodeableConcept t = new CodeableConcept();
+          if (this.code == null)
+            this.code = new ArrayList<CodeableConcept>();
+          this.code.add(t);
+          return t;
+        }
+
+        public ClinicalProfileHpoComponent addCode(CodeableConcept t) { //3
+          if (t == null)
+            return this;
+          if (this.code == null)
+            this.code = new ArrayList<CodeableConcept>();
+          this.code.add(t);
+          return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #code}, creating it if it does not already exist
+         */
+        public CodeableConcept getCodeFirstRep() { 
+          if (getCode().isEmpty()) {
+            addCode();
+          }
+          return getCode().get(0);
+        }
+
+        /**
+         * @return {@link #fractionOfSubjects} (Fraction of patients with this procedure per year.). This is the underlying object with id, value and extensions. The accessor "getFractionOfSubjects" gives direct access to the value
+         */
+        public DecimalType getFractionOfSubjectsElement() { 
+          if (this.fractionOfSubjects == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoComponent.fractionOfSubjects");
+            else if (Configuration.doAutoCreate())
+              this.fractionOfSubjects = new DecimalType(); // bb
+          return this.fractionOfSubjects;
+        }
+
+        public boolean hasFractionOfSubjectsElement() { 
+          return this.fractionOfSubjects != null && !this.fractionOfSubjects.isEmpty();
+        }
+
+        public boolean hasFractionOfSubjects() { 
+          return this.fractionOfSubjects != null && !this.fractionOfSubjects.isEmpty();
+        }
+
+        /**
+         * @param value {@link #fractionOfSubjects} (Fraction of patients with this procedure per year.). This is the underlying object with id, value and extensions. The accessor "getFractionOfSubjects" gives direct access to the value
+         */
+        public ClinicalProfileHpoComponent setFractionOfSubjectsElement(DecimalType value) { 
+          this.fractionOfSubjects = value;
+          return this;
+        }
+
+        /**
+         * @return Fraction of patients with this procedure per year.
+         */
+        public BigDecimal getFractionOfSubjects() { 
+          return this.fractionOfSubjects == null ? null : this.fractionOfSubjects.getValue();
+        }
+
+        /**
+         * @param value Fraction of patients with this procedure per year.
+         */
+        public ClinicalProfileHpoComponent setFractionOfSubjects(BigDecimal value) { 
+            if (this.fractionOfSubjects == null)
+              this.fractionOfSubjects = new DecimalType();
+            this.fractionOfSubjects.setValue(value);
+          return this;
+        }
+
+        /**
+         * @param value Fraction of patients with this procedure per year.
+         */
+        public ClinicalProfileHpoComponent setFractionOfSubjects(long value) { 
+              this.fractionOfSubjects = new DecimalType();
+            this.fractionOfSubjects.setValue(value);
+          return this;
+        }
+
+        /**
+         * @param value Fraction of patients with this procedure per year.
+         */
+        public ClinicalProfileHpoComponent setFractionOfSubjects(double value) { 
+              this.fractionOfSubjects = new DecimalType();
+            this.fractionOfSubjects.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #correlatedPhenotypes} (The to N most closely correlated HPO codes.)
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent getCorrelatedPhenotypes() { 
+          if (this.correlatedPhenotypes == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoComponent.correlatedPhenotypes");
+            else if (Configuration.doAutoCreate())
+              this.correlatedPhenotypes = new ClinicalProfileHpoCorrelatedPhenotypesComponent(); // cc
+          return this.correlatedPhenotypes;
+        }
+
+        public boolean hasCorrelatedPhenotypes() { 
+          return this.correlatedPhenotypes != null && !this.correlatedPhenotypes.isEmpty();
+        }
+
+        /**
+         * @param value {@link #correlatedPhenotypes} (The to N most closely correlated HPO codes.)
+         */
+        public ClinicalProfileHpoComponent setCorrelatedPhenotypes(ClinicalProfileHpoCorrelatedPhenotypesComponent value) { 
+          this.correlatedPhenotypes = value;
+          return this;
+        }
+
+        protected void listChildren(List<Property> children) {
+          super.listChildren(children);
+          children.add(new Property("code", "CodeableConcept", "HPO code.", 0, java.lang.Integer.MAX_VALUE, code));
+          children.add(new Property("fractionOfSubjects", "decimal", "Fraction of patients with this procedure per year.", 0, 1, fractionOfSubjects));
+          children.add(new Property("correlatedPhenotypes", "", "The to N most closely correlated HPO codes.", 0, 1, correlatedPhenotypes));
+        }
+
+        @Override
+        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
+          switch (_hash) {
+          case 3059181: /*code*/  return new Property("code", "CodeableConcept", "HPO code.", 0, java.lang.Integer.MAX_VALUE, code);
+          case -254443680: /*fractionOfSubjects*/  return new Property("fractionOfSubjects", "decimal", "Fraction of patients with this procedure per year.", 0, 1, fractionOfSubjects);
+          case 76381968: /*correlatedPhenotypes*/  return new Property("correlatedPhenotypes", "", "The to N most closely correlated HPO codes.", 0, 1, correlatedPhenotypes);
+          default: return super.getNamedProperty(_hash, _name, _checkValid);
+          }
+
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3059181: /*code*/ return this.code == null ? new Base[0] : this.code.toArray(new Base[this.code.size()]); // CodeableConcept
+        case -254443680: /*fractionOfSubjects*/ return this.fractionOfSubjects == null ? new Base[0] : new Base[] {this.fractionOfSubjects}; // DecimalType
+        case 76381968: /*correlatedPhenotypes*/ return this.correlatedPhenotypes == null ? new Base[0] : new Base[] {this.correlatedPhenotypes}; // ClinicalProfileHpoCorrelatedPhenotypesComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3059181: // code
+          this.getCode().add(castToCodeableConcept(value)); // CodeableConcept
+          return value;
+        case -254443680: // fractionOfSubjects
+          this.fractionOfSubjects = castToDecimal(value); // DecimalType
+          return value;
+        case 76381968: // correlatedPhenotypes
+          this.correlatedPhenotypes = (ClinicalProfileHpoCorrelatedPhenotypesComponent) value; // ClinicalProfileHpoCorrelatedPhenotypesComponent
+          return value;
+        default: return super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("code")) {
+          this.getCode().add(castToCodeableConcept(value));
+        } else if (name.equals("fractionOfSubjects")) {
+          this.fractionOfSubjects = castToDecimal(value); // DecimalType
+        } else if (name.equals("correlatedPhenotypes")) {
+          this.correlatedPhenotypes = (ClinicalProfileHpoCorrelatedPhenotypesComponent) value; // ClinicalProfileHpoCorrelatedPhenotypesComponent
+        } else
+          return super.setProperty(name, value);
+        return value;
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3059181:  return addCode(); 
+        case -254443680:  return getFractionOfSubjectsElement();
+        case 76381968:  return getCorrelatedPhenotypes(); 
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3059181: /*code*/ return new String[] {"CodeableConcept"};
+        case -254443680: /*fractionOfSubjects*/ return new String[] {"decimal"};
+        case 76381968: /*correlatedPhenotypes*/ return new String[] {};
+        default: return super.getTypesForProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("code")) {
+          return addCode();
+        }
+        else if (name.equals("fractionOfSubjects")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ClinicalProfile.fractionOfSubjects");
+        }
+        else if (name.equals("correlatedPhenotypes")) {
+          this.correlatedPhenotypes = new ClinicalProfileHpoCorrelatedPhenotypesComponent();
+          return this.correlatedPhenotypes;
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public ClinicalProfileHpoComponent copy() {
+        ClinicalProfileHpoComponent dst = new ClinicalProfileHpoComponent();
+        copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileHpoComponent dst) {
+        super.copyValues(dst);
+        if (code != null) {
+          dst.code = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : code)
+            dst.code.add(i.copy());
+        };
+        dst.fractionOfSubjects = fractionOfSubjects == null ? null : fractionOfSubjects.copy();
+        dst.correlatedPhenotypes = correlatedPhenotypes == null ? null : correlatedPhenotypes.copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
+          return false;
+        if (!(other_ instanceof ClinicalProfileHpoComponent))
+          return false;
+        ClinicalProfileHpoComponent o = (ClinicalProfileHpoComponent) other_;
+        return compareDeep(code, o.code, true) && compareDeep(fractionOfSubjects, o.fractionOfSubjects, true)
+           && compareDeep(correlatedPhenotypes, o.correlatedPhenotypes, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof ClinicalProfileHpoComponent))
+          return false;
+        ClinicalProfileHpoComponent o = (ClinicalProfileHpoComponent) other_;
+        return compareValues(fractionOfSubjects, o.fractionOfSubjects, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(code, fractionOfSubjects, correlatedPhenotypes
+          );
+      }
+
+  public String fhirType() {
+    return "ClinicalProfile.hpo";
+
+  }
+
+  }
+
+    @Block()
+    public static class ClinicalProfileHpoCorrelatedPhenotypesComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * Number of phenotypes cutoff (e.g. top 10).
+         */
+        @Child(name = "topn", type = {IntegerType.class}, order=1, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Number of phenotypes cutoff (e.g. top 10)", formalDefinition="Number of phenotypes cutoff (e.g. top 10)." )
+        protected IntegerType topn;
+
+        /**
+         * Minimum absolute value of correlation coefficient.
+         */
+        @Child(name = "abscorrelation", type = {DecimalType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Minimum absolute value of correlation coefficient", formalDefinition="Minimum absolute value of correlation coefficient." )
+        protected DecimalType abscorrelation;
+
+        /**
+         * Correlation entry.
+         */
+        @Child(name = "entry", type = {}, order=3, min=0, max=1, modifier=false, summary=false)
+        @Description(shortDefinition="Correlation entry", formalDefinition="Correlation entry." )
+        protected ClinicalProfileHpoCorrelatedPhenotypesEntryComponent entry;
+
+        private static final long serialVersionUID = -1521102580L;
+
+    /**
+     * Constructor
+     */
+      public ClinicalProfileHpoCorrelatedPhenotypesComponent() {
+        super();
+      }
+
+        /**
+         * @return {@link #topn} (Number of phenotypes cutoff (e.g. top 10).). This is the underlying object with id, value and extensions. The accessor "getTopn" gives direct access to the value
+         */
+        public IntegerType getTopnElement() { 
+          if (this.topn == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoCorrelatedPhenotypesComponent.topn");
+            else if (Configuration.doAutoCreate())
+              this.topn = new IntegerType(); // bb
+          return this.topn;
+        }
+
+        public boolean hasTopnElement() { 
+          return this.topn != null && !this.topn.isEmpty();
+        }
+
+        public boolean hasTopn() { 
+          return this.topn != null && !this.topn.isEmpty();
+        }
+
+        /**
+         * @param value {@link #topn} (Number of phenotypes cutoff (e.g. top 10).). This is the underlying object with id, value and extensions. The accessor "getTopn" gives direct access to the value
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setTopnElement(IntegerType value) { 
+          this.topn = value;
+          return this;
+        }
+
+        /**
+         * @return Number of phenotypes cutoff (e.g. top 10).
+         */
+        public int getTopn() { 
+          return this.topn == null || this.topn.isEmpty() ? 0 : this.topn.getValue();
+        }
+
+        /**
+         * @param value Number of phenotypes cutoff (e.g. top 10).
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setTopn(int value) { 
+            if (this.topn == null)
+              this.topn = new IntegerType();
+            this.topn.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #abscorrelation} (Minimum absolute value of correlation coefficient.). This is the underlying object with id, value and extensions. The accessor "getAbscorrelation" gives direct access to the value
+         */
+        public DecimalType getAbscorrelationElement() { 
+          if (this.abscorrelation == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoCorrelatedPhenotypesComponent.abscorrelation");
+            else if (Configuration.doAutoCreate())
+              this.abscorrelation = new DecimalType(); // bb
+          return this.abscorrelation;
+        }
+
+        public boolean hasAbscorrelationElement() { 
+          return this.abscorrelation != null && !this.abscorrelation.isEmpty();
+        }
+
+        public boolean hasAbscorrelation() { 
+          return this.abscorrelation != null && !this.abscorrelation.isEmpty();
+        }
+
+        /**
+         * @param value {@link #abscorrelation} (Minimum absolute value of correlation coefficient.). This is the underlying object with id, value and extensions. The accessor "getAbscorrelation" gives direct access to the value
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setAbscorrelationElement(DecimalType value) { 
+          this.abscorrelation = value;
+          return this;
+        }
+
+        /**
+         * @return Minimum absolute value of correlation coefficient.
+         */
+        public BigDecimal getAbscorrelation() { 
+          return this.abscorrelation == null ? null : this.abscorrelation.getValue();
+        }
+
+        /**
+         * @param value Minimum absolute value of correlation coefficient.
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setAbscorrelation(BigDecimal value) { 
+          if (value == null)
+            this.abscorrelation = null;
+          else {
+            if (this.abscorrelation == null)
+              this.abscorrelation = new DecimalType();
+            this.abscorrelation.setValue(value);
+          }
+          return this;
+        }
+
+        /**
+         * @param value Minimum absolute value of correlation coefficient.
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setAbscorrelation(long value) { 
+              this.abscorrelation = new DecimalType();
+            this.abscorrelation.setValue(value);
+          return this;
+        }
+
+        /**
+         * @param value Minimum absolute value of correlation coefficient.
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setAbscorrelation(double value) { 
+              this.abscorrelation = new DecimalType();
+            this.abscorrelation.setValue(value);
+          return this;
+        }
+
+        /**
+         * @return {@link #entry} (Correlation entry.)
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent getEntry() { 
+          if (this.entry == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoCorrelatedPhenotypesComponent.entry");
+            else if (Configuration.doAutoCreate())
+              this.entry = new ClinicalProfileHpoCorrelatedPhenotypesEntryComponent(); // cc
+          return this.entry;
+        }
+
+        public boolean hasEntry() { 
+          return this.entry != null && !this.entry.isEmpty();
+        }
+
+        /**
+         * @param value {@link #entry} (Correlation entry.)
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesComponent setEntry(ClinicalProfileHpoCorrelatedPhenotypesEntryComponent value) { 
+          this.entry = value;
+          return this;
+        }
+
+        protected void listChildren(List<Property> children) {
+          super.listChildren(children);
+          children.add(new Property("topn", "integer", "Number of phenotypes cutoff (e.g. top 10).", 0, 1, topn));
+          children.add(new Property("abscorrelation", "decimal", "Minimum absolute value of correlation coefficient.", 0, 1, abscorrelation));
+          children.add(new Property("entry", "", "Correlation entry.", 0, 1, entry));
+        }
+
+        @Override
+        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
+          switch (_hash) {
+          case 3566009: /*topn*/  return new Property("topn", "integer", "Number of phenotypes cutoff (e.g. top 10).", 0, 1, topn);
+          case -1112161840: /*abscorrelation*/  return new Property("abscorrelation", "decimal", "Minimum absolute value of correlation coefficient.", 0, 1, abscorrelation);
+          case 96667762: /*entry*/  return new Property("entry", "", "Correlation entry.", 0, 1, entry);
+          default: return super.getNamedProperty(_hash, _name, _checkValid);
+          }
+
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3566009: /*topn*/ return this.topn == null ? new Base[0] : new Base[] {this.topn}; // IntegerType
+        case -1112161840: /*abscorrelation*/ return this.abscorrelation == null ? new Base[0] : new Base[] {this.abscorrelation}; // DecimalType
+        case 96667762: /*entry*/ return this.entry == null ? new Base[0] : new Base[] {this.entry}; // ClinicalProfileHpoCorrelatedPhenotypesEntryComponent
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3566009: // topn
+          this.topn = castToInteger(value); // IntegerType
+          return value;
+        case -1112161840: // abscorrelation
+          this.abscorrelation = castToDecimal(value); // DecimalType
+          return value;
+        case 96667762: // entry
+          this.entry = (ClinicalProfileHpoCorrelatedPhenotypesEntryComponent) value; // ClinicalProfileHpoCorrelatedPhenotypesEntryComponent
+          return value;
+        default: return super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("topn")) {
+          this.topn = castToInteger(value); // IntegerType
+        } else if (name.equals("abscorrelation")) {
+          this.abscorrelation = castToDecimal(value); // DecimalType
+        } else if (name.equals("entry")) {
+          this.entry = (ClinicalProfileHpoCorrelatedPhenotypesEntryComponent) value; // ClinicalProfileHpoCorrelatedPhenotypesEntryComponent
+        } else
+          return super.setProperty(name, value);
+        return value;
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3566009:  return getTopnElement();
+        case -1112161840:  return getAbscorrelationElement();
+        case 96667762:  return getEntry(); 
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3566009: /*topn*/ return new String[] {"integer"};
+        case -1112161840: /*abscorrelation*/ return new String[] {"decimal"};
+        case 96667762: /*entry*/ return new String[] {};
+        default: return super.getTypesForProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("topn")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ClinicalProfile.topn");
+        }
+        else if (name.equals("abscorrelation")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ClinicalProfile.abscorrelation");
+        }
+        else if (name.equals("entry")) {
+          this.entry = new ClinicalProfileHpoCorrelatedPhenotypesEntryComponent();
+          return this.entry;
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public ClinicalProfileHpoCorrelatedPhenotypesComponent copy() {
+        ClinicalProfileHpoCorrelatedPhenotypesComponent dst = new ClinicalProfileHpoCorrelatedPhenotypesComponent();
+        copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileHpoCorrelatedPhenotypesComponent dst) {
+        super.copyValues(dst);
+        dst.topn = topn == null ? null : topn.copy();
+        dst.abscorrelation = abscorrelation == null ? null : abscorrelation.copy();
+        dst.entry = entry == null ? null : entry.copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
+          return false;
+        if (!(other_ instanceof ClinicalProfileHpoCorrelatedPhenotypesComponent))
+          return false;
+        ClinicalProfileHpoCorrelatedPhenotypesComponent o = (ClinicalProfileHpoCorrelatedPhenotypesComponent) other_;
+        return compareDeep(topn, o.topn, true) && compareDeep(abscorrelation, o.abscorrelation, true) && compareDeep(entry, o.entry, true)
+          ;
+      }
+
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof ClinicalProfileHpoCorrelatedPhenotypesComponent))
+          return false;
+        ClinicalProfileHpoCorrelatedPhenotypesComponent o = (ClinicalProfileHpoCorrelatedPhenotypesComponent) other_;
+        return compareValues(topn, o.topn, true) && compareValues(abscorrelation, o.abscorrelation, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(topn, abscorrelation, entry
+          );
+      }
+
+  public String fhirType() {
+    return "ClinicalProfile.hpo.correlatedPhenotypes";
+
+  }
+
+  }
+
+    @Block()
+    public static class ClinicalProfileHpoCorrelatedPhenotypesEntryComponent extends BackboneElement implements IBaseBackboneElement {
+        /**
+         * Phenotype codes.
+         */
+        @Child(name = "code", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Phenotype codes", formalDefinition="Phenotype codes." )
+        protected CodeableConcept code;
+
+        /**
+         * Correlation coefficient.
+         */
+        @Child(name = "coefficient", type = {DecimalType.class}, order=2, min=1, max=1, modifier=false, summary=true)
+        @Description(shortDefinition="Correlation coefficient", formalDefinition="Correlation coefficient." )
+        protected DecimalType coefficient;
+
+        private static final long serialVersionUID = 1632628516L;
+
+    /**
+     * Constructor
+     */
+      public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent() {
+        super();
+      }
+
+    /**
+     * Constructor
+     */
+      public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent(CodeableConcept code, DecimalType coefficient) {
+        super();
+        this.code = code;
+        this.coefficient = coefficient;
+      }
+
+        /**
+         * @return {@link #code} (Phenotype codes.)
+         */
+        public CodeableConcept getCode() { 
+          if (this.code == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoCorrelatedPhenotypesEntryComponent.code");
+            else if (Configuration.doAutoCreate())
+              this.code = new CodeableConcept(); // cc
+          return this.code;
+        }
+
+        public boolean hasCode() { 
+          return this.code != null && !this.code.isEmpty();
+        }
+
+        /**
+         * @param value {@link #code} (Phenotype codes.)
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent setCode(CodeableConcept value) { 
+          this.code = value;
+          return this;
+        }
+
+        /**
+         * @return {@link #coefficient} (Correlation coefficient.). This is the underlying object with id, value and extensions. The accessor "getCoefficient" gives direct access to the value
+         */
+        public DecimalType getCoefficientElement() { 
+          if (this.coefficient == null)
+            if (Configuration.errorOnAutoCreate())
+              throw new Error("Attempt to auto-create ClinicalProfileHpoCorrelatedPhenotypesEntryComponent.coefficient");
+            else if (Configuration.doAutoCreate())
+              this.coefficient = new DecimalType(); // bb
+          return this.coefficient;
+        }
+
+        public boolean hasCoefficientElement() { 
+          return this.coefficient != null && !this.coefficient.isEmpty();
+        }
+
+        public boolean hasCoefficient() { 
+          return this.coefficient != null && !this.coefficient.isEmpty();
+        }
+
+        /**
+         * @param value {@link #coefficient} (Correlation coefficient.). This is the underlying object with id, value and extensions. The accessor "getCoefficient" gives direct access to the value
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent setCoefficientElement(DecimalType value) { 
+          this.coefficient = value;
+          return this;
+        }
+
+        /**
+         * @return Correlation coefficient.
+         */
+        public BigDecimal getCoefficient() { 
+          return this.coefficient == null ? null : this.coefficient.getValue();
+        }
+
+        /**
+         * @param value Correlation coefficient.
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent setCoefficient(BigDecimal value) { 
+            if (this.coefficient == null)
+              this.coefficient = new DecimalType();
+            this.coefficient.setValue(value);
+          return this;
+        }
+
+        /**
+         * @param value Correlation coefficient.
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent setCoefficient(long value) { 
+              this.coefficient = new DecimalType();
+            this.coefficient.setValue(value);
+          return this;
+        }
+
+        /**
+         * @param value Correlation coefficient.
+         */
+        public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent setCoefficient(double value) { 
+              this.coefficient = new DecimalType();
+            this.coefficient.setValue(value);
+          return this;
+        }
+
+        protected void listChildren(List<Property> children) {
+          super.listChildren(children);
+          children.add(new Property("code", "CodeableConcept", "Phenotype codes.", 0, 1, code));
+          children.add(new Property("coefficient", "decimal", "Correlation coefficient.", 0, 1, coefficient));
+        }
+
+        @Override
+        public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
+          switch (_hash) {
+          case 3059181: /*code*/  return new Property("code", "CodeableConcept", "Phenotype codes.", 0, 1, code);
+          case 797813045: /*coefficient*/  return new Property("coefficient", "decimal", "Correlation coefficient.", 0, 1, coefficient);
+          default: return super.getNamedProperty(_hash, _name, _checkValid);
+          }
+
+        }
+
+      @Override
+      public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
+        switch (hash) {
+        case 3059181: /*code*/ return this.code == null ? new Base[0] : new Base[] {this.code}; // CodeableConcept
+        case 797813045: /*coefficient*/ return this.coefficient == null ? new Base[0] : new Base[] {this.coefficient}; // DecimalType
+        default: return super.getProperty(hash, name, checkValid);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(int hash, String name, Base value) throws FHIRException {
+        switch (hash) {
+        case 3059181: // code
+          this.code = castToCodeableConcept(value); // CodeableConcept
+          return value;
+        case 797813045: // coefficient
+          this.coefficient = castToDecimal(value); // DecimalType
+          return value;
+        default: return super.setProperty(hash, name, value);
+        }
+
+      }
+
+      @Override
+      public Base setProperty(String name, Base value) throws FHIRException {
+        if (name.equals("code")) {
+          this.code = castToCodeableConcept(value); // CodeableConcept
+        } else if (name.equals("coefficient")) {
+          this.coefficient = castToDecimal(value); // DecimalType
+        } else
+          return super.setProperty(name, value);
+        return value;
+      }
+
+      @Override
+      public Base makeProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3059181:  return getCode(); 
+        case 797813045:  return getCoefficientElement();
+        default: return super.makeProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public String[] getTypesForProperty(int hash, String name) throws FHIRException {
+        switch (hash) {
+        case 3059181: /*code*/ return new String[] {"CodeableConcept"};
+        case 797813045: /*coefficient*/ return new String[] {"decimal"};
+        default: return super.getTypesForProperty(hash, name);
+        }
+
+      }
+
+      @Override
+      public Base addChild(String name) throws FHIRException {
+        if (name.equals("code")) {
+          this.code = new CodeableConcept();
+          return this.code;
+        }
+        else if (name.equals("coefficient")) {
+          throw new FHIRException("Cannot call addChild on a primitive type ClinicalProfile.coefficient");
+        }
+        else
+          return super.addChild(name);
+      }
+
+      public ClinicalProfileHpoCorrelatedPhenotypesEntryComponent copy() {
+        ClinicalProfileHpoCorrelatedPhenotypesEntryComponent dst = new ClinicalProfileHpoCorrelatedPhenotypesEntryComponent();
+        copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfileHpoCorrelatedPhenotypesEntryComponent dst) {
+        super.copyValues(dst);
+        dst.code = code == null ? null : code.copy();
+        dst.coefficient = coefficient == null ? null : coefficient.copy();
+      }
+
+      @Override
+      public boolean equalsDeep(Base other_) {
+        if (!super.equalsDeep(other_))
+          return false;
+        if (!(other_ instanceof ClinicalProfileHpoCorrelatedPhenotypesEntryComponent))
+          return false;
+        ClinicalProfileHpoCorrelatedPhenotypesEntryComponent o = (ClinicalProfileHpoCorrelatedPhenotypesEntryComponent) other_;
+        return compareDeep(code, o.code, true) && compareDeep(coefficient, o.coefficient, true);
+      }
+
+      @Override
+      public boolean equalsShallow(Base other_) {
+        if (!super.equalsShallow(other_))
+          return false;
+        if (!(other_ instanceof ClinicalProfileHpoCorrelatedPhenotypesEntryComponent))
+          return false;
+        ClinicalProfileHpoCorrelatedPhenotypesEntryComponent o = (ClinicalProfileHpoCorrelatedPhenotypesEntryComponent) other_;
+        return compareValues(coefficient, o.coefficient, true);
+      }
+
+      public boolean isEmpty() {
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(code, coefficient);
+      }
+
+  public String fhirType() {
+    return "ClinicalProfile.hpo.correlatedPhenotypes.entry";
 
   }
 
@@ -5553,7 +6491,14 @@ public class ClinicalProfile extends DomainResource {
     @Description(shortDefinition="Procedure profile entry", formalDefinition="Procedure profile entry." )
     protected List<ClinicalProfileProcedureComponent> procedure;
 
-    private static final long serialVersionUID = 4408354L;
+    /**
+     * Procedure profile entry.
+     */
+    @Child(name = "hpo", type = {}, order=11, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+    @Description(shortDefinition="Procedure profile entry", formalDefinition="Procedure profile entry." )
+    protected List<ClinicalProfileHpoComponent> hpo;
+
+    private static final long serialVersionUID = 2068390069L;
 
   /**
    * Constructor
@@ -6112,6 +7057,59 @@ public class ClinicalProfile extends DomainResource {
       return getProcedure().get(0);
     }
 
+    /**
+     * @return {@link #hpo} (Procedure profile entry.)
+     */
+    public List<ClinicalProfileHpoComponent> getHpo() { 
+      if (this.hpo == null)
+        this.hpo = new ArrayList<ClinicalProfileHpoComponent>();
+      return this.hpo;
+    }
+
+    /**
+     * @return Returns a reference to <code>this</code> for easy method chaining
+     */
+    public ClinicalProfile setHpo(List<ClinicalProfileHpoComponent> theHpo) { 
+      this.hpo = theHpo;
+      return this;
+    }
+
+    public boolean hasHpo() { 
+      if (this.hpo == null)
+        return false;
+      for (ClinicalProfileHpoComponent item : this.hpo)
+        if (!item.isEmpty())
+          return true;
+      return false;
+    }
+
+    public ClinicalProfileHpoComponent addHpo() { //3
+      ClinicalProfileHpoComponent t = new ClinicalProfileHpoComponent();
+      if (this.hpo == null)
+        this.hpo = new ArrayList<ClinicalProfileHpoComponent>();
+      this.hpo.add(t);
+      return t;
+    }
+
+    public ClinicalProfile addHpo(ClinicalProfileHpoComponent t) { //3
+      if (t == null)
+        return this;
+      if (this.hpo == null)
+        this.hpo = new ArrayList<ClinicalProfileHpoComponent>();
+      this.hpo.add(t);
+      return this;
+    }
+
+    /**
+     * @return The first repetition of repeating field {@link #hpo}, creating it if it does not already exist
+     */
+    public ClinicalProfileHpoComponent getHpoFirstRep() { 
+      if (getHpo().isEmpty()) {
+        addHpo();
+      }
+      return getHpo().get(0);
+    }
+
       protected void listChildren(List<Property> children) {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "A formal identifier that is used to identify this ClinicalProfile when it is represented in other formats or referenced in a specification, model, design or an instance.", 0, java.lang.Integer.MAX_VALUE, identifier));
@@ -6125,6 +7123,7 @@ public class ClinicalProfile extends DomainResource {
         children.add(new Property("medication", "", "Medication profile entry.", 0, java.lang.Integer.MAX_VALUE, medication));
         children.add(new Property("diagnosis", "", "Diagnosis profile entry.", 0, java.lang.Integer.MAX_VALUE, diagnosis));
         children.add(new Property("procedure", "", "Procedure profile entry.", 0, java.lang.Integer.MAX_VALUE, procedure));
+        children.add(new Property("hpo", "", "Procedure profile entry.", 0, java.lang.Integer.MAX_VALUE, hpo));
       }
 
       @Override
@@ -6141,6 +7140,7 @@ public class ClinicalProfile extends DomainResource {
         case 1998965455: /*medication*/  return new Property("medication", "", "Medication profile entry.", 0, java.lang.Integer.MAX_VALUE, medication);
         case 1196993265: /*diagnosis*/  return new Property("diagnosis", "", "Diagnosis profile entry.", 0, java.lang.Integer.MAX_VALUE, diagnosis);
         case -1095204141: /*procedure*/  return new Property("procedure", "", "Procedure profile entry.", 0, java.lang.Integer.MAX_VALUE, procedure);
+        case 103527: /*hpo*/  return new Property("hpo", "", "Procedure profile entry.", 0, java.lang.Integer.MAX_VALUE, hpo);
         default: return super.getNamedProperty(_hash, _name, _checkValid);
         }
 
@@ -6160,6 +7160,7 @@ public class ClinicalProfile extends DomainResource {
         case 1998965455: /*medication*/ return this.medication == null ? new Base[0] : this.medication.toArray(new Base[this.medication.size()]); // ClinicalProfileMedicationComponent
         case 1196993265: /*diagnosis*/ return this.diagnosis == null ? new Base[0] : this.diagnosis.toArray(new Base[this.diagnosis.size()]); // ClinicalProfileDiagnosisComponent
         case -1095204141: /*procedure*/ return this.procedure == null ? new Base[0] : this.procedure.toArray(new Base[this.procedure.size()]); // ClinicalProfileProcedureComponent
+        case 103527: /*hpo*/ return this.hpo == null ? new Base[0] : this.hpo.toArray(new Base[this.hpo.size()]); // ClinicalProfileHpoComponent
         default: return super.getProperty(hash, name, checkValid);
         }
 
@@ -6202,6 +7203,9 @@ public class ClinicalProfile extends DomainResource {
         case -1095204141: // procedure
           this.getProcedure().add((ClinicalProfileProcedureComponent) value); // ClinicalProfileProcedureComponent
           return value;
+        case 103527: // hpo
+          this.getHpo().add((ClinicalProfileHpoComponent) value); // ClinicalProfileHpoComponent
+          return value;
         default: return super.setProperty(hash, name, value);
         }
 
@@ -6232,6 +7236,8 @@ public class ClinicalProfile extends DomainResource {
           this.getDiagnosis().add((ClinicalProfileDiagnosisComponent) value);
         } else if (name.equals("procedure")) {
           this.getProcedure().add((ClinicalProfileProcedureComponent) value);
+        } else if (name.equals("hpo")) {
+          this.getHpo().add((ClinicalProfileHpoComponent) value);
         } else
           return super.setProperty(name, value);
         return value;
@@ -6251,6 +7257,7 @@ public class ClinicalProfile extends DomainResource {
         case 1998965455:  return addMedication(); 
         case 1196993265:  return addDiagnosis(); 
         case -1095204141:  return addProcedure(); 
+        case 103527:  return addHpo(); 
         default: return super.makeProperty(hash, name);
         }
 
@@ -6270,6 +7277,7 @@ public class ClinicalProfile extends DomainResource {
         case 1998965455: /*medication*/ return new String[] {};
         case 1196993265: /*diagnosis*/ return new String[] {};
         case -1095204141: /*procedure*/ return new String[] {};
+        case 103527: /*hpo*/ return new String[] {};
         default: return super.getTypesForProperty(hash, name);
         }
 
@@ -6313,6 +7321,9 @@ public class ClinicalProfile extends DomainResource {
         else if (name.equals("procedure")) {
           return addProcedure();
         }
+        else if (name.equals("hpo")) {
+          return addHpo();
+        }
         else
           return super.addChild(name);
       }
@@ -6325,6 +7336,11 @@ public class ClinicalProfile extends DomainResource {
       public ClinicalProfile copy() {
         ClinicalProfile dst = new ClinicalProfile();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ClinicalProfile dst) {
+        super.copyValues(dst);
         if (identifier != null) {
           dst.identifier = new ArrayList<Identifier>();
           for (Identifier i : identifier)
@@ -6360,7 +7376,11 @@ public class ClinicalProfile extends DomainResource {
           for (ClinicalProfileProcedureComponent i : procedure)
             dst.procedure.add(i.copy());
         };
-        return dst;
+        if (hpo != null) {
+          dst.hpo = new ArrayList<ClinicalProfileHpoComponent>();
+          for (ClinicalProfileHpoComponent i : hpo)
+            dst.hpo.add(i.copy());
+        };
       }
 
       protected ClinicalProfile typedCopy() {
@@ -6377,7 +7397,8 @@ public class ClinicalProfile extends DomainResource {
         return compareDeep(identifier, o.identifier, true) && compareDeep(status, o.status, true) && compareDeep(population, o.population, true)
            && compareDeep(cohort, o.cohort, true) && compareDeep(date, o.date, true) && compareDeep(source, o.source, true)
            && compareDeep(reporter, o.reporter, true) && compareDeep(lab, o.lab, true) && compareDeep(medication, o.medication, true)
-           && compareDeep(diagnosis, o.diagnosis, true) && compareDeep(procedure, o.procedure, true);
+           && compareDeep(diagnosis, o.diagnosis, true) && compareDeep(procedure, o.procedure, true) && compareDeep(hpo, o.hpo, true)
+          ;
       }
 
       @Override
@@ -6392,7 +7413,8 @@ public class ClinicalProfile extends DomainResource {
 
       public boolean isEmpty() {
         return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(identifier, status, population
-          , cohort, date, source, reporter, lab, medication, diagnosis, procedure);
+          , cohort, date, source, reporter, lab, medication, diagnosis, procedure, hpo
+          );
       }
 
   @Override
@@ -6448,7 +7470,7 @@ public class ClinicalProfile extends DomainResource {
    * Path: <b>ClinicalProfile.cohort</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="cohort", path="ClinicalProfile.cohort.where(resolve() is Group)", description="The cohort being profiled", type="reference", target={Group.class } )
+  @SearchParamDefinition(name="cohort", path="ClinicalProfile.cohort", description="The cohort being profiled", type="reference", target={Group.class } )
   public static final String SP_COHORT = "cohort";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>cohort</b>
@@ -6500,7 +7522,7 @@ public class ClinicalProfile extends DomainResource {
    * Path: <b>ClinicalProfile.population</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="population", path="ClinicalProfile.population.where(resolve() is Group)", description="The  population being profiled", type="reference", target={Group.class } )
+  @SearchParamDefinition(name="population", path="ClinicalProfile.population", description="The  population being profiled", type="reference", target={Group.class } )
   public static final String SP_POPULATION = "population";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>population</b>
