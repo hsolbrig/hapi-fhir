@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Thu, Feb 14, 2019 17:58-0600 for FHIR v4.0.0
 
 import java.util.*;
 
@@ -6272,10 +6272,14 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDependsOnComponent copy() {
         ImplementationGuideDependsOnComponent dst = new ImplementationGuideDependsOnComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDependsOnComponent dst) {
+        super.copyValues(dst);
         dst.uri = uri == null ? null : uri.copy();
         dst.packageId = packageId == null ? null : packageId.copy();
         dst.version = version == null ? null : version.copy();
-        return dst;
       }
 
       @Override
@@ -6522,9 +6526,13 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideGlobalComponent copy() {
         ImplementationGuideGlobalComponent dst = new ImplementationGuideGlobalComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideGlobalComponent dst) {
+        super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.profile = profile == null ? null : profile.copy();
-        return dst;
       }
 
       @Override
@@ -6966,6 +6974,11 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDefinitionComponent copy() {
         ImplementationGuideDefinitionComponent dst = new ImplementationGuideDefinitionComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDefinitionComponent dst) {
+        super.copyValues(dst);
         if (grouping != null) {
           dst.grouping = new ArrayList<ImplementationGuideDefinitionGroupingComponent>();
           for (ImplementationGuideDefinitionGroupingComponent i : grouping)
@@ -6987,7 +7000,6 @@ public class ImplementationGuide extends MetadataResource {
           for (ImplementationGuideDefinitionTemplateComponent i : template)
             dst.template.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -7236,9 +7248,13 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDefinitionGroupingComponent copy() {
         ImplementationGuideDefinitionGroupingComponent dst = new ImplementationGuideDefinitionGroupingComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDefinitionGroupingComponent dst) {
+        super.copyValues(dst);
         dst.name = name == null ? null : name.copy();
         dst.description = description == null ? null : description.copy();
-        return dst;
       }
 
       @Override
@@ -7787,6 +7803,11 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDefinitionResourceComponent copy() {
         ImplementationGuideDefinitionResourceComponent dst = new ImplementationGuideDefinitionResourceComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDefinitionResourceComponent dst) {
+        super.copyValues(dst);
         dst.reference = reference == null ? null : reference.copy();
         if (fhirVersion != null) {
           dst.fhirVersion = new ArrayList<Enumeration<FHIRVersion>>();
@@ -7797,7 +7818,6 @@ public class ImplementationGuide extends MetadataResource {
         dst.description = description == null ? null : description.copy();
         dst.example = example == null ? null : example.copy();
         dst.groupingId = groupingId == null ? null : groupingId.copy();
-        return dst;
       }
 
       @Override
@@ -8202,6 +8222,11 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDefinitionPageComponent copy() {
         ImplementationGuideDefinitionPageComponent dst = new ImplementationGuideDefinitionPageComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDefinitionPageComponent dst) {
+        super.copyValues(dst);
         dst.name = name == null ? null : name.copy();
         dst.title = title == null ? null : title.copy();
         dst.generation = generation == null ? null : generation.copy();
@@ -8210,7 +8235,6 @@ public class ImplementationGuide extends MetadataResource {
           for (ImplementationGuideDefinitionPageComponent i : page)
             dst.page.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -8459,9 +8483,13 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDefinitionParameterComponent copy() {
         ImplementationGuideDefinitionParameterComponent dst = new ImplementationGuideDefinitionParameterComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDefinitionParameterComponent dst) {
+        super.copyValues(dst);
         dst.code = code == null ? null : code.copy();
         dst.value = value == null ? null : value.copy();
-        return dst;
       }
 
       @Override
@@ -8774,10 +8802,14 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideDefinitionTemplateComponent copy() {
         ImplementationGuideDefinitionTemplateComponent dst = new ImplementationGuideDefinitionTemplateComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideDefinitionTemplateComponent dst) {
+        super.copyValues(dst);
         dst.code = code == null ? null : code.copy();
         dst.source = source == null ? null : source.copy();
         dst.scope = scope == null ? null : scope.copy();
-        return dst;
       }
 
       @Override
@@ -9261,6 +9293,11 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuideManifestComponent copy() {
         ImplementationGuideManifestComponent dst = new ImplementationGuideManifestComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuideManifestComponent dst) {
+        super.copyValues(dst);
         dst.rendering = rendering == null ? null : rendering.copy();
         if (resource != null) {
           dst.resource = new ArrayList<ManifestResourceComponent>();
@@ -9282,7 +9319,6 @@ public class ImplementationGuide extends MetadataResource {
           for (StringType i : other)
             dst.other.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -9612,10 +9648,14 @@ public class ImplementationGuide extends MetadataResource {
       public ManifestResourceComponent copy() {
         ManifestResourceComponent dst = new ManifestResourceComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ManifestResourceComponent dst) {
+        super.copyValues(dst);
         dst.reference = reference == null ? null : reference.copy();
         dst.example = example == null ? null : example.copy();
         dst.relativePath = relativePath == null ? null : relativePath.copy();
-        return dst;
       }
 
       @Override
@@ -9945,6 +9985,11 @@ public class ImplementationGuide extends MetadataResource {
       public ManifestPageComponent copy() {
         ManifestPageComponent dst = new ManifestPageComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ManifestPageComponent dst) {
+        super.copyValues(dst);
         dst.name = name == null ? null : name.copy();
         dst.title = title == null ? null : title.copy();
         if (anchor != null) {
@@ -9952,7 +9997,6 @@ public class ImplementationGuide extends MetadataResource {
           for (StringType i : anchor)
             dst.anchor.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -10011,10 +10055,10 @@ public class ImplementationGuide extends MetadataResource {
     protected Enumeration<SPDXLicense> license;
 
     /**
-     * The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.
+     * The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.
      */
     @Child(name = "fhirVersion", type = {CodeType.class}, order=3, min=1, max=Child.MAX_UNLIMITED, modifier=false, summary=true)
-    @Description(shortDefinition="FHIR Version(s) this Implementation Guide targets", formalDefinition="The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version." )
+    @Description(shortDefinition="FHIR Version(s) this Implementation Guide targets", formalDefinition="The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/FHIR-version")
     protected List<Enumeration<FHIRVersion>> fhirVersion;
 
@@ -10794,7 +10838,7 @@ public class ImplementationGuide extends MetadataResource {
     }
 
     /**
-     * @return {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.)
+     * @return {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.)
      */
     public List<Enumeration<FHIRVersion>> getFhirVersion() { 
       if (this.fhirVersion == null)
@@ -10820,7 +10864,7 @@ public class ImplementationGuide extends MetadataResource {
     }
 
     /**
-     * @return {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.)
+     * @return {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.)
      */
     public Enumeration<FHIRVersion> addFhirVersionElement() {//2 
       Enumeration<FHIRVersion> t = new Enumeration<FHIRVersion>(new FHIRVersionEnumFactory());
@@ -10831,7 +10875,7 @@ public class ImplementationGuide extends MetadataResource {
     }
 
     /**
-     * @param value {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.)
+     * @param value {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.)
      */
     public ImplementationGuide addFhirVersion(FHIRVersion value) { //1
       Enumeration<FHIRVersion> t = new Enumeration<FHIRVersion>(new FHIRVersionEnumFactory());
@@ -10843,7 +10887,7 @@ public class ImplementationGuide extends MetadataResource {
     }
 
     /**
-     * @param value {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.)
+     * @param value {@link #fhirVersion} (The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.)
      */
     public boolean hasFhirVersion(FHIRVersion value) { 
       if (this.fhirVersion == null)
@@ -11025,7 +11069,7 @@ public class ImplementationGuide extends MetadataResource {
         children.add(new Property("copyright", "markdown", "A copyright statement relating to the implementation guide and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the implementation guide.", 0, 1, copyright));
         children.add(new Property("packageId", "id", "The NPM package name for this Implementation Guide, used in the NPM package distribution, which is the primary mechanism by which FHIR based tooling manages IG dependencies. This value must be globally unique, and should be assigned with care.", 0, 1, packageId));
         children.add(new Property("license", "code", "The license that applies to this Implementation Guide, using an SPDX license code, or 'not-open-source'.", 0, 1, license));
-        children.add(new Property("fhirVersion", "code", "The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.", 0, java.lang.Integer.MAX_VALUE, fhirVersion));
+        children.add(new Property("fhirVersion", "code", "The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.", 0, java.lang.Integer.MAX_VALUE, fhirVersion));
         children.add(new Property("dependsOn", "", "Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.", 0, java.lang.Integer.MAX_VALUE, dependsOn));
         children.add(new Property("global", "", "A set of profiles that all resources covered by this implementation guide must conform to.", 0, java.lang.Integer.MAX_VALUE, global));
         children.add(new Property("definition", "", "The information needed by an IG publisher tool to publish the whole implementation guide.", 0, 1, definition));
@@ -11050,7 +11094,7 @@ public class ImplementationGuide extends MetadataResource {
         case 1522889671: /*copyright*/  return new Property("copyright", "markdown", "A copyright statement relating to the implementation guide and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the implementation guide.", 0, 1, copyright);
         case 1802060801: /*packageId*/  return new Property("packageId", "id", "The NPM package name for this Implementation Guide, used in the NPM package distribution, which is the primary mechanism by which FHIR based tooling manages IG dependencies. This value must be globally unique, and should be assigned with care.", 0, 1, packageId);
         case 166757441: /*license*/  return new Property("license", "code", "The license that applies to this Implementation Guide, using an SPDX license code, or 'not-open-source'.", 0, 1, license);
-        case 461006061: /*fhirVersion*/  return new Property("fhirVersion", "code", "The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 3.6.0. for this version.", 0, java.lang.Integer.MAX_VALUE, fhirVersion);
+        case 461006061: /*fhirVersion*/  return new Property("fhirVersion", "code", "The version(s) of the FHIR specification that this ImplementationGuide targets - e.g. describes how to use. The value of this element is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 4.0.0. for this version.", 0, java.lang.Integer.MAX_VALUE, fhirVersion);
         case -1109214266: /*dependsOn*/  return new Property("dependsOn", "", "Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides.", 0, java.lang.Integer.MAX_VALUE, dependsOn);
         case -1243020381: /*global*/  return new Property("global", "", "A set of profiles that all resources covered by this implementation guide must conform to.", 0, java.lang.Integer.MAX_VALUE, global);
         case -1014418093: /*definition*/  return new Property("definition", "", "The information needed by an IG publisher tool to publish the whole implementation guide.", 0, 1, definition);
@@ -11341,6 +11385,11 @@ public class ImplementationGuide extends MetadataResource {
       public ImplementationGuide copy() {
         ImplementationGuide dst = new ImplementationGuide();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ImplementationGuide dst) {
+        super.copyValues(dst);
         dst.url = url == null ? null : url.copy();
         dst.version = version == null ? null : version.copy();
         dst.name = name == null ? null : name.copy();
@@ -11385,7 +11434,6 @@ public class ImplementationGuide extends MetadataResource {
         };
         dst.definition = definition == null ? null : definition.copy();
         dst.manifest = manifest == null ? null : manifest.copy();
-        return dst;
       }
 
       protected ImplementationGuide typedCopy() {

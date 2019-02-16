@@ -18,7 +18,6 @@
   
   
   <ActiveSheet>3</ActiveSheet>
-  <RefModeR1C1/>
   <ProtectStructure>False</ProtectStructure>
   <ProtectWindows>False</ProtectWindows>
  </ExcelWorkbook>
@@ -4148,7 +4147,7 @@
     <Cell ss:StyleID="s88"/>
     <Cell ss:StyleID="s118"><Data ss:Type="String">Group.characteristic.value[x]</Data></Cell>
     <Cell ss:StyleID="s119"/>
-    <Cell><Data ss:Type="String">Group.characteristic.value as CodeableConcept | Group.characteristic.value as boolean</Data></Cell>
+    <Cell><Data ss:Type="String">(Group.characteristic.value as CodeableConcept) | (Group.characteristic.value as boolean)</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"><Data ss:Type="String">exclude</Data></Cell>
@@ -4173,11 +4172,11 @@
     <Cell ss:StyleID="s119"/>
    </Row>
    <Row ss:AutoFitHeight="0">
-    <Cell ss:StyleID="s117"/>
+    <Cell ss:StyleID="s117"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s88"><Data ss:Type="String">token</Data></Cell>
     <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s88"/>
-    <Cell ss:StyleID="s118"/>
-    <Cell ss:StyleID="s119"/>
+    <Cell ss:StyleID="s118"><Data ss:Type="String">Group.name</Data></Cell>
+    <Cell ss:StyleID="s119"><Data ss:Type="String">The Text of the group name</Data></Cell>
    </Row>
    <Row ss:AutoFitHeight="0">
     <Cell ss:StyleID="s117"/>

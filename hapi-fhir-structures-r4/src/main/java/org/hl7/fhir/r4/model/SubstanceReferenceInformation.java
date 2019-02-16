@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Thu, Feb 14, 2019 17:58-0600 for FHIR v4.0.0
 
 import java.util.*;
 
@@ -309,6 +309,11 @@ public class SubstanceReferenceInformation extends DomainResource {
       public SubstanceReferenceInformationGeneComponent copy() {
         SubstanceReferenceInformationGeneComponent dst = new SubstanceReferenceInformationGeneComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SubstanceReferenceInformationGeneComponent dst) {
+        super.copyValues(dst);
         dst.geneSequenceOrigin = geneSequenceOrigin == null ? null : geneSequenceOrigin.copy();
         dst.gene = gene == null ? null : gene.copy();
         if (source != null) {
@@ -316,7 +321,6 @@ public class SubstanceReferenceInformation extends DomainResource {
           for (Reference i : source)
             dst.source.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -613,6 +617,11 @@ public class SubstanceReferenceInformation extends DomainResource {
       public SubstanceReferenceInformationGeneElementComponent copy() {
         SubstanceReferenceInformationGeneElementComponent dst = new SubstanceReferenceInformationGeneElementComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SubstanceReferenceInformationGeneElementComponent dst) {
+        super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.element = element == null ? null : element.copy();
         if (source != null) {
@@ -620,7 +629,6 @@ public class SubstanceReferenceInformation extends DomainResource {
           for (Reference i : source)
             dst.source.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -989,6 +997,11 @@ public class SubstanceReferenceInformation extends DomainResource {
       public SubstanceReferenceInformationClassificationComponent copy() {
         SubstanceReferenceInformationClassificationComponent dst = new SubstanceReferenceInformationClassificationComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SubstanceReferenceInformationClassificationComponent dst) {
+        super.copyValues(dst);
         dst.domain = domain == null ? null : domain.copy();
         dst.classification = classification == null ? null : classification.copy();
         if (subtype != null) {
@@ -1001,7 +1014,6 @@ public class SubstanceReferenceInformation extends DomainResource {
           for (Reference i : source)
             dst.source.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -1578,6 +1590,11 @@ public class SubstanceReferenceInformation extends DomainResource {
       public SubstanceReferenceInformationTargetComponent copy() {
         SubstanceReferenceInformationTargetComponent dst = new SubstanceReferenceInformationTargetComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SubstanceReferenceInformationTargetComponent dst) {
+        super.copyValues(dst);
         dst.target = target == null ? null : target.copy();
         dst.type = type == null ? null : type.copy();
         dst.interaction = interaction == null ? null : interaction.copy();
@@ -1590,7 +1607,6 @@ public class SubstanceReferenceInformation extends DomainResource {
           for (Reference i : source)
             dst.source.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -2062,6 +2078,11 @@ public class SubstanceReferenceInformation extends DomainResource {
       public SubstanceReferenceInformation copy() {
         SubstanceReferenceInformation dst = new SubstanceReferenceInformation();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SubstanceReferenceInformation dst) {
+        super.copyValues(dst);
         dst.comment = comment == null ? null : comment.copy();
         if (gene != null) {
           dst.gene = new ArrayList<SubstanceReferenceInformationGeneComponent>();
@@ -2083,7 +2104,6 @@ public class SubstanceReferenceInformation extends DomainResource {
           for (SubstanceReferenceInformationTargetComponent i : target)
             dst.target.add(i.copy());
         };
-        return dst;
       }
 
       protected SubstanceReferenceInformation typedCopy() {

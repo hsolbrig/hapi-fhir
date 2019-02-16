@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Thu, Feb 14, 2019 17:58-0600 for FHIR v4.0.0
 
 import java.util.*;
 
@@ -638,10 +638,14 @@ public class ExplanationOfBenefit extends DomainResource {
       public RelatedClaimComponent copy() {
         RelatedClaimComponent dst = new RelatedClaimComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(RelatedClaimComponent dst) {
+        super.copyValues(dst);
         dst.claim = claim == null ? null : claim.copy();
         dst.relationship = relationship == null ? null : relationship.copy();
         dst.reference = reference == null ? null : reference.copy();
-        return dst;
       }
 
       @Override
@@ -859,9 +863,13 @@ public class ExplanationOfBenefit extends DomainResource {
       public PayeeComponent copy() {
         PayeeComponent dst = new PayeeComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(PayeeComponent dst) {
+        super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.party = party == null ? null : party.copy();
-        return dst;
       }
 
       @Override
@@ -1262,12 +1270,16 @@ public class ExplanationOfBenefit extends DomainResource {
       public CareTeamComponent copy() {
         CareTeamComponent dst = new CareTeamComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(CareTeamComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
         dst.provider = provider == null ? null : provider.copy();
         dst.responsible = responsible == null ? null : responsible.copy();
         dst.role = role == null ? null : role.copy();
         dst.qualification = qualification == null ? null : qualification.copy();
-        return dst;
       }
 
       @Override
@@ -1807,13 +1819,17 @@ public class ExplanationOfBenefit extends DomainResource {
       public SupportingInformationComponent copy() {
         SupportingInformationComponent dst = new SupportingInformationComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SupportingInformationComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
         dst.category = category == null ? null : category.copy();
         dst.code = code == null ? null : code.copy();
         dst.timing = timing == null ? null : timing.copy();
         dst.value = value == null ? null : value.copy();
         dst.reason = reason == null ? null : reason.copy();
-        return dst;
       }
 
       @Override
@@ -2242,6 +2258,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public DiagnosisComponent copy() {
         DiagnosisComponent dst = new DiagnosisComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(DiagnosisComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
         dst.diagnosis = diagnosis == null ? null : diagnosis.copy();
         if (type != null) {
@@ -2251,7 +2272,6 @@ public class ExplanationOfBenefit extends DomainResource {
         };
         dst.onAdmission = onAdmission == null ? null : onAdmission.copy();
         dst.packageCode = packageCode == null ? null : packageCode.copy();
-        return dst;
       }
 
       @Override
@@ -2298,16 +2318,24 @@ public class ExplanationOfBenefit extends DomainResource {
         protected PositiveIntType sequence;
 
         /**
+         * When the condition was observed or the relative ranking.
+         */
+        @Child(name = "type", type = {CodeableConcept.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Description(shortDefinition="Category of Procedure", formalDefinition="When the condition was observed or the relative ranking." )
+        @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/ex-procedure-type")
+        protected List<CodeableConcept> type;
+
+        /**
          * Date and optionally time the procedure was performed.
          */
-        @Child(name = "date", type = {DateTimeType.class}, order=2, min=0, max=1, modifier=false, summary=false)
+        @Child(name = "date", type = {DateTimeType.class}, order=3, min=0, max=1, modifier=false, summary=false)
         @Description(shortDefinition="When the procedure was performed", formalDefinition="Date and optionally time the procedure was performed." )
         protected DateTimeType date;
 
         /**
          * The code or reference to a Procedure resource which identifies the clinical intervention performed.
          */
-        @Child(name = "procedure", type = {CodeableConcept.class, Procedure.class}, order=3, min=1, max=1, modifier=false, summary=false)
+        @Child(name = "procedure", type = {CodeableConcept.class, Procedure.class}, order=4, min=1, max=1, modifier=false, summary=false)
         @Description(shortDefinition="Specific clinical procedure", formalDefinition="The code or reference to a Procedure resource which identifies the clinical intervention performed." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/icd-10-procedures")
         protected Type procedure;
@@ -2315,7 +2343,7 @@ public class ExplanationOfBenefit extends DomainResource {
         /**
          * Unique Device Identifiers associated with this line item.
          */
-        @Child(name = "udi", type = {Device.class}, order=4, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
+        @Child(name = "udi", type = {Device.class}, order=5, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
         @Description(shortDefinition="Unique device identifier", formalDefinition="Unique Device Identifiers associated with this line item." )
         protected List<Reference> udi;
         /**
@@ -2324,7 +2352,7 @@ public class ExplanationOfBenefit extends DomainResource {
         protected List<Device> udiTarget;
 
 
-        private static final long serialVersionUID = 1103767231L;
+        private static final long serialVersionUID = 935341852L;
 
     /**
      * Constructor
@@ -2385,6 +2413,59 @@ public class ExplanationOfBenefit extends DomainResource {
               this.sequence = new PositiveIntType();
             this.sequence.setValue(value);
           return this;
+        }
+
+        /**
+         * @return {@link #type} (When the condition was observed or the relative ranking.)
+         */
+        public List<CodeableConcept> getType() { 
+          if (this.type == null)
+            this.type = new ArrayList<CodeableConcept>();
+          return this.type;
+        }
+
+        /**
+         * @return Returns a reference to <code>this</code> for easy method chaining
+         */
+        public ProcedureComponent setType(List<CodeableConcept> theType) { 
+          this.type = theType;
+          return this;
+        }
+
+        public boolean hasType() { 
+          if (this.type == null)
+            return false;
+          for (CodeableConcept item : this.type)
+            if (!item.isEmpty())
+              return true;
+          return false;
+        }
+
+        public CodeableConcept addType() { //3
+          CodeableConcept t = new CodeableConcept();
+          if (this.type == null)
+            this.type = new ArrayList<CodeableConcept>();
+          this.type.add(t);
+          return t;
+        }
+
+        public ProcedureComponent addType(CodeableConcept t) { //3
+          if (t == null)
+            return this;
+          if (this.type == null)
+            this.type = new ArrayList<CodeableConcept>();
+          this.type.add(t);
+          return this;
+        }
+
+        /**
+         * @return The first repetition of repeating field {@link #type}, creating it if it does not already exist
+         */
+        public CodeableConcept getTypeFirstRep() { 
+          if (getType().isEmpty()) {
+            addType();
+          }
+          return getType().get(0);
         }
 
         /**
@@ -2565,6 +2646,7 @@ public class ExplanationOfBenefit extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("sequence", "positiveInt", "A number to uniquely identify procedure entries.", 0, 1, sequence));
+          children.add(new Property("type", "CodeableConcept", "When the condition was observed or the relative ranking.", 0, java.lang.Integer.MAX_VALUE, type));
           children.add(new Property("date", "dateTime", "Date and optionally time the procedure was performed.", 0, 1, date));
           children.add(new Property("procedure[x]", "CodeableConcept|Reference(Procedure)", "The code or reference to a Procedure resource which identifies the clinical intervention performed.", 0, 1, procedure));
           children.add(new Property("udi", "Reference(Device)", "Unique Device Identifiers associated with this line item.", 0, java.lang.Integer.MAX_VALUE, udi));
@@ -2574,6 +2656,7 @@ public class ExplanationOfBenefit extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 1349547969: /*sequence*/  return new Property("sequence", "positiveInt", "A number to uniquely identify procedure entries.", 0, 1, sequence);
+          case 3575610: /*type*/  return new Property("type", "CodeableConcept", "When the condition was observed or the relative ranking.", 0, java.lang.Integer.MAX_VALUE, type);
           case 3076014: /*date*/  return new Property("date", "dateTime", "Date and optionally time the procedure was performed.", 0, 1, date);
           case 1640074445: /*procedure[x]*/  return new Property("procedure[x]", "CodeableConcept|Reference(Procedure)", "The code or reference to a Procedure resource which identifies the clinical intervention performed.", 0, 1, procedure);
           case -1095204141: /*procedure*/  return new Property("procedure[x]", "CodeableConcept|Reference(Procedure)", "The code or reference to a Procedure resource which identifies the clinical intervention performed.", 0, 1, procedure);
@@ -2589,6 +2672,7 @@ public class ExplanationOfBenefit extends DomainResource {
       public Base[] getProperty(int hash, String name, boolean checkValid) throws FHIRException {
         switch (hash) {
         case 1349547969: /*sequence*/ return this.sequence == null ? new Base[0] : new Base[] {this.sequence}; // PositiveIntType
+        case 3575610: /*type*/ return this.type == null ? new Base[0] : this.type.toArray(new Base[this.type.size()]); // CodeableConcept
         case 3076014: /*date*/ return this.date == null ? new Base[0] : new Base[] {this.date}; // DateTimeType
         case -1095204141: /*procedure*/ return this.procedure == null ? new Base[0] : new Base[] {this.procedure}; // Type
         case 115642: /*udi*/ return this.udi == null ? new Base[0] : this.udi.toArray(new Base[this.udi.size()]); // Reference
@@ -2602,6 +2686,9 @@ public class ExplanationOfBenefit extends DomainResource {
         switch (hash) {
         case 1349547969: // sequence
           this.sequence = castToPositiveInt(value); // PositiveIntType
+          return value;
+        case 3575610: // type
+          this.getType().add(castToCodeableConcept(value)); // CodeableConcept
           return value;
         case 3076014: // date
           this.date = castToDateTime(value); // DateTimeType
@@ -2621,6 +2708,8 @@ public class ExplanationOfBenefit extends DomainResource {
       public Base setProperty(String name, Base value) throws FHIRException {
         if (name.equals("sequence")) {
           this.sequence = castToPositiveInt(value); // PositiveIntType
+        } else if (name.equals("type")) {
+          this.getType().add(castToCodeableConcept(value));
         } else if (name.equals("date")) {
           this.date = castToDateTime(value); // DateTimeType
         } else if (name.equals("procedure[x]")) {
@@ -2636,6 +2725,7 @@ public class ExplanationOfBenefit extends DomainResource {
       public Base makeProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 1349547969:  return getSequenceElement();
+        case 3575610:  return addType(); 
         case 3076014:  return getDateElement();
         case 1640074445:  return getProcedure(); 
         case -1095204141:  return getProcedure(); 
@@ -2649,6 +2739,7 @@ public class ExplanationOfBenefit extends DomainResource {
       public String[] getTypesForProperty(int hash, String name) throws FHIRException {
         switch (hash) {
         case 1349547969: /*sequence*/ return new String[] {"positiveInt"};
+        case 3575610: /*type*/ return new String[] {"CodeableConcept"};
         case 3076014: /*date*/ return new String[] {"dateTime"};
         case -1095204141: /*procedure*/ return new String[] {"CodeableConcept", "Reference"};
         case 115642: /*udi*/ return new String[] {"Reference"};
@@ -2661,6 +2752,9 @@ public class ExplanationOfBenefit extends DomainResource {
       public Base addChild(String name) throws FHIRException {
         if (name.equals("sequence")) {
           throw new FHIRException("Cannot call addChild on a primitive type ExplanationOfBenefit.sequence");
+        }
+        else if (name.equals("type")) {
+          return addType();
         }
         else if (name.equals("date")) {
           throw new FHIRException("Cannot call addChild on a primitive type ExplanationOfBenefit.date");
@@ -2683,7 +2777,17 @@ public class ExplanationOfBenefit extends DomainResource {
       public ProcedureComponent copy() {
         ProcedureComponent dst = new ProcedureComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ProcedureComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
+        if (type != null) {
+          dst.type = new ArrayList<CodeableConcept>();
+          for (CodeableConcept i : type)
+            dst.type.add(i.copy());
+        };
         dst.date = date == null ? null : date.copy();
         dst.procedure = procedure == null ? null : procedure.copy();
         if (udi != null) {
@@ -2691,7 +2795,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (Reference i : udi)
             dst.udi.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -2701,8 +2804,8 @@ public class ExplanationOfBenefit extends DomainResource {
         if (!(other_ instanceof ProcedureComponent))
           return false;
         ProcedureComponent o = (ProcedureComponent) other_;
-        return compareDeep(sequence, o.sequence, true) && compareDeep(date, o.date, true) && compareDeep(procedure, o.procedure, true)
-           && compareDeep(udi, o.udi, true);
+        return compareDeep(sequence, o.sequence, true) && compareDeep(type, o.type, true) && compareDeep(date, o.date, true)
+           && compareDeep(procedure, o.procedure, true) && compareDeep(udi, o.udi, true);
       }
 
       @Override
@@ -2716,7 +2819,7 @@ public class ExplanationOfBenefit extends DomainResource {
       }
 
       public boolean isEmpty() {
-        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(sequence, date, procedure
+        return super.isEmpty() && ca.uhn.fhir.util.ElementUtil.isEmpty(sequence, type, date, procedure
           , udi);
       }
 
@@ -3023,6 +3126,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public InsuranceComponent copy() {
         InsuranceComponent dst = new InsuranceComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(InsuranceComponent dst) {
+        super.copyValues(dst);
         dst.focal = focal == null ? null : focal.copy();
         dst.coverage = coverage == null ? null : coverage.copy();
         if (preAuthRef != null) {
@@ -3030,7 +3138,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (StringType i : preAuthRef)
             dst.preAuthRef.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -3332,10 +3439,14 @@ public class ExplanationOfBenefit extends DomainResource {
       public AccidentComponent copy() {
         AccidentComponent dst = new AccidentComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(AccidentComponent dst) {
+        super.copyValues(dst);
         dst.date = date == null ? null : date.copy();
         dst.type = type == null ? null : type.copy();
         dst.location = location == null ? null : location.copy();
-        return dst;
       }
 
       @Override
@@ -3380,10 +3491,10 @@ public class ExplanationOfBenefit extends DomainResource {
         protected PositiveIntType sequence;
 
         /**
-         * CareTeam members related to this service or product.
+         * Care team members related to this service or product.
          */
         @Child(name = "careTeamSequence", type = {PositiveIntType.class}, order=2, min=0, max=Child.MAX_UNLIMITED, modifier=false, summary=false)
-        @Description(shortDefinition="Applicable careteam members", formalDefinition="CareTeam members related to this service or product." )
+        @Description(shortDefinition="Applicable care team members", formalDefinition="Care team members related to this service or product." )
         protected List<PositiveIntType> careTeamSequence;
 
         /**
@@ -3615,7 +3726,7 @@ public class ExplanationOfBenefit extends DomainResource {
         }
 
         /**
-         * @return {@link #careTeamSequence} (CareTeam members related to this service or product.)
+         * @return {@link #careTeamSequence} (Care team members related to this service or product.)
          */
         public List<PositiveIntType> getCareTeamSequence() { 
           if (this.careTeamSequence == null)
@@ -3641,7 +3752,7 @@ public class ExplanationOfBenefit extends DomainResource {
         }
 
         /**
-         * @return {@link #careTeamSequence} (CareTeam members related to this service or product.)
+         * @return {@link #careTeamSequence} (Care team members related to this service or product.)
          */
         public PositiveIntType addCareTeamSequenceElement() {//2 
           PositiveIntType t = new PositiveIntType();
@@ -3652,7 +3763,7 @@ public class ExplanationOfBenefit extends DomainResource {
         }
 
         /**
-         * @param value {@link #careTeamSequence} (CareTeam members related to this service or product.)
+         * @param value {@link #careTeamSequence} (Care team members related to this service or product.)
          */
         public ItemComponent addCareTeamSequence(int value) { //1
           PositiveIntType t = new PositiveIntType();
@@ -3664,7 +3775,7 @@ public class ExplanationOfBenefit extends DomainResource {
         }
 
         /**
-         * @param value {@link #careTeamSequence} (CareTeam members related to this service or product.)
+         * @param value {@link #careTeamSequence} (Care team members related to this service or product.)
          */
         public boolean hasCareTeamSequence(int value) { 
           if (this.careTeamSequence == null)
@@ -4689,7 +4800,7 @@ public class ExplanationOfBenefit extends DomainResource {
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
           children.add(new Property("sequence", "positiveInt", "A number to uniquely identify item entries.", 0, 1, sequence));
-          children.add(new Property("careTeamSequence", "positiveInt", "CareTeam members related to this service or product.", 0, java.lang.Integer.MAX_VALUE, careTeamSequence));
+          children.add(new Property("careTeamSequence", "positiveInt", "Care team members related to this service or product.", 0, java.lang.Integer.MAX_VALUE, careTeamSequence));
           children.add(new Property("diagnosisSequence", "positiveInt", "Diagnoses applicable for this service or product.", 0, java.lang.Integer.MAX_VALUE, diagnosisSequence));
           children.add(new Property("procedureSequence", "positiveInt", "Procedures applicable for this service or product.", 0, java.lang.Integer.MAX_VALUE, procedureSequence));
           children.add(new Property("informationSequence", "positiveInt", "Exceptions, special conditions and supporting information applicable for this service or product.", 0, java.lang.Integer.MAX_VALUE, informationSequence));
@@ -4717,7 +4828,7 @@ public class ExplanationOfBenefit extends DomainResource {
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
           case 1349547969: /*sequence*/  return new Property("sequence", "positiveInt", "A number to uniquely identify item entries.", 0, 1, sequence);
-          case 1070083823: /*careTeamSequence*/  return new Property("careTeamSequence", "positiveInt", "CareTeam members related to this service or product.", 0, java.lang.Integer.MAX_VALUE, careTeamSequence);
+          case 1070083823: /*careTeamSequence*/  return new Property("careTeamSequence", "positiveInt", "Care team members related to this service or product.", 0, java.lang.Integer.MAX_VALUE, careTeamSequence);
           case -909769262: /*diagnosisSequence*/  return new Property("diagnosisSequence", "positiveInt", "Diagnoses applicable for this service or product.", 0, java.lang.Integer.MAX_VALUE, diagnosisSequence);
           case -808920140: /*procedureSequence*/  return new Property("procedureSequence", "positiveInt", "Procedures applicable for this service or product.", 0, java.lang.Integer.MAX_VALUE, procedureSequence);
           case -702585587: /*informationSequence*/  return new Property("informationSequence", "positiveInt", "Exceptions, special conditions and supporting information applicable for this service or product.", 0, java.lang.Integer.MAX_VALUE, informationSequence);
@@ -5075,6 +5186,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public ItemComponent copy() {
         ItemComponent dst = new ItemComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ItemComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
         if (careTeamSequence != null) {
           dst.careTeamSequence = new ArrayList<PositiveIntType>();
@@ -5146,7 +5262,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (DetailComponent i : detail)
             dst.detail.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -5198,10 +5313,10 @@ public class ExplanationOfBenefit extends DomainResource {
     @Block()
     public static class AdjudicationComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.
+         * A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.
          */
         @Child(name = "category", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Type of adjudication information", formalDefinition="A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item." )
+        @Description(shortDefinition="Type of adjudication information", formalDefinition="A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/adjudication")
         protected CodeableConcept category;
 
@@ -5245,7 +5360,7 @@ public class ExplanationOfBenefit extends DomainResource {
       }
 
         /**
-         * @return {@link #category} (A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
+         * @return {@link #category} (A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
          */
         public CodeableConcept getCategory() { 
           if (this.category == null)
@@ -5261,7 +5376,7 @@ public class ExplanationOfBenefit extends DomainResource {
         }
 
         /**
-         * @param value {@link #category} (A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
+         * @param value {@link #category} (A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
          */
         public AdjudicationComponent setCategory(CodeableConcept value) { 
           this.category = value;
@@ -5385,7 +5500,7 @@ public class ExplanationOfBenefit extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category));
+          children.add(new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category));
           children.add(new Property("reason", "CodeableConcept", "A code supporting the understanding of the adjudication result and explaining variance from expected amount.", 0, 1, reason));
           children.add(new Property("amount", "Money", "Monetary amount associated with the category.", 0, 1, amount));
           children.add(new Property("value", "decimal", "A non-monetary value associated with the category. Mutually exclusive to the amount element above.", 0, 1, value));
@@ -5394,7 +5509,7 @@ public class ExplanationOfBenefit extends DomainResource {
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 50511102: /*category*/  return new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category);
+          case 50511102: /*category*/  return new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category);
           case -934964668: /*reason*/  return new Property("reason", "CodeableConcept", "A code supporting the understanding of the adjudication result and explaining variance from expected amount.", 0, 1, reason);
           case -1413853096: /*amount*/  return new Property("amount", "Money", "Monetary amount associated with the category.", 0, 1, amount);
           case 111972721: /*value*/  return new Property("value", "decimal", "A non-monetary value associated with the category. Mutually exclusive to the amount element above.", 0, 1, value);
@@ -5498,11 +5613,15 @@ public class ExplanationOfBenefit extends DomainResource {
       public AdjudicationComponent copy() {
         AdjudicationComponent dst = new AdjudicationComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(AdjudicationComponent dst) {
+        super.copyValues(dst);
         dst.category = category == null ? null : category.copy();
         dst.reason = reason == null ? null : reason.copy();
         dst.amount = amount == null ? null : amount.copy();
         dst.value = value == null ? null : value.copy();
-        return dst;
       }
 
       @Override
@@ -6518,6 +6637,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public DetailComponent copy() {
         DetailComponent dst = new DetailComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(DetailComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
         dst.revenue = revenue == null ? null : revenue.copy();
         dst.category = category == null ? null : category.copy();
@@ -6556,7 +6680,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (SubDetailComponent i : subDetail)
             dst.subDetail.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -7505,6 +7628,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public SubDetailComponent copy() {
         SubDetailComponent dst = new SubDetailComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(SubDetailComponent dst) {
+        super.copyValues(dst);
         dst.sequence = sequence == null ? null : sequence.copy();
         dst.revenue = revenue == null ? null : revenue.copy();
         dst.category = category == null ? null : category.copy();
@@ -7538,7 +7666,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (AdjudicationComponent i : adjudication)
             dst.adjudication.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -8934,6 +9061,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public AddedItemComponent copy() {
         AddedItemComponent dst = new AddedItemComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(AddedItemComponent dst) {
+        super.copyValues(dst);
         if (itemSequence != null) {
           dst.itemSequence = new ArrayList<PositiveIntType>();
           for (PositiveIntType i : itemSequence)
@@ -8992,7 +9124,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (AddedItemDetailComponent i : detail)
             dst.detail.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -9686,6 +9817,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public AddedItemDetailComponent copy() {
         AddedItemDetailComponent dst = new AddedItemDetailComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(AddedItemDetailComponent dst) {
+        super.copyValues(dst);
         dst.productOrService = productOrService == null ? null : productOrService.copy();
         if (modifier != null) {
           dst.modifier = new ArrayList<CodeableConcept>();
@@ -9711,7 +9847,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (AddedItemDetailSubDetailComponent i : subDetail)
             dst.subDetail.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -10324,6 +10459,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public AddedItemDetailSubDetailComponent copy() {
         AddedItemDetailSubDetailComponent dst = new AddedItemDetailSubDetailComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(AddedItemDetailSubDetailComponent dst) {
+        super.copyValues(dst);
         dst.productOrService = productOrService == null ? null : productOrService.copy();
         if (modifier != null) {
           dst.modifier = new ArrayList<CodeableConcept>();
@@ -10344,7 +10484,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (AdjudicationComponent i : adjudication)
             dst.adjudication.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -10385,10 +10524,10 @@ public class ExplanationOfBenefit extends DomainResource {
     @Block()
     public static class TotalComponent extends BackboneElement implements IBaseBackboneElement {
         /**
-         * A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.
+         * A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.
          */
         @Child(name = "category", type = {CodeableConcept.class}, order=1, min=1, max=1, modifier=false, summary=true)
-        @Description(shortDefinition="Type of adjudication information", formalDefinition="A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item." )
+        @Description(shortDefinition="Type of adjudication information", formalDefinition="A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item." )
         @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/adjudication")
         protected CodeableConcept category;
 
@@ -10418,7 +10557,7 @@ public class ExplanationOfBenefit extends DomainResource {
       }
 
         /**
-         * @return {@link #category} (A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
+         * @return {@link #category} (A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
          */
         public CodeableConcept getCategory() { 
           if (this.category == null)
@@ -10434,7 +10573,7 @@ public class ExplanationOfBenefit extends DomainResource {
         }
 
         /**
-         * @param value {@link #category} (A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
+         * @param value {@link #category} (A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.)
          */
         public TotalComponent setCategory(CodeableConcept value) { 
           this.category = value;
@@ -10467,14 +10606,14 @@ public class ExplanationOfBenefit extends DomainResource {
 
         protected void listChildren(List<Property> children) {
           super.listChildren(children);
-          children.add(new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category));
+          children.add(new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category));
           children.add(new Property("amount", "Money", "Monetary total amount associated with the category.", 0, 1, amount));
         }
 
         @Override
         public Property getNamedProperty(int _hash, String _name, boolean _checkValid) throws FHIRException {
           switch (_hash) {
-          case 50511102: /*category*/  return new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is resonsible for in-aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category);
+          case 50511102: /*category*/  return new Property("category", "CodeableConcept", "A code to indicate the information type of this adjudication record. Information types may include: the value submitted, maximum values or percentages allowed or payable under the plan, amounts that the patient is responsible for in aggregate or pertaining to this item, amounts paid by other coverages, and the benefit payable for this item.", 0, 1, category);
           case -1413853096: /*amount*/  return new Property("amount", "Money", "Monetary total amount associated with the category.", 0, 1, amount);
           default: return super.getNamedProperty(_hash, _name, _checkValid);
           }
@@ -10553,9 +10692,13 @@ public class ExplanationOfBenefit extends DomainResource {
       public TotalComponent copy() {
         TotalComponent dst = new TotalComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(TotalComponent dst) {
+        super.copyValues(dst);
         dst.category = category == null ? null : category.copy();
         dst.amount = amount == null ? null : amount.copy();
-        return dst;
       }
 
       @Override
@@ -10956,13 +11099,17 @@ public class ExplanationOfBenefit extends DomainResource {
       public PaymentComponent copy() {
         PaymentComponent dst = new PaymentComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(PaymentComponent dst) {
+        super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.adjustment = adjustment == null ? null : adjustment.copy();
         dst.adjustmentReason = adjustmentReason == null ? null : adjustmentReason.copy();
         dst.date = date == null ? null : date.copy();
         dst.amount = amount == null ? null : amount.copy();
         dst.identifier = identifier == null ? null : identifier.copy();
-        return dst;
       }
 
       @Override
@@ -11020,7 +11167,7 @@ public class ExplanationOfBenefit extends DomainResource {
          * The explanation or description associated with the processing.
          */
         @Child(name = "text", type = {StringType.class}, order=3, min=0, max=1, modifier=false, summary=false)
-        @Description(shortDefinition="Note explanitory text", formalDefinition="The explanation or description associated with the processing." )
+        @Description(shortDefinition="Note explanatory text", formalDefinition="The explanation or description associated with the processing." )
         protected StringType text;
 
         /**
@@ -11322,11 +11469,15 @@ public class ExplanationOfBenefit extends DomainResource {
       public NoteComponent copy() {
         NoteComponent dst = new NoteComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(NoteComponent dst) {
+        super.copyValues(dst);
         dst.number = number == null ? null : number.copy();
         dst.type = type == null ? null : type.copy();
         dst.text = text == null ? null : text.copy();
         dst.language = language == null ? null : language.copy();
-        return dst;
       }
 
       @Override
@@ -11902,6 +12053,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public BenefitBalanceComponent copy() {
         BenefitBalanceComponent dst = new BenefitBalanceComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(BenefitBalanceComponent dst) {
+        super.copyValues(dst);
         dst.category = category == null ? null : category.copy();
         dst.excluded = excluded == null ? null : excluded.copy();
         dst.name = name == null ? null : name.copy();
@@ -11914,7 +12070,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (BenefitComponent i : financial)
             dst.financial.add(i.copy());
         };
-        return dst;
       }
 
       @Override
@@ -12257,10 +12412,14 @@ public class ExplanationOfBenefit extends DomainResource {
       public BenefitComponent copy() {
         BenefitComponent dst = new BenefitComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(BenefitComponent dst) {
+        super.copyValues(dst);
         dst.type = type == null ? null : type.copy();
         dst.allowed = allowed == null ? null : allowed.copy();
         dst.used = used == null ? null : used.copy();
-        return dst;
       }
 
       @Override
@@ -12311,10 +12470,10 @@ public class ExplanationOfBenefit extends DomainResource {
     protected Enumeration<ExplanationOfBenefitStatus> status;
 
     /**
-     * The category of claim, e.g, oral, pharmacy, vision, institutional, professional.
+     * The category of claim, e.g. oral, pharmacy, vision, institutional, professional.
      */
     @Child(name = "type", type = {CodeableConcept.class}, order=2, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="Category or discipline", formalDefinition="The category of claim, e.g, oral, pharmacy, vision, institutional, professional." )
+    @Description(shortDefinition="Category or discipline", formalDefinition="The category of claim, e.g. oral, pharmacy, vision, institutional, professional." )
     @ca.uhn.fhir.model.api.annotation.Binding(valueSet="http://hl7.org/fhir/ValueSet/claim-type")
     protected CodeableConcept type;
 
@@ -12335,14 +12494,14 @@ public class ExplanationOfBenefit extends DomainResource {
     protected Enumeration<Use> use;
 
     /**
-     * The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.
+     * The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.
      */
     @Child(name = "patient", type = {Patient.class}, order=5, min=1, max=1, modifier=false, summary=true)
-    @Description(shortDefinition="The recipient of the products and services", formalDefinition="The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought." )
+    @Description(shortDefinition="The recipient of the products and services", formalDefinition="The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought." )
     protected Reference patient;
 
     /**
-     * The actual object that is the target of the reference (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.)
+     * The actual object that is the target of the reference (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.)
      */
     protected Patient patientTarget;
 
@@ -12400,7 +12559,7 @@ public class ExplanationOfBenefit extends DomainResource {
      * The provider-required urgency of processing the request. Typical values include: stat, routine deferred.
      */
     @Child(name = "priority", type = {CodeableConcept.class}, order=11, min=0, max=1, modifier=false, summary=false)
-    @Description(shortDefinition="Desired processing ugency", formalDefinition="The provider-required urgency of processing the request. Typical values include: stat, routine deferred." )
+    @Description(shortDefinition="Desired processing urgency", formalDefinition="The provider-required urgency of processing the request. Typical values include: stat, routine deferred." )
     protected CodeableConcept priority;
 
     /**
@@ -12777,7 +12936,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @return {@link #type} (The category of claim, e.g, oral, pharmacy, vision, institutional, professional.)
+     * @return {@link #type} (The category of claim, e.g. oral, pharmacy, vision, institutional, professional.)
      */
     public CodeableConcept getType() { 
       if (this.type == null)
@@ -12793,7 +12952,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @param value {@link #type} (The category of claim, e.g, oral, pharmacy, vision, institutional, professional.)
+     * @param value {@link #type} (The category of claim, e.g. oral, pharmacy, vision, institutional, professional.)
      */
     public ExplanationOfBenefit setType(CodeableConcept value) { 
       this.type = value;
@@ -12870,7 +13029,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @return {@link #patient} (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.)
+     * @return {@link #patient} (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.)
      */
     public Reference getPatient() { 
       if (this.patient == null)
@@ -12886,7 +13045,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @param value {@link #patient} (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.)
+     * @param value {@link #patient} (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.)
      */
     public ExplanationOfBenefit setPatient(Reference value) { 
       this.patient = value;
@@ -12894,7 +13053,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.)
+     * @return {@link #patient} The actual object that is the target of the reference. The reference library doesn't populate this, but you can use it to hold the resource if you resolve it. (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.)
      */
     public Patient getPatientTarget() { 
       if (this.patientTarget == null)
@@ -12906,7 +13065,7 @@ public class ExplanationOfBenefit extends DomainResource {
     }
 
     /**
-     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.)
+     * @param value {@link #patient} The actual object that is the target of the reference. The reference library doesn't use these, but you can use it to hold the resource if you resolve it. (The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.)
      */
     public ExplanationOfBenefit setPatientTarget(Patient value) { 
       this.patientTarget = value;
@@ -14472,10 +14631,10 @@ public class ExplanationOfBenefit extends DomainResource {
         super.listChildren(children);
         children.add(new Property("identifier", "Identifier", "A unique identifier assigned to this explanation of benefit.", 0, java.lang.Integer.MAX_VALUE, identifier));
         children.add(new Property("status", "code", "The status of the resource instance.", 0, 1, status));
-        children.add(new Property("type", "CodeableConcept", "The category of claim, e.g, oral, pharmacy, vision, institutional, professional.", 0, 1, type));
+        children.add(new Property("type", "CodeableConcept", "The category of claim, e.g. oral, pharmacy, vision, institutional, professional.", 0, 1, type));
         children.add(new Property("subType", "CodeableConcept", "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.", 0, 1, subType));
         children.add(new Property("use", "code", "A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.", 0, 1, use));
-        children.add(new Property("patient", "Reference(Patient)", "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.", 0, 1, patient));
+        children.add(new Property("patient", "Reference(Patient)", "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.", 0, 1, patient));
         children.add(new Property("billablePeriod", "Period", "The period for which charges are being submitted.", 0, 1, billablePeriod));
         children.add(new Property("created", "dateTime", "The date this resource was created.", 0, 1, created));
         children.add(new Property("enterer", "Reference(Practitioner|PractitionerRole)", "Individual who created the claim, predetermination or preauthorization.", 0, 1, enterer));
@@ -14520,10 +14679,10 @@ public class ExplanationOfBenefit extends DomainResource {
         switch (_hash) {
         case -1618432855: /*identifier*/  return new Property("identifier", "Identifier", "A unique identifier assigned to this explanation of benefit.", 0, java.lang.Integer.MAX_VALUE, identifier);
         case -892481550: /*status*/  return new Property("status", "code", "The status of the resource instance.", 0, 1, status);
-        case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The category of claim, e.g, oral, pharmacy, vision, institutional, professional.", 0, 1, type);
+        case 3575610: /*type*/  return new Property("type", "CodeableConcept", "The category of claim, e.g. oral, pharmacy, vision, institutional, professional.", 0, 1, type);
         case -1868521062: /*subType*/  return new Property("subType", "CodeableConcept", "A finer grained suite of claim type codes which may convey additional information such as Inpatient vs Outpatient and/or a specialty service.", 0, 1, subType);
         case 116103: /*use*/  return new Property("use", "code", "A code to indicate whether the nature of the request is: to request adjudication of products and services previously rendered; or requesting authorization and adjudication for provision in the future; or requesting the non-binding adjudication of the listed products and services which could be provided in the future.", 0, 1, use);
-        case -791418107: /*patient*/  return new Property("patient", "Reference(Patient)", "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimburement is sought.", 0, 1, patient);
+        case -791418107: /*patient*/  return new Property("patient", "Reference(Patient)", "The party to whom the professional services and/or products have been supplied or are being considered and for whom actual for forecast reimbursement is sought.", 0, 1, patient);
         case -332066046: /*billablePeriod*/  return new Property("billablePeriod", "Period", "The period for which charges are being submitted.", 0, 1, billablePeriod);
         case 1028554472: /*created*/  return new Property("created", "dateTime", "The date this resource was created.", 0, 1, created);
         case -1591951995: /*enterer*/  return new Property("enterer", "Reference(Practitioner|PractitionerRole)", "Individual who created the claim, predetermination or preauthorization.", 0, 1, enterer);
@@ -15120,6 +15279,11 @@ public class ExplanationOfBenefit extends DomainResource {
       public ExplanationOfBenefit copy() {
         ExplanationOfBenefit dst = new ExplanationOfBenefit();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(ExplanationOfBenefit dst) {
+        super.copyValues(dst);
         if (identifier != null) {
           dst.identifier = new ArrayList<Identifier>();
           for (Identifier i : identifier)
@@ -15223,7 +15387,6 @@ public class ExplanationOfBenefit extends DomainResource {
           for (BenefitBalanceComponent i : benefitBalance)
             dst.benefitBalance.add(i.copy());
         };
-        return dst;
       }
 
       protected ExplanationOfBenefit typedCopy() {

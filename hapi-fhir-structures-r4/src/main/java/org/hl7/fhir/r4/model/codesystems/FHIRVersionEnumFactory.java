@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model.codesystems;
   
 */
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Thu, Feb 14, 2019 17:58-0600 for FHIR v4.0.0
 
 
 import org.hl7.fhir.r4.model.EnumFactory;
@@ -79,8 +79,6 @@ public class FHIRVersionEnumFactory implements EnumFactory<FHIRVersion> {
       return FHIRVersion._3_3_0;
     if ("3.5.0".equals(codeString))
       return FHIRVersion._3_5_0;
-    if ("3.6.0".equals(codeString))
-      return FHIRVersion._3_6_0;
     if ("4.0.0".equals(codeString))
       return FHIRVersion._4_0_0;
     throw new IllegalArgumentException("Unknown FHIRVersion code '"+codeString+"'");
@@ -127,8 +125,6 @@ public class FHIRVersionEnumFactory implements EnumFactory<FHIRVersion> {
       return "3.3.0";
     if (code == FHIRVersion._3_5_0)
       return "3.5.0";
-    if (code == FHIRVersion._3_6_0)
-      return "3.6.0";
     if (code == FHIRVersion._4_0_0)
       return "4.0.0";
     return "?";

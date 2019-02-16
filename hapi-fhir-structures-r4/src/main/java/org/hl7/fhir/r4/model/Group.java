@@ -29,7 +29,7 @@ package org.hl7.fhir.r4.model;
   
 */
 
-// Generated on Wed, Nov 21, 2018 11:18-0500 for FHIR v3.6.0
+// Generated on Thu, Feb 14, 2019 08:51-0600 for FHIR v4.0.0
 
 import java.util.*;
 
@@ -580,11 +580,15 @@ public class Group extends DomainResource {
       public GroupCharacteristicComponent copy() {
         GroupCharacteristicComponent dst = new GroupCharacteristicComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(GroupCharacteristicComponent dst) {
+        super.copyValues(dst);
         dst.code = code == null ? null : code.copy();
         dst.value = value == null ? null : value.copy();
         dst.exclude = exclude == null ? null : exclude.copy();
         dst.period = period == null ? null : period.copy();
-        return dst;
       }
 
       @Override
@@ -874,10 +878,14 @@ public class Group extends DomainResource {
       public GroupMemberComponent copy() {
         GroupMemberComponent dst = new GroupMemberComponent();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(GroupMemberComponent dst) {
+        super.copyValues(dst);
         dst.entity = entity == null ? null : entity.copy();
         dst.period = period == null ? null : period.copy();
         dst.inactive = inactive == null ? null : inactive.copy();
-        return dst;
       }
 
       @Override
@@ -1657,6 +1665,11 @@ public class Group extends DomainResource {
       public Group copy() {
         Group dst = new Group();
         copyValues(dst);
+        return dst;
+      }
+
+      public void copyValues(Group dst) {
+        super.copyValues(dst);
         if (identifier != null) {
           dst.identifier = new ArrayList<Identifier>();
           for (Identifier i : identifier)
@@ -1679,7 +1692,6 @@ public class Group extends DomainResource {
           for (GroupMemberComponent i : member)
             dst.member.add(i.copy());
         };
-        return dst;
       }
 
       protected Group typedCopy() {
@@ -1853,6 +1865,26 @@ public class Group extends DomainResource {
   public static final ca.uhn.fhir.model.api.Include INCLUDE_MEMBER = new ca.uhn.fhir.model.api.Include("Group:member").toLocked();
 
  /**
+   * Search parameter: <b>name</b>
+   * <p>
+   * Description: <b>The Text of the group name</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.name</b><br>
+   * </p>
+   */
+  @SearchParamDefinition(name="name", path="Group.name", description="The Text of the group name", type="token" )
+  public static final String SP_NAME = "name";
+ /**
+   * <b>Fluent Client</b> search parameter constant for <b>name</b>
+   * <p>
+   * Description: <b>The Text of the group name</b><br>
+   * Type: <b>token</b><br>
+   * Path: <b>Group.name</b><br>
+   * </p>
+   */
+  public static final ca.uhn.fhir.rest.gclient.TokenClientParam NAME = new ca.uhn.fhir.rest.gclient.TokenClientParam(SP_NAME);
+
+ /**
    * Search parameter: <b>exclude</b>
    * <p>
    * Description: <b>Group includes or excludes</b><br>
@@ -1900,7 +1932,7 @@ public class Group extends DomainResource {
    * Path: <b>Group.characteristic.value[x]</b><br>
    * </p>
    */
-  @SearchParamDefinition(name="value", path="Group.characteristic.value as CodeableConcept | Group.characteristic.value as boolean", description="Value held by characteristic", type="token" )
+  @SearchParamDefinition(name="value", path="(Group.characteristic.value as CodeableConcept) | (Group.characteristic.value as boolean)", description="Value held by characteristic", type="token" )
   public static final String SP_VALUE = "value";
  /**
    * <b>Fluent Client</b> search parameter constant for <b>value</b>
