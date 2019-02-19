@@ -112,6 +112,7 @@ public enum FhirVersions {
          * Current Development build
          */
         _3_5_0, 
+	_3_6_0,
         /**
          * added to help the parsers
          */
@@ -157,6 +158,8 @@ public enum FhirVersions {
           return _3_0_1;
         if ("3.5.0".equals(codeString))
           return _3_5_0;
+        if ("3.6.0".equals(codeString))
+          return _3_6_0;
         throw new FHIRException("Unknown FhirVersions code '"+codeString+"'");
         }
         public String toCode() {
@@ -180,6 +183,7 @@ public enum FhirVersions {
             case _3_0_0: return "3.0.0";
             case _3_0_1: return "3.0.1";
             case _3_5_0: return "3.5.0";
+            case _3_6_0: return "3.6.0";
             default: return "?";
           }
         }
@@ -207,6 +211,7 @@ public enum FhirVersions {
             case _3_0_0: return "FHIR Release 3 (STU)";
             case _3_0_1: return "FHIR Release 3 (STU) with 1 technical errata";
             case _3_5_0: return "Current Development build";
+            case _3_6_0: return "Pre R4 build";
             default: return "?";
           }
         }
@@ -231,6 +236,7 @@ public enum FhirVersions {
             case _3_0_0: return "3.0.0";
             case _3_0_1: return "3.0.1";
             case _3_5_0: return "3.5.0";
+            case _3_6_0: return "3.6.0";
             default: return "?";
           }
     }
